@@ -1,0 +1,36 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "xZh0BucYDQOz9FpQQubVqWF0580=",
+			"origin": "git.chinawayltd.com/g7fintech/service-etrip-notify/vendor/github.com/gin-gonic/gin",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "d691c1f90e6c6d5f583c1db975831e6bab3af461",
+			"revisionTime": "2018-09-28T05:11:48Z"
+		},
+		{
+			"checksumSHA1": "IGodI2hoaBWtZweoy9qwRl0XPPc=",
+			"origin": "git.chinawayltd.com/g7fintech/service-etrip-notify/vendor/github.com/gin-gonic/gin/binding",
+			"path": "github.com/gin-gonic/gin/binding",
+			"revision": "d691c1f90e6c6d5f583c1db975831e6bab3af461",
+			"revisionTime": "2018-09-28T05:11:48Z"
+		},
+		{
+			"checksumSHA1": "ZrBlc4nW5joRSLLRThHlxU+bWtg=",
+			"origin": "git.chinawayltd.com/g7fintech/service-etrip-notify/vendor/github.com/gin-gonic/gin/json",
+			"path": "github.com/gin-gonic/gin/json",
+			"revision": "d691c1f90e6c6d5f583c1db975831e6bab3af461",
+			"revisionTime": "2018-09-28T05:11:48Z"
+		},
+		{
+			"checksumSHA1": "tOYoNlFmt7dwH2BrNRLJ90LJAH8=",
+			"origin": "git.chinawayltd.com/g7fintech/service-etrip-notify/vendor/github.com/gin-gonic/gin/render",
+			"path": "github.com/gin-gonic/gin/render",
+			"revision": "d691c1f90e6c6d5f583c1db975831e6bab3af461",
+			"revisionTime": "2018-09-28T05:11:48Z"
+		}
+
+	],
+	"rootPath": "ZCache"
+}

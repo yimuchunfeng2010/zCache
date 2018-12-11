@@ -22,3 +22,7 @@ A light Cache writed by golang
 # [version:0.0.5]
 ### Features
 增加读写锁
+
+# [version:0.0.6]
+### Features
+增加测试接口

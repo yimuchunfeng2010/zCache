@@ -2,6 +2,7 @@ package main
 
 import (
 	"ZCache/routes"
+	"ZCache/routes/mock"
 	"github.com/gin-gonic/gin"
 	"ZCache/types"
 	"ZCache/global"
@@ -15,10 +16,21 @@ func init() {
 }
 func main() {
 	router := gin.Default()
-	router.GET("/:key", routes.Get)
-	router.DELETE("/:key", routes.Delete)
-	router.POST("/:key/:value", routes.Update)
-	router.PUT("/:key/:value", routes.Set)
+	v := router.Group("/ZCache")
+	{
+		v.GET("/:key", routes.Get)
+		v.DELETE("/:key", routes.Delete)
+		v.POST("/:key/:value", routes.Update)
+		v.PUT("/:key/:value", routes.Set)
+	}
+
+
+	test := router.Group("/mock")
+	{
+		test.POST("/mockSet", mock.Mock_Set)
+
+	}
+
 
 	router.Run(":8000")
 }

@@ -7,16 +7,16 @@ import (
 
 var Config = struct {
 	MaxLen int64
-	}{
-	MaxLen:1024,
+}{
+	MaxLen: 1024,
 }
 
 var GlobalVar = struct {
-	Root *types.Node
-	GRoot []*types.Node
+	Root    *types.Node
+	GRoot   []*types.Node
 	GRWLock *sync.RWMutex
 }{
-	Root:nil,
-	GRoot:nil,
-	GRWLock:nil,
+	Root:    nil,
+	GRoot:   nil,
+	GRWLock: nil,
 }

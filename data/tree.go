@@ -1,16 +1,15 @@
 package zdata
 
 import (
-	"errors"
 	"ZCache/types"
-	)
+	"errors"
+)
 
 var (
 	errNotExist       = errors.New("Index is not existed")
 	errTreeNil        = errors.New("tree is null")
 	errTreeIndexExist = errors.New("tree Index is existed")
 )
-
 
 func max(data1 int, data2 int) int {
 	if data1 > data2 {
@@ -217,6 +216,7 @@ func Get(node *types.Node, Index string) (*types.Node, error) {
 		}
 	}
 }
+
 //
 ////test
 //func main() {
@@ -257,4 +257,3 @@ func Get(node *types.Node, Index string) (*types.Node, error) {
 //	Midtraverse(tree, f)
 //
 //}
-

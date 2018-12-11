@@ -1,82 +1,82 @@
 package zdata
 
-import ("ZCache/services"
+import (
 	"ZCache/global"
-	"errors"
+	"ZCache/services"
 	"ZCache/types"
+	"errors"
 	"github.com/sirupsen/logrus"
 )
 
-
 func CoreAdd(key string, value string) (*types.Node, error) {
-	hashIndex , err := services.GetHashIndex(key)
+	hashIndex, err := services.GetHashIndex(key)
 	if err != nil {
-		return nil , err
+		return nil, err
 	}
-	if nil == global.GlobalVar.GRoot{
+	if nil == global.GlobalVar.GRoot {
 		return nil, errors.New("GRoot nil")
 	}
-	tmpNode , err := Add(global.GlobalVar.GRoot[hashIndex], key, value)
+	tmpNode, err := Add(global.GlobalVar.GRoot[hashIndex], key, value)
 	if err != nil {
 		return nil, err
 	}
 
 	global.GlobalVar.GRoot[hashIndex] = tmpNode
 
-	return global.GlobalVar.GRoot[hashIndex],nil
+	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
 func CoreDelete(key string) (*types.Node, error) {
-	hashIndex , err := services.GetHashIndex(key)
+	hashIndex, err := services.GetHashIndex(key)
 	if err != nil {
-		return nil , err
+		return nil, err
 	}
-	if nil == global.GlobalVar.GRoot{
+	if nil == global.GlobalVar.GRoot {
 		return nil, errors.New("GRoot nil")
 	}
 
-	tmpNode , err := Delete(global.GlobalVar.GRoot[hashIndex], key)
+	tmpNode, err := Delete(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
 		return nil, err
 	}
 	global.GlobalVar.GRoot[hashIndex] = tmpNode
-	return global.GlobalVar.GRoot[hashIndex],nil
+	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
 //查找并返回节点
 func CoreUpdate(key string, Value string) (*types.Node, error) {
-	hashIndex , err := services.GetHashIndex(key)
+	hashIndex, err := services.GetHashIndex(key)
 	if err != nil {
-		return nil , err
+		return nil, err
 	}
 
-	if nil == global.GlobalVar.GRoot{
+	if nil == global.GlobalVar.GRoot {
 		return nil, errors.New("GRoot nil")
 	}
 
-	tmpNode , err := Update(global.GlobalVar.GRoot[hashIndex], key, Value)
+	tmpNode, err := Update(global.GlobalVar.GRoot[hashIndex], key, Value)
 	if err != nil {
 		return nil, err
 	}
 	global.GlobalVar.GRoot[hashIndex] = tmpNode
 
-	return global.GlobalVar.GRoot[hashIndex],nil
+	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
 //查找并返回节点
 func CoreGet(key string) (*types.Node, error) {
-	hashIndex , err := services.GetHashIndex(key)
+	hashIndex, err := services.GetHashIndex(key)
 	if err != nil {
-		return nil , err
+		return nil, err
 	}
-	if nil == global.GlobalVar.GRoot{
+	if nil == global.GlobalVar.GRoot {
 		return nil, errors.New("GRoot nil")
 	}
 
-	node , err := Get(global.GlobalVar.GRoot[hashIndex], key)
+	node, err := Get(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
-		logrus.Warning("CoreGet Failed[Key:%s,Err:%s]",key,err.Error())
+		logrus.Warning("CoreGet Failed[Key:%s,Err:%s]", key, err.Error())
 		return nil, err
 	}
-	return node,nil
+	return node, nil
 }

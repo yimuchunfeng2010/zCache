@@ -8,7 +8,7 @@ import ("ZCache/services"
 )
 
 
-func CoreAdd(key string, data types.CacheData) (*types.Node, error) {
+func CoreAdd(key string, value string) (*types.Node, error) {
 	hashIndex , err := services.GetHashIndex(key)
 	if err != nil {
 		return nil , err
@@ -16,7 +16,7 @@ func CoreAdd(key string, data types.CacheData) (*types.Node, error) {
 	if nil == global.GlobalVar.GRoot{
 		return nil, errors.New("GRoot nil")
 	}
-	tmpNode , err := Add(global.GlobalVar.GRoot[hashIndex], key, data)
+	tmpNode , err := Add(global.GlobalVar.GRoot[hashIndex], key, value)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func CoreDelete(key string) (*types.Node, error) {
 }
 
 //查找并返回节点
-func CoreUpdate(key string, data types.CacheData) (*types.Node, error) {
+func CoreUpdate(key string, Value string) (*types.Node, error) {
 	hashIndex , err := services.GetHashIndex(key)
 	if err != nil {
 		return nil , err
@@ -54,7 +54,7 @@ func CoreUpdate(key string, data types.CacheData) (*types.Node, error) {
 		return nil, errors.New("GRoot nil")
 	}
 
-	tmpNode , err := Update(global.GlobalVar.GRoot[hashIndex], key, data)
+	tmpNode , err := Update(global.GlobalVar.GRoot[hashIndex], key, Value)
 	if err != nil {
 		return nil, err
 	}

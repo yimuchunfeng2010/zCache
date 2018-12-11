@@ -123,15 +123,15 @@ func Midtraverse(node *types.Node, handle func(interface{}) error) error {
 }
 
 //插入节点 ---> 依次向上递归，调整树平衡
-func Add(node *types.Node, Index string, data types.CacheData) (*types.Node, error) {
+func Add(node *types.Node, Key string, Value string) (*types.Node, error) {
 	if node == nil {
-		return &types.Node{Lchild: nil, Rchild: nil, Index: Index, Data: data, Height: 1}, nil
+		return &types.Node{Lchild: nil, Rchild: nil, Key: Key, Value: Value, Height: 1}, nil
 	}
-	if node.Index > Index {
-		node.Lchild, _ = Add(node.Lchild, Index, data)
+	if node.Key > Key {
+		node.Lchild, _ = Add(node.Lchild, Key, Value)
 		node = handleBF(node)
-	} else if node.Index < Index {
-		node.Rchild, _ = Add(node.Rchild, Index, data)
+	} else if node.Key < Key {
+		node.Rchild, _ = Add(node.Rchild, Key, Value)
 		node = handleBF(node)
 	} else {
 		return nil, errTreeIndexExist
@@ -143,11 +143,11 @@ func Add(node *types.Node, Index string, data types.CacheData) (*types.Node, err
 //删除指定Index节点
 //查找节点 ---> 删除节点 ----> 调整树结构
 //删除节点时既要遵循二叉搜索树的定义又要符合二叉平衡树的要求   ---> 重点处理删除节点的拥有左右子树的情况
-func Delete(node *types.Node, Index string) (*types.Node, error) {
+func Delete(node *types.Node, Key string) (*types.Node, error) {
 	if node == nil {
 		return nil, errNotExist
 	}
-	if node.Index == Index { //找到对应节点
+	if node.Key == Key { //找到对应节点
 		//如果没有左子树或者右子树 --->直接返回nil
 		if node.Lchild == nil && node.Rchild == nil {
 			return nil, nil
@@ -169,14 +169,14 @@ func Delete(node *types.Node, Index string) (*types.Node, error) {
 				n = n.Rchild
 			}
 			//
-			n.Data, node.Data = node.Data, n.Data
-			n.Index, node.Index = node.Index, n.Index
-			node.Lchild, _ = Delete(node.Lchild, n.Index)
+			n.Value, node.Value = node.Value, n.Value
+			n.Key, node.Key = node.Key, n.Key
+			node.Lchild, _ = Delete(node.Lchild, n.Key)
 		}
-	} else if node.Index > Index {
-		node.Lchild, _ = Delete(node.Lchild, Index)
+	} else if node.Key > Key {
+		node.Lchild, _ = Delete(node.Lchild, Key)
 	} else { //node.Index < Index
-		node.Rchild, _ = Delete(node.Rchild, Index)
+		node.Rchild, _ = Delete(node.Rchild, Key)
 	}
 	//删除节点后节点高度
 	node.Height = max(getHeight(node.Lchild), getHeight(node.Rchild)) + 1
@@ -186,15 +186,15 @@ func Delete(node *types.Node, Index string) (*types.Node, error) {
 }
 
 //查找并返回节点
-func Update(node *types.Node, Index string, data types.CacheData) (*types.Node, error) {
+func Update(node *types.Node, Key string, Value string) (*types.Node, error) {
 	for {
 		if node == nil {
 			return nil, errNotExist
 		}
-		if Index == node.Index { //查找到Index节点
-			node.Data = data
+		if Key == node.Key { //查找到Index节点
+			node.Value = Value
 			return node, nil
-		} else if Index > node.Index {
+		} else if Key > node.Key {
 			node = node.Rchild
 		} else {
 			node = node.Lchild
@@ -208,9 +208,9 @@ func Get(node *types.Node, Index string) (*types.Node, error) {
 		if node == nil {
 			return nil, errNotExist
 		}
-		if Index == node.Index { //查找到Index节点
+		if Index == node.Key { //查找到Index节点
 			return node, nil
-		} else if Index > node.Index {
+		} else if Index > node.Key {
 			node = node.Rchild
 		} else {
 			node = node.Lchild

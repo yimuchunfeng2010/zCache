@@ -16,10 +16,12 @@ func CoreAdd(key string, data types.CacheData) (*types.Node, error) {
 	if nil == global.GlobalVar.GRoot{
 		return nil, errors.New("GRoot nil")
 	}
-	global.GlobalVar.GRoot[hashIndex] , err = Add(global.GlobalVar.GRoot[hashIndex], key, data)
+	tmpNode , err := Add(global.GlobalVar.GRoot[hashIndex], key, data)
 	if err != nil {
 		return nil, err
 	}
+
+	global.GlobalVar.GRoot[hashIndex] = tmpNode
 
 	return global.GlobalVar.GRoot[hashIndex],nil
 }
@@ -33,11 +35,11 @@ func CoreDelete(key string) (*types.Node, error) {
 		return nil, errors.New("GRoot nil")
 	}
 
-	global.GlobalVar.GRoot[hashIndex] , err = Delete(global.GlobalVar.GRoot[hashIndex], key)
+	tmpNode , err := Delete(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
 		return nil, err
 	}
-
+	global.GlobalVar.GRoot[hashIndex] = tmpNode
 	return global.GlobalVar.GRoot[hashIndex],nil
 }
 
@@ -52,10 +54,11 @@ func CoreUpdate(key string, data types.CacheData) (*types.Node, error) {
 		return nil, errors.New("GRoot nil")
 	}
 
-	global.GlobalVar.GRoot[hashIndex] , err = Update(global.GlobalVar.GRoot[hashIndex], key, data)
+	tmpNode , err := Update(global.GlobalVar.GRoot[hashIndex], key, data)
 	if err != nil {
 		return nil, err
 	}
+	global.GlobalVar.GRoot[hashIndex] = tmpNode
 
 	return global.GlobalVar.GRoot[hashIndex],nil
 }

@@ -1,13 +1,17 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"ZCache/routes"
-	)
-func init(){
+	"github.com/gin-gonic/gin"
+	"ZCache/types"
+	"ZCache/global"
+)
+
+func init() {
 	//初始化
+	global.GlobalVar.GRoot = make([]*types.Node, global.Config.MaxLen)
 }
-func main(){
+func main() {
 	router := gin.Default()
 	router.GET("/:key", routes.Get)
 	router.DELETE("/:key", routes.Delete)

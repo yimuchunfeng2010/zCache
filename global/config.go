@@ -1,7 +1,7 @@
 package global
 
 import (
-	"ZCache/data"
+	"ZCache/types"
 )
 
 var Config = struct {
@@ -11,7 +11,9 @@ var Config = struct {
 }
 
 var GlobalVar = struct {
-	Root *zdata.Node
+	Root *types.Node
+	GRoot []*types.Node
 }{
 	Root:nil,
+	GRoot:nil,
 }

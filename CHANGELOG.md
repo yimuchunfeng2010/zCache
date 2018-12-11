@@ -14,3 +14,7 @@ A light Cache writed by golang
 # [version:0.0.3]
 ### Features
 实现基本Update/Delete接口
+
+# [version:0.0.4]
+### Features
+更改核心数据结构 由 二叉树 改为 hash表+二叉树

@@ -5,30 +5,19 @@ import (
 	"github.com/sirupsen/logrus"
 	"net/http"
 	"ZCache/data"
-	"ZCache/global"
-	"ZCache/services"
-
+	"ZCache/types"
 )
 
 func Update(context *gin.Context){
 	key := context.Param("key")
 	value := context.Param("value")
 	logrus.Infof("Update Key:%s, Value:%s",key,value)
-
-	//TODO  生成hashIndex
-	_ , err := services.GetHashIndex(key)
-	if err != nil {
-		context.JSON(http.StatusInternalServerError,gin.H{"value":"","status":"done"})
-		return
-	}
-
-	data := zdata.CacheData{Key:key,Value:value}
-	node , err := zdata.Update(global.GlobalVar.Root, key, data)
+	data := types.CacheData{Key:key,Value:value}
+	node , err := zdata.CoreUpdate(key, data)
 	if err != nil {
 		context.JSON(http.StatusConflict,gin.H{"key":key,"value":value, "status":"done"})
 		return
 	} else {
-		global.GlobalVar.Root = node
 		context.JSON(http.StatusOK,gin.H{"key":node.Data.Key,"value":node.Data.Value, "status":"done"})
 		return
 	}

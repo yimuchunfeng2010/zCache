@@ -6,7 +6,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"ZCache/global"
 	"ZCache/data"
-	"ZCache/services"
 )
 
 
@@ -18,15 +17,7 @@ func Get(context *gin.Context){
 		return
 	}
 
-	//TODO  生成hashIndex
-	_ , err := services.GetHashIndex(key)
-	if err != nil {
-		context.JSON(http.StatusInternalServerError,gin.H{"value":"","status":"done"})
-		return
-	}
-
-
-	node , err := zdata.Get(global.GlobalVar.Root, key)
+	node , err := zdata.CoreGet(key)
 	if err != nil {
 		context.JSON(http.StatusNotFound,gin.H{"value":"","status":"done"})
 		return

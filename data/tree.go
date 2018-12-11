@@ -2,6 +2,7 @@ package zdata
 
 import (
 	"errors"
+	"ZCache/types"
 	)
 
 var (
@@ -10,18 +11,6 @@ var (
 	errTreeIndexExist = errors.New("tree Index is existed")
 )
 
-type Node struct {
-	Lchild *Node
-	Rchild *Node
-	Height int //树的深度
-	Index  string
-	Data   CacheData
-}
-
-type CacheData struct {
-	Key   string
-	Value string
-}
 
 func max(data1 int, data2 int) int {
 	if data1 > data2 {
@@ -30,7 +19,7 @@ func max(data1 int, data2 int) int {
 	return data2
 }
 
-func getHeight(node *Node) int {
+func getHeight(node *types.Node) int {
 	if node == nil {
 		return 0
 	}
@@ -44,7 +33,7 @@ func getHeight(node *Node) int {
 //         pRchild     ----->       pRchild    BF = 1
 //           \                        /   \
 //           ppRchild               node  ppRchild
-func llRotation(node *Node) *Node {
+func llRotation(node *types.Node) *types.Node {
 	pRchild := node.Rchild
 	node.Rchild = pRchild.Lchild
 	pRchild.Lchild = node
@@ -62,7 +51,7 @@ func llRotation(node *Node) *Node {
 //            /                        /   \
 //        ppLchild                Lchild   node
 
-func rrRotation(node *Node) *Node {
+func rrRotation(node *types.Node) *types.Node {
 	pLchild := node.Lchild
 	node.Lchild = pLchild.Rchild
 	pLchild.Rchild = node
@@ -77,7 +66,7 @@ func rrRotation(node *Node) *Node {
 //      node1         ---->    node2     --->         node2
 //          \                   /                     /   \
 //          node2s           node1                 node1  node
-func lrRotation(node *Node) *Node {
+func lrRotation(node *types.Node) *types.Node {
 	pLchild := llRotation(node.Lchild) //左旋转
 	node.Lchild = pLchild
 	return rrRotation(node)
@@ -90,7 +79,7 @@ func lrRotation(node *Node) *Node {
 //          node1    ---->       node2     --->      node2
 //          /                       \                /   \
 //        node2                    node1           node  node1
-func rlRotation(node *Node) *Node {
+func rlRotation(node *types.Node) *types.Node {
 	pRchild := rrRotation(node.Rchild)
 	node.Rchild = pRchild
 	node.Rchild = pRchild
@@ -98,7 +87,7 @@ func rlRotation(node *Node) *Node {
 }
 
 //处理节点高度问题
-func handleBF(node *Node) *Node {
+func handleBF(node *types.Node) *types.Node {
 	if getHeight(node.Lchild)-getHeight(node.Rchild) == 2 {
 		if getHeight(node.Lchild.Lchild)-getHeight(node.Lchild.Rchild) > 0 { //RR
 			node = rrRotation(node)
@@ -116,7 +105,7 @@ func handleBF(node *Node) *Node {
 }
 
 //中序遍历树，并根据钩子函数处理数据
-func Midtraverse(node *Node, handle func(interface{}) error) error {
+func Midtraverse(node *types.Node, handle func(interface{}) error) error {
 	if node == nil {
 		return nil
 	} else {
@@ -134,9 +123,9 @@ func Midtraverse(node *Node, handle func(interface{}) error) error {
 }
 
 //插入节点 ---> 依次向上递归，调整树平衡
-func Add(node *Node, Index string, data CacheData) (*Node, error) {
+func Add(node *types.Node, Index string, data types.CacheData) (*types.Node, error) {
 	if node == nil {
-		return &Node{Lchild: nil, Rchild: nil, Index: Index, Data: data, Height: 1}, nil
+		return &types.Node{Lchild: nil, Rchild: nil, Index: Index, Data: data, Height: 1}, nil
 	}
 	if node.Index > Index {
 		node.Lchild, _ = Add(node.Lchild, Index, data)
@@ -154,7 +143,7 @@ func Add(node *Node, Index string, data CacheData) (*Node, error) {
 //删除指定Index节点
 //查找节点 ---> 删除节点 ----> 调整树结构
 //删除节点时既要遵循二叉搜索树的定义又要符合二叉平衡树的要求   ---> 重点处理删除节点的拥有左右子树的情况
-func Delete(node *Node, Index string) (*Node, error) {
+func Delete(node *types.Node, Index string) (*types.Node, error) {
 	if node == nil {
 		return nil, errNotExist
 	}
@@ -170,7 +159,7 @@ func Delete(node *Node, Index string) (*Node, error) {
 			}
 		} else { //左右子树都存在
 			//查找前驱，替换当前节点,然后再进行依次删除  ---> 节点删除后，前驱替换当前节点 ---> 需遍历到最后，调整平衡度
-			var n *Node
+			var n *types.Node
 			//前驱
 			n = node.Lchild
 			for {
@@ -197,7 +186,7 @@ func Delete(node *Node, Index string) (*Node, error) {
 }
 
 //查找并返回节点
-func Update(node *Node, Index string, data CacheData) (*Node, error) {
+func Update(node *types.Node, Index string, data types.CacheData) (*types.Node, error) {
 	for {
 		if node == nil {
 			return nil, errNotExist
@@ -214,7 +203,7 @@ func Update(node *Node, Index string, data CacheData) (*Node, error) {
 }
 
 //查找并返回节点
-func Get(node *Node, Index string) (*Node, error) {
+func Get(node *types.Node, Index string) (*types.Node, error) {
 	for {
 		if node == nil {
 			return nil, errNotExist

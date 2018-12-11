@@ -14,9 +14,9 @@ func Md5Encode(msg string) []byte{
 	return result
 }
 
-func ByteToInt(msg []byte, bitSize int)(int64, error){
+func ByteToInt(msg []byte)(int64, error){
 	encodedStr := "0x" + hex.EncodeToString(msg)
-	data, err := strconv.ParseInt(encodedStr, 0, bitSize)
+	data, err := strconv.ParseInt(encodedStr, 0, 64)
 	if err != nil {
 		return -1 , err
 	}
@@ -26,9 +26,11 @@ func ByteToInt(msg []byte, bitSize int)(int64, error){
 
 func GetHashIndex(msg string)(int64, error) {
 	msgByte := Md5Encode(msg)
-	data, err := ByteToInt(msgByte,global.Config.MaxLen)
+	msgByte = msgByte[0:len(msgByte)/2-1]
+	data, err := ByteToInt(msgByte)
 	if err != nil {
 		return -1 , err
 	}
+	data = data % global.Config.MaxLen
 	return data, nil
 }

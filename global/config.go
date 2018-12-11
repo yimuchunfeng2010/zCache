@@ -5,8 +5,8 @@ import (
 )
 
 var Config = struct {
-	MaxLen int
-}{
+	MaxLen int64
+	}{
 	MaxLen:1024,
 }
 

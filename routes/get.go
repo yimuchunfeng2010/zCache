@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"github.com/sirupsen/logrus"
-	"ZCache/global"
 	"ZCache/data"
 )
 
@@ -12,10 +11,6 @@ import (
 func Get(context *gin.Context){
 	key := context.Param("key")
 	logrus.Infof("Get key: %s",key)
-	if nil == global.GlobalVar.Root{
-		context.JSON(http.StatusNotFound,gin.H{"value":"","status":"done"})
-		return
-	}
 
 	node , err := zdata.CoreGet(key)
 	if err != nil {

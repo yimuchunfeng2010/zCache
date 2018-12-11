@@ -4,6 +4,7 @@ import ("ZCache/services"
 	"ZCache/global"
 	"errors"
 	"ZCache/types"
+	"github.com/sirupsen/logrus"
 )
 
 
@@ -71,6 +72,7 @@ func CoreGet(key string) (*types.Node, error) {
 
 	node , err := Get(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
+		logrus.Warning("CoreGet Failed[Key:%s,Err:%s]",key,err.Error())
 		return nil, err
 	}
 	return node,nil

@@ -197,7 +197,7 @@ func Delete(node *Node, Index string) (*Node, error) {
 }
 
 //查找并返回节点
-func Modify(node *Node, Index string, data CacheData) (*Node, error) {
+func Update(node *Node, Index string, data CacheData) (*Node, error) {
 	for {
 		if node == nil {
 			return nil, errNotExist

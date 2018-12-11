@@ -9,3 +9,8 @@ A light Cache writed by golang
 # [version:0.0.2]
 ### Features
 实现基本Get/Set接口
+
+
+# [version:0.0.3]
+### Features
+实现基本Update/Delete接口

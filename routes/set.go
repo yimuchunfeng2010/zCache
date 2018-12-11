@@ -5,9 +5,12 @@ import (
 	"net/http"
 	"ZCache/types"
 	"ZCache/data"
+	"ZCache/global"
 )
 
 func Set(context *gin.Context){
+	global.GlobalVar.GRWLock.Lock()
+	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")
 	value := context.Param("value")
 	logrus.Infof("Set Key:%s, Value:%s",key,value)

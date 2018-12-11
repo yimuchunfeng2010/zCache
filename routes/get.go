@@ -5,10 +5,13 @@ import (
 	"net/http"
 	"github.com/sirupsen/logrus"
 	"ZCache/data"
+	"ZCache/global"
 )
 
 
 func Get(context *gin.Context){
+	global.GlobalVar.GRWLock.RLock()
+	defer global.GlobalVar.GRWLock.RUnlock()
 	key := context.Param("key")
 	logrus.Infof("Get key: %s",key)
 

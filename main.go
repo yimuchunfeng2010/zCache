@@ -5,11 +5,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"ZCache/types"
 	"ZCache/global"
+	"sync"
 )
 
 func init() {
 	//初始化
 	global.GlobalVar.GRoot = make([]*types.Node, global.Config.MaxLen)
+	global.GlobalVar.GRWLock = new(sync.RWMutex)
 }
 func main() {
 	router := gin.Default()

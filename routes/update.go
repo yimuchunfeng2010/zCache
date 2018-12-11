@@ -6,9 +6,12 @@ import (
 	"net/http"
 	"ZCache/data"
 	"ZCache/types"
+	"ZCache/global"
 )
 
 func Update(context *gin.Context){
+	global.GlobalVar.GRWLock.Lock()
+	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")
 	value := context.Param("value")
 	logrus.Infof("Update Key:%s, Value:%s",key,value)

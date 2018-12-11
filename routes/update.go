@@ -3,9 +3,11 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	Data "ZCache/data"
-	"ZCache/global"
 	"net/http"
+	"ZCache/data"
+	"ZCache/global"
+	"ZCache/services"
+
 )
 
 func Update(context *gin.Context){
@@ -13,8 +15,15 @@ func Update(context *gin.Context){
 	value := context.Param("value")
 	logrus.Infof("Update Key:%s, Value:%s",key,value)
 
-	data := Data.CacheData{Key:key,Value:value}
-	node , err := Data.Update(global.GlobalVar.Root, key, data)
+	//TODO  生成hashIndex
+	_ , err := services.GetHashIndex(key)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError,gin.H{"value":"","status":"done"})
+		return
+	}
+
+	data := zdata.CacheData{Key:key,Value:value}
+	node , err := zdata.Update(global.GlobalVar.Root, key, data)
 	if err != nil {
 		context.JSON(http.StatusConflict,gin.H{"key":key,"value":value, "status":"done"})
 		return

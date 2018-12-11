@@ -2,11 +2,11 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"fmt"
-	"ZCache/global"
-	Data "ZCache/data"
 	"net/http"
 	"github.com/sirupsen/logrus"
+	"ZCache/global"
+	"ZCache/data"
+	"ZCache/services"
 )
 
 
@@ -18,7 +18,15 @@ func Get(context *gin.Context){
 		return
 	}
 
-	node , err := Data.Get(global.GlobalVar.Root, key)
+	//TODO  生成hashIndex
+	_ , err := services.GetHashIndex(key)
+	if err != nil {
+		context.JSON(http.StatusInternalServerError,gin.H{"value":"","status":"done"})
+		return
+	}
+
+
+	node , err := zdata.Get(global.GlobalVar.Root, key)
 	if err != nil {
 		context.JSON(http.StatusNotFound,gin.H{"value":"","status":"done"})
 		return
@@ -28,5 +36,4 @@ func Get(context *gin.Context){
 	}
 
 
-	fmt.Println(key)
 }

@@ -5,11 +5,11 @@ import (
 	"ZCache/services"
 	"ZCache/tool/logrus"
 	"ZCache/types"
+	"bufio"
 	"errors"
 	"fmt"
-	"os"
-	"bufio"
 	"io"
+	"os"
 	"strings"
 )
 
@@ -80,38 +80,38 @@ func CoreGet(key string) (*types.Node, error) {
 
 	node, err := Get(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
-		logrus.Warningf(fmt.Sprintf("CoreGet Failed[Key:%s,Err:%s]", key, err.Error()))
+		logrus.Warningf("%s  CoreGet Failed[Key:%s,Err:%s]", services.GetFileNameLine(), key, err.Error())
 		return nil, err
 	}
 	return node, nil
 }
 
-func CoreGetAll()(*types.DataNode, error){
+func CoreGetAll() (*types.DataNode, error) {
 	if nil == global.GlobalVar.GRoot {
 		return nil, errors.New("GRoot nil")
 	}
 
 	var index int64
 	var rspRoot *types.DataNode = nil
-	for index = 0; index < global.Config.MaxLen;index++{
-		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot,&rspRoot)
-		if err != nil{
-			return nil , err
+	for index = 0; index < global.Config.MaxLen; index++ {
+		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot, &rspRoot)
+		if err != nil {
+			return nil, err
 		}
 	}
-	return rspRoot,nil
+	return rspRoot, nil
 }
 
-func CoreFlush()(error){
+func CoreFlush() error {
 	if nil == global.GlobalVar.GRoot {
 		return errors.New("GRoot nil")
 	}
 
 	var index int64
 	var rspRoot *types.DataNode = nil
-	for index = 0; index < global.Config.MaxLen;index++{
-		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot,&rspRoot)
-		if err != nil{
+	for index = 0; index < global.Config.MaxLen; index++ {
+		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot, &rspRoot)
+		if err != nil {
 			return err
 		}
 	}
@@ -124,28 +124,26 @@ func CoreFlush()(error){
 
 	fileWrite := bufio.NewWriter(file)
 	curNode := rspRoot
-	for nil != curNode{
-		msg := fmt.Sprintf("%s  %s\n",curNode.Key,curNode.Value)
+	for nil != curNode {
+		msg := fmt.Sprintf("%s  %s\n", curNode.Key, curNode.Value)
 		fileWrite.WriteString(msg)
 		curNode = curNode.Next
 
 	}
 	fileWrite.Flush()
 
-
 	return nil
 }
 
-func CoreImport()(error){
+func CoreImport() error {
 	file, err := services.GetNewestFile(services.GetDataLogDir())
 	if err != nil {
 		return err
 	}
 
-
-	fi, err := os.Open(fmt.Sprintf("%s%s",services.GetDataLogDir(),file))
+	fi, err := os.Open(fmt.Sprintf("%s%s", services.GetDataLogDir(), file))
 	if err != nil {
-		fmt.Println("Open File Failed[Err:%s]", err.Error())
+		logrus.Warningf("%s  Open File Failed! [Err:%s]\n", services.GetFileNameLine(), err.Error())
 		return err
 	}
 	defer fi.Close()
@@ -159,14 +157,14 @@ func CoreImport()(error){
 
 		array := strings.Split(string(data), "  ")
 		if len(array) != 2 {
-			logrus.Warningf(fmt.Sprintf("Invaild Data[Data: %s]",string(data)))
+			logrus.Warningf("%s  Invaild Data! [Data: %s]\n", services.GetFileNameLine(), string(data))
 			continue
 		}
 		key := array[0]
 		value := array[1]
 		_, err := CoreAdd(key, value)
 		if err != nil {
-			logrus.Warningf(fmt.Sprintf("CoreAdd Data[Key: %s, Value: %s]",key,value))
+			logrus.Warningf("%s  CoreAdd Data[Key: %s, Value: %s]\n", services.GetFileNameLine(), key, value)
 			continue
 		}
 

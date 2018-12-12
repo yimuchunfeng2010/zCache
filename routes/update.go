@@ -3,8 +3,8 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool/logrus"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -14,7 +14,7 @@ func Update(context *gin.Context) {
 	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")
 	value := context.Param("value")
-	logrus.Infof(fmt.Sprintf("Update Key:%s, Value:%s", key, value))
+	logrus.Infof("%s Update Key:%s, Value:%s\n", services.GetFileNameLine(), key, value)
 	node, err := zdata.CoreUpdate(key, value)
 	if err != nil {
 		context.JSON(http.StatusConflict, gin.H{"key": key, "value": value, "status": "done"})

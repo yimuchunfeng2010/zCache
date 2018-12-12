@@ -13,7 +13,7 @@ func init() {
 	//初始化
 	global.GlobalVar.GRoot = make([]*types.Node, global.Config.MaxLen)
 	var i int64
-	for i = 0 ;i < global.Config.MaxLen; i++{
+	for i = 0; i < global.Config.MaxLen; i++ {
 		global.GlobalVar.GRoot[i] = nil
 	}
 	global.GlobalVar.GRWLock = new(sync.RWMutex)

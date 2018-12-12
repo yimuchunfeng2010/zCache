@@ -218,8 +218,8 @@ func Get(node *types.Node, Index string) (*types.Node, error) {
 }
 
 // 深度优先搜索二叉树
-func GetAll(node *types.Node, treeIndex int64, head **types.DataNode, tail **types.DataNode)(error){
-	if nil == node{
+func GetAll(node *types.Node, treeIndex int64, head **types.DataNode, tail **types.DataNode) error {
+	if nil == node {
 		return nil
 	}
 
@@ -229,21 +229,21 @@ func GetAll(node *types.Node, treeIndex int64, head **types.DataNode, tail **typ
 	newNode.Index = treeIndex
 	newNode.Next = nil
 
-	if nil == *head{
+	if nil == *head {
 		*head = newNode
 		*tail = newNode
 	} else {
-		for nil != (*tail).Next{
+		for nil != (*tail).Next {
 			(*tail) = (*tail).Next
 		}
 		(*tail).Next = newNode
 	}
-	if nil != node.Lchild{
-		GetAll(node.Lchild,treeIndex,head, tail)
+	if nil != node.Lchild {
+		GetAll(node.Lchild, treeIndex, head, tail)
 	}
 
-	if nil != node.Rchild{
-		GetAll(node.Rchild,treeIndex,head, tail)
+	if nil != node.Rchild {
+		GetAll(node.Rchild, treeIndex, head, tail)
 	}
 	return nil
 }

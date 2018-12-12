@@ -1,35 +1,36 @@
 package mock
 
 import (
+	"ZCache/services"
+	"ZCache/tool/logrus"
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
-	"strings"
 	"net/http"
+	"strings"
 )
 
 //测试文件
-func Mock_Set(context *gin.Context){
+func Mock_Set(context *gin.Context) {
 
 	// case 1
 	key := "aaa"
 	value := "bbb"
-	err := Set(key,value)
+	err := Set(key, value)
 	if err != nil {
-		logrus.Warningf("Set Failed! [Key:%s, Value:%s Err:%s]\n",key,value,err.Error())
+		logrus.Warningf("%s  Set Failed! [Key:%s, Value:%s Err:%s]\n", services.GetFileNameLine(), key, value, err.Error())
 		return
 	}
 
-	rsp_value , err := Get(key)
+	rsp_value, err := Get(key)
 	if err != nil {
-		logrus.Warningf("Get Failed! [Key:%s Err:%s]\n",key,err.Error())
+		logrus.Warningf("%s   Get Failed! [Key:%s Err:%s]\n", services.GetFileNameLine(), key, err.Error())
 		return
 	}
 
-	if 0!= strings.Compare(rsp_value,value){
-		logrus.Warningf("Value Not Equal! [Key:%s Rsp, Value:%sErr:%s]\n",key,value,rsp_value)
+	if 0 != strings.Compare(rsp_value, value) {
+		logrus.Warningf("%s   Value Not Equal! [Key:%s Rsp, Value:%sErr:%s]\n", services.GetFileNameLine(), key, value, rsp_value)
 		return
 	}
 	logrus.Infof("Success to Test Set")
-	context.JSON(http.StatusOK, gin.H{"status":"done"})
+	context.JSON(http.StatusOK, gin.H{"status": "done"})
 	return
 }

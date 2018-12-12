@@ -12,18 +12,27 @@ import (
 func init() {
 	//初始化
 	global.GlobalVar.GRoot = make([]*types.Node, global.Config.MaxLen)
+	var i int64
+	for i = 0 ;i < global.Config.MaxLen; i++{
+		global.GlobalVar.GRoot[i] = nil
+	}
 	global.GlobalVar.GRWLock = new(sync.RWMutex)
 }
 func main() {
 	router := gin.Default()
-	v := router.Group("/ZCache")
+	v1 := router.Group("/ZCache")
 	{
-		v.GET("/:key", routes.Get)
-		v.DELETE("/:key", routes.Delete)
-		v.POST("/:key/:value", routes.Update)
-		v.PUT("/:key/:value", routes.Set)
+		v1.GET("/:key", routes.Get)
+		v1.DELETE("/:key", routes.Delete)
+		v1.POST("/:key/:value", routes.Update)
+		v1.PUT("/:key/:value", routes.Set)
+
 	}
 
+	v2 := router.Group("/v2")
+	{
+		v2.GET("/getAll", routes.GetAll)
+	}
 	test := router.Group("/mock")
 	{
 		test.POST("/mockSet", mock.Mock_Set)

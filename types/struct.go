@@ -15,6 +15,13 @@ type KeyValue struct{
 	Value   string
 }
 
+type DataNode struct {
+	Index int64
+	Key  string
+	Value   string
+	Next *DataNode
+
+}
 type LogMsg struct {
 	File string
 	Time time.Time

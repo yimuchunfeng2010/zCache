@@ -217,43 +217,33 @@ func Get(node *types.Node, Index string) (*types.Node, error) {
 	}
 }
 
-//
-////test
-//func main() {
-//	//打印匿名函数
-//	f := func(node interface{}) error {
-//		fmt.Println(node)
-//		return nil
-//	}
-//	// 插入测试数据
-//	tree, _ := Add(nil, 3, CacheData{"aaaa", "bbbb"})
-//	tree, _ = Add(tree, 4, CacheData{"aaaa", "cccc"})
-//	tree, _ = Add(tree, 5, CacheData{"aaaa", "bbbb"})
-//	tree, _ = Add(tree, 7, CacheData{"aaaa", "bbbb"})
-//	tree, _ = Add(tree, 6, CacheData{"aaaa", "bbbb"})
-//	tree, _ = Add(tree, 15, CacheData{"aaaa", "bbbb"})
-//	fmt.Println("Midtravese\n")
-//	if err := Midtraverse(tree, f); err != nil {
-//		fmt.Printf("Midtraverse failed err:%v\n", err)
-//	}
-//	// 搜索Index=4的节点
-//	fmt.Println("\ntest Get in the tree")
-//	node, err := Get(tree, 4)
-//	if err != nil {
-//		fmt.Printf("err = %s\n", err)
-//	} else {
-//		fmt.Printf("in the tree ,found the node:%v\n", node)
-//	}
-//
-//	//测试删除节点
-//	fmt.Println("\ntest Delete the node in the tree")
-//	fmt.Println("before delete node Index:4\n")
-//	Midtraverse(tree, f)
-//	tree, _ = Delete(tree, 4)
-//	fmt.Println("after delete node Index:4\n")
-//	Midtraverse(tree, f)
-//	fmt.Println("Modify Index 5")
-//	Modify(tree, 5, CacheData{"oooo", "iiiii"})
-//	Midtraverse(tree, f)
-//
-//}
+// 深度优先搜索二叉树
+func GetAll(node *types.Node, treeIndex int64, rspRoot **types.DataNode)(error){
+	if nil == node{
+		return nil
+	}
+
+	newNode := new(types.DataNode)
+	newNode.Key = node.Key
+	newNode.Value = node.Value
+	newNode.Index = treeIndex
+	newNode.Next = nil
+
+	if nil == *rspRoot{
+		*rspRoot = newNode
+	} else {
+		curNode := *rspRoot
+		for nil != curNode.Next{
+			curNode = curNode.Next
+		}
+		curNode.Next = newNode
+	}
+	if nil != node.Lchild{
+		GetAll(node.Lchild,treeIndex,rspRoot)
+	}
+
+	if nil != node.Rchild{
+		GetAll(node.Rchild,treeIndex,rspRoot)
+	}
+	return nil
+}

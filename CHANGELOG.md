@@ -26,3 +26,7 @@ A light Cache writed by golang
 # [version:0.0.6]
 ### Features
 增加测试接口
+
+# [version:0.0.7]
+### Features
+增加查询所有数据的接口

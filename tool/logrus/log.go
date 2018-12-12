@@ -16,7 +16,7 @@ func CurrentFile() (string ,int){
 
 func PackLogMsg(msg string)(string){
 	currentFile, line := CurrentFile()
-	fileInfo := currentFile + " " + string(line)
+	fileInfo := currentFile + " " + string(line) + "\n"
 	logMsg := types.LogMsg{File:fileInfo,Time:time.Now(),Msg:msg}
 	ret, _:= json.Marshal(logMsg)
 	return string(ret)

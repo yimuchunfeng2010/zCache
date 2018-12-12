@@ -81,3 +81,19 @@ func CoreGet(key string) (*types.Node, error) {
 	}
 	return node, nil
 }
+
+func CoreGetAll()(*types.DataNode, error){
+	if nil == global.GlobalVar.GRoot {
+		return nil, errors.New("GRoot nil")
+	}
+
+	var index int64
+	var rspRoot *types.DataNode = nil
+	for index = 0; index < global.Config.MaxLen;index++{
+		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot)
+		if err != nil{
+			return nil , err
+		}
+	}
+	return rspRoot,nil
+}

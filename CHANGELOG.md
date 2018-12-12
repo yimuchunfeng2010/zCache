@@ -38,3 +38,7 @@ A light Cache writed by golang
 # [version:0.0.9]
 ### Features
 增加数据文本导入接口
+
+# [version:0.1.0]
+### Features
+增加发送邮件相关代码

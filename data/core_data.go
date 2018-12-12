@@ -7,7 +7,6 @@ import (
 	"ZCache/types"
 	"errors"
 	"fmt"
-	"time"
 	"os"
 	"bufio"
 )
@@ -115,11 +114,8 @@ func CoreFlush()(error){
 		}
 	}
 	// 写文件
-	now := time.Now()
-	x := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond(), time.Local)
-	fileName := "data_log/" + x.Format("2006-01-02_15-04-05_112") + ".txt"
-	fmt.Println(fileName)
-	file, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
+
+	file, err := os.OpenFile(services.GetDataLogFileName(), os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 	if err != nil {
 		fmt.Println(err)
 	}

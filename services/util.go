@@ -11,6 +11,7 @@ import (
 	"runtime"
 	"strconv"
 	"time"
+	"ZCache/types"
 )
 
 func Md5Encode(msg string) []byte {
@@ -128,4 +129,21 @@ func GetFileNameLine() string {
 	fileInfo := currentFile + " " + strconv.Itoa(line)
 
 	return fileInfo
+}
+
+func ClusterHealthCheck(operation types.OperationType)(bool , error){
+	switch operation {
+	case types.OPERATION_TYPE_SET,types.OPERATION_TYPE_DELETE,types.OPERATION_TYPE_POST:
+		if global.GlobalVar.GClusterHealthState != types.CLUSTER_HEALTH_TYPE_HEALTH{
+			return false, nil
+		}
+	case types.OPERATION_TYPE_GET:
+		if global.GlobalVar.GClusterHealthState == types.CLUSTER_HEALTH_TYPE_UNHEALTH{
+			return false, nil
+		}
+	default:
+		return false, errors.New("Invalid Operation")
+	}
+
+	return true,nil
 }

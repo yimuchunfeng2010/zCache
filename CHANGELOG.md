@@ -42,3 +42,7 @@ A light Cache writed by golang
 # [version:0.1.0]
 ### Features
 增加发送邮件相关代码
+
+# [version:0.1.1]
+### Features
+增加对集群健康度的校验

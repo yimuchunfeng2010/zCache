@@ -2,6 +2,7 @@ package routes
 
 import (
 	"ZCache/data"
+	"ZCache/types"
 	"ZCache/global"
 	"ZCache/services"
 	"ZCache/tool/logrus"
@@ -10,6 +11,12 @@ import (
 )
 
 func Set(context *gin.Context) {
+	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_SET)
+	if err != nil  || auth != true{
+		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
+		return
+	}
+
 	global.GlobalVar.GRWLock.Lock()
 	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")

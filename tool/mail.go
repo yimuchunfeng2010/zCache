@@ -2,13 +2,13 @@ package tool
 
 import (
 	"ZCache/global"
+	"bytes"
+	"encoding/base64"
 	"fmt"
+	"io/ioutil"
 	"net/smtp"
 	"strings"
-	"bytes"
 	"time"
-	"encoding/base64"
-	"io/ioutil"
 )
 
 //代码源自https://www.jianshu.com/p/45c05c7c2111
@@ -151,7 +151,7 @@ func (mail SendMail) writeFile(buffer *bytes.Buffer, fileName string) {
 }
 
 func (mail SendMail) writeFileByte(buffer *bytes.Buffer, data []byte) {
-	fmt.Println("len(data)",len(data))
+	fmt.Println("len(data)", len(data))
 	payload := make([]byte, base64.StdEncoding.EncodedLen(len(data)))
 	base64.StdEncoding.Encode(payload, data)
 	buffer.WriteString("\r\n")

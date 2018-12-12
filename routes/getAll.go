@@ -11,6 +11,12 @@ import (
 )
 
 func GetAll(context *gin.Context) {
+	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_GET)
+	if err != nil  || auth != true{
+		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
+		return
+	}
+
 	global.GlobalVar.GRWLock.RLock()
 	defer global.GlobalVar.GRWLock.RUnlock()
 

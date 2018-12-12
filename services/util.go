@@ -5,8 +5,6 @@ import (
 	"encoding/hex"
 	"strconv"
 	"ZCache/global"
-	"runtime"
-	"github.com/sirupsen/logrus"
 )
 
 func Md5Encode(msg string) []byte{
@@ -37,27 +35,3 @@ func GetHashIndex(msg string)(int64, error) {
 	return data, nil
 }
 
-func CurrentFile() string {
-	_, file, _, ok := runtime.Caller(1)
-	if !ok {
-		return ""
-	}
-	return file
-
-}
-// 封装日志接口
-
-func Warningf(msg string){
-	curFile := CurrentFile
-	logrus.Warningf("%s  %s",curFile, msg)
-}
-
-func Infof(msg string){
-	curFile := CurrentFile
-	logrus.Infof("%s  %s",curFile, msg)
-}
-
-func Errorf(msg string){
-	curFile := CurrentFile
-	logrus.Errorf("%s  %s",curFile, msg)
-}

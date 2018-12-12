@@ -3,8 +3,9 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
+	"ZCache/tool/logrus"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"net/http"
 )
 
@@ -12,7 +13,7 @@ func Get(context *gin.Context) {
 	global.GlobalVar.GRWLock.RLock()
 	defer global.GlobalVar.GRWLock.RUnlock()
 	key := context.Param("key")
-	logrus.Infof("Get key: %s", key)
+	logrus.Infof(fmt.Sprintf("Get key: %s", key))
 
 	node, err := zdata.CoreGet(key)
 	if err != nil {

@@ -3,14 +3,15 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
+	"ZCache/tool/logrus"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"net/http"
 )
 
 func Delete(context *gin.Context) {
 	key := context.Param("key")
-	logrus.Infof("Delete key: %s", key)
+	logrus.Infof(fmt.Sprintf("Delete key: %s", key))
 	global.GlobalVar.GRWLock.Lock()
 	defer global.GlobalVar.GRWLock.Unlock()
 	_, err := zdata.CoreDelete(key)

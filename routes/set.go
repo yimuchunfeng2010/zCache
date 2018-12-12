@@ -3,8 +3,9 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
+	"ZCache/tool/logrus"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"net/http"
 )
 
@@ -13,11 +14,11 @@ func Set(context *gin.Context) {
 	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")
 	value := context.Param("value")
-	logrus.Infof("Set Key:%s, Value:%s", key, value)
+	logrus.Infof(fmt.Sprintf("Set Key:%s, Value:%s", key, value))
 
 	node, err := zdata.CoreAdd(key, value)
 	if err != nil {
-		logrus.Warningf("Set Failed! [Key:%s, Err:%s]", key, err.Error())
+		logrus.Warningf(fmt.Sprintf("Set Failed! [Key:%s, Err:%s]", key, err.Error()))
 		context.JSON(http.StatusConflict, gin.H{"key": key, "value": value, "status": "done"})
 		return
 	} else {

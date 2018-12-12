@@ -3,9 +3,10 @@ package zdata
 import (
 	"ZCache/global"
 	"ZCache/services"
+	"ZCache/tool/logrus"
 	"ZCache/types"
 	"errors"
-	"github.com/sirupsen/logrus"
+	"fmt"
 )
 
 func CoreAdd(key string, value string) (*types.Node, error) {
@@ -75,7 +76,7 @@ func CoreGet(key string) (*types.Node, error) {
 
 	node, err := Get(global.GlobalVar.GRoot[hashIndex], key)
 	if err != nil {
-		logrus.Warning("CoreGet Failed[Key:%s,Err:%s]", key, err.Error())
+		logrus.Warningf(fmt.Sprintf("CoreGet Failed[Key:%s,Err:%s]", key, err.Error()))
 		return nil, err
 	}
 	return node, nil

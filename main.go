@@ -1,11 +1,11 @@
 package main
 
 import (
+	"ZCache/global"
 	"ZCache/routes"
 	"ZCache/routes/mock"
-	"github.com/gin-gonic/gin"
 	"ZCache/types"
-	"ZCache/global"
+	"github.com/gin-gonic/gin"
 	"sync"
 )
 
@@ -24,13 +24,11 @@ func main() {
 		v.PUT("/:key/:value", routes.Set)
 	}
 
-
 	test := router.Group("/mock")
 	{
 		test.POST("/mockSet", mock.Mock_Set)
 
 	}
-
 
 	router.Run(":8000")
 }

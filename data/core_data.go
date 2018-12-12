@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"os"
 	"bufio"
+	"io"
+	"strings"
 )
 
 func CoreAdd(key string, value string) (*types.Node, error) {
@@ -114,7 +116,6 @@ func CoreFlush()(error){
 		}
 	}
 	// 写文件
-
 	file, err := os.OpenFile(services.GetDataLogFileName(), os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 	if err != nil {
 		fmt.Println(err)
@@ -132,5 +133,43 @@ func CoreFlush()(error){
 	fileWrite.Flush()
 
 
+	return nil
+}
+
+func CoreImport()(error){
+	file, err := services.GetNewestFile(services.GetDataLogDir())
+	if err != nil {
+		return err
+	}
+
+
+	fi, err := os.Open(fmt.Sprintf("%s%s",services.GetDataLogDir(),file))
+	if err != nil {
+		fmt.Println("Open File Failed[Err:%s]", err.Error())
+		return err
+	}
+	defer fi.Close()
+	br := bufio.NewReader(fi)
+
+	for {
+		data, _, c := br.ReadLine()
+		if c == io.EOF {
+			break
+		}
+
+		array := strings.Split(string(data), "  ")
+		if len(array) != 2 {
+			logrus.Warningf(fmt.Sprintf("Invaild Data[Data: %s]",string(data)))
+			continue
+		}
+		key := array[0]
+		value := array[1]
+		_, err := CoreAdd(key, value)
+		if err != nil {
+			logrus.Warningf(fmt.Sprintf("CoreAdd Data[Key: %s, Value: %s]",key,value))
+			continue
+		}
+
+	}
 	return nil
 }

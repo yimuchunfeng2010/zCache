@@ -34,3 +34,7 @@ A light Cache writed by golang
 # [version:0.0.8]
 ### Features
 增加数据存库接口
+
+# [version:0.0.9]
+### Features
+增加数据文本导入接口

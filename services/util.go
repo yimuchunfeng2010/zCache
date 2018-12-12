@@ -7,6 +7,10 @@ import (
 	"ZCache/global"
 	"time"
 	"runtime"
+	"io/ioutil"
+	"fmt"
+	"os"
+	"errors"
 )
 
 func Md5Encode(msg string) []byte{
@@ -49,4 +53,67 @@ func GetDataLogFileName()string{
 	}
 
 	return fileName
+}
+
+func GetAllFile(pathname string) ([]string, error) {
+	rd, err := ioutil.ReadDir(pathname)
+	if err != nil {
+		return nil ,err
+	}
+	files := make([]string, 0)
+	for _, fi := range rd {
+		if false == fi.IsDir() {
+			files = append(files, fi.Name())
+		}
+
+	}
+
+	return files, err
+}
+
+func GetNewestFile(pathname string) (string, error) {
+	files ,err := GetAllFile(pathname)
+	if err != nil {
+		return "", err
+	}
+	fmt.Println(files)
+	if len(files) == 0 {
+		return "",errors.New("File Not Found")
+	}
+	newFile := ""
+	var timeIndex int64 = 0
+	for _, file := range files{
+		curIndex := GetFileModTime(file)
+		if curIndex >= timeIndex {
+			newFile = file
+		}
+	}
+	return newFile ,nil
+}
+
+//获取文件修改时间 返回unix时间戳
+func GetFileModTime(path string) int64 {
+	f, err := os.Open(path)
+	if err != nil {
+		return time.Now().Unix()
+	}
+	defer f.Close()
+
+	fi, err := f.Stat()
+	if err != nil {
+		return time.Now().Unix()
+	}
+
+	return fi.ModTime().Unix()
+}
+
+
+func GetDataLogDir()(string){
+	dir := ""
+	if "windows" == runtime.GOOS{
+		dir = "./data_log/"
+	} else {
+		dir = ".\\data_log\\"
+	}
+	return dir
 }

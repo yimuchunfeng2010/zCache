@@ -33,6 +33,7 @@ func main() {
 	{
 		v2.GET("/getAll", routes.GetAll)
 		v2.GET("/flush", routes.Flush)
+		v2.PUT("/import", routes.Import)
 	}
 	test := router.Group("/mock")
 	{

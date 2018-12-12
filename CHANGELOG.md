@@ -30,3 +30,7 @@ A light Cache writed by golang
 # [version:0.0.7]
 ### Features
 增加查询所有数据的接口
+
+# [version:0.0.8]
+### Features
+增加数据存库接口

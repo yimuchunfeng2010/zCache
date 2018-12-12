@@ -7,6 +7,9 @@ import (
 	"ZCache/types"
 	"errors"
 	"fmt"
+	"time"
+	"os"
+	"bufio"
 )
 
 func CoreAdd(key string, value string) (*types.Node, error) {
@@ -96,4 +99,42 @@ func CoreGetAll()(*types.DataNode, error){
 		}
 	}
 	return rspRoot,nil
+}
+
+func CoreFlush()(error){
+	if nil == global.GlobalVar.GRoot {
+		return errors.New("GRoot nil")
+	}
+
+	var index int64
+	var rspRoot *types.DataNode = nil
+	for index = 0; index < global.Config.MaxLen;index++{
+		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot,&rspRoot)
+		if err != nil{
+			return err
+		}
+	}
+	// 写文件
+	now := time.Now()
+	x := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond(), time.Local)
+	fileName := "data_log/" + x.Format("2006-01-02_15-04-05_112") + ".txt"
+	fmt.Println(fileName)
+	file, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+
+	fileWrite := bufio.NewWriter(file)
+	curNode := rspRoot
+	for nil != curNode{
+		msg := fmt.Sprintf("%s  %s\n",curNode.Key,curNode.Value)
+		fileWrite.WriteString(msg)
+		curNode = curNode.Next
+
+	}
+	fileWrite.Flush()
+
+
+	return nil
 }

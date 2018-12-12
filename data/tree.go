@@ -233,9 +233,6 @@ func GetAll(node *types.Node, treeIndex int64, head **types.DataNode, tail **typ
 		*head = newNode
 		*tail = newNode
 	} else {
-		//(*tail).Next = newNode
-		//*tail = newNode
-		//cur := *head
 		for nil != (*tail).Next{
 			(*tail) = (*tail).Next
 		}

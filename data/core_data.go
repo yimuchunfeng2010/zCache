@@ -90,7 +90,7 @@ func CoreGetAll()(*types.DataNode, error){
 	var index int64
 	var rspRoot *types.DataNode = nil
 	for index = 0; index < global.Config.MaxLen;index++{
-		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot)
+		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot,&rspRoot)
 		if err != nil{
 			return nil , err
 		}

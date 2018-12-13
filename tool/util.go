@@ -147,3 +147,14 @@ func ClusterHealthCheck(operation types.OperationType)(bool , error){
 
 	return true,nil
 }
+
+
+func GetContraryNumber(num string)(string, error){
+	strNum, err := strconv.ParseInt(num, 10, 64)
+	if err != nil {
+		return "", err
+	}
+	tmp := -strNum
+	contraryNum := strconv.FormatInt(tmp, 10)
+	return  contraryNum, nil
+}

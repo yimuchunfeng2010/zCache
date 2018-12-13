@@ -54,3 +54,7 @@ A light Cache writed by golang
 # [version:0.1.3]
 ### Features
 增加全局key个数计数功能
+
+# [version:0.1.4]
+### Features
+增加值增加/减少功能

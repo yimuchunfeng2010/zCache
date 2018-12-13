@@ -3,10 +3,11 @@ package zdata
 import (
 	"ZCache/types"
 	"errors"
+	"strconv"
 )
 
 var (
-	errNotExist       = errors.New("Index is not existed")
+	errNotExist       = errors.New("Key Not Existed")
 	errTreeNil        = errors.New("tree is null")
 	errTreeIndexExist = errors.New("tree Index is existed")
 )
@@ -201,6 +202,28 @@ func Update(node *types.Node, Key string, Value string) (*types.Node, error) {
 	}
 }
 
+func InDecr(node *types.Node, Key string, Step string)(*types.Node, error){
+	for {
+		if node == nil {
+			return nil, errNotExist
+		}
+		if Key == node.Key { //查找到Index节点
+			f, err := strconv.ParseInt(node.Value, 10, 64)
+			if err != nil {
+				return nil, err
+			} else {
+				tmp, _ := strconv.ParseInt(Step, 10, 64)
+				f += tmp
+				node.Value = strconv.FormatInt(f, 10)
+			}
+			return node, nil
+		} else if Key > node.Key {
+			node = node.Rchild
+		} else {
+			node = node.Lchild
+		}
+	}
+}
 //查找并返回节点
 func Get(node *types.Node, Index string) (*types.Node, error) {
 	for {

@@ -73,6 +73,27 @@ func CoreUpdate(key string, Value string) (*types.Node, error) {
 	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
+
+func CoreInDecr(key string , step string) (*types.Node, error) {
+	hashIndex, err := tool.GetHashIndex(key)
+	if err != nil {
+		return nil, err
+	}
+
+	if nil == global.GlobalVar.GRoot {
+		return nil, errors.New("GRoot nil")
+	}
+
+	tmpNode, err := InDecr(global.GlobalVar.GRoot[hashIndex], key, step)
+	if err != nil {
+		return nil, err
+	}
+	global.GlobalVar.GRoot[hashIndex] = tmpNode
+
+	return global.GlobalVar.GRoot[hashIndex], nil
+}
+
+
 //查找并返回节点
 func CoreGet(key string) (*types.Node, error) {
 	hashIndex, err := tool.GetHashIndex(key)
@@ -179,6 +200,5 @@ func CoreImport() error {
 
 
 func CoreGetKeyNum() (int, error) {
-
 	return global.GlobalVar.GCoreInfo.KeyNum, nil
 }

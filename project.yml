@@ -1,4 +1,4 @@
 name: ZCache
-version: 0.1.3
+version: 0.1.4
 description: golang版缓存
 program_language: golang

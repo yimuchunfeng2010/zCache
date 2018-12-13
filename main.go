@@ -40,6 +40,10 @@ func main() {
 	v3 := router.Group("/v3")
 	{
 		v3.GET("/getKeyNum",routes.GetKeyNum)
+		v3.POST("/incr/:key",routes.Incr)
+		v3.POST("/incrBy/:key/:value",routes.IncrBy)
+		v3.POST("/decr/:key",routes.Decr)
+		v3.POST("/decrBy/:key/:value",routes.DecrBy)
 	}
 	test := router.Group("/mock")
 	{

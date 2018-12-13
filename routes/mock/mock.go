@@ -1,8 +1,8 @@
 package mock
 
 import (
-	"ZCache/services"
 	"ZCache/tool/logrus"
+	"ZCache/tool"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -16,18 +16,18 @@ func Mock_Set(context *gin.Context) {
 	value := "bbb"
 	err := Set(key, value)
 	if err != nil {
-		logrus.Warningf("%s  Set Failed! [Key:%s, Value:%s Err:%s]\n", services.GetFileNameLine(), key, value, err.Error())
+		logrus.Warningf("%s  Set Failed! [Key:%s, Value:%s Err:%s]\n", tool.GetFileNameLine(), key, value, err.Error())
 		return
 	}
 
 	rsp_value, err := Get(key)
 	if err != nil {
-		logrus.Warningf("%s   Get Failed! [Key:%s Err:%s]\n", services.GetFileNameLine(), key, err.Error())
+		logrus.Warningf("%s   Get Failed! [Key:%s Err:%s]\n", tool.GetFileNameLine(), key, err.Error())
 		return
 	}
 
 	if 0 != strings.Compare(rsp_value, value) {
-		logrus.Warningf("%s   Value Not Equal! [Key:%s Rsp, Value:%sErr:%s]\n", services.GetFileNameLine(), key, value, rsp_value)
+		logrus.Warningf("%s   Value Not Equal! [Key:%s Rsp, Value:%sErr:%s]\n", tool.GetFileNameLine(), key, value, rsp_value)
 		return
 	}
 	logrus.Infof("Success to Test Set")

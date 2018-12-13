@@ -4,14 +4,14 @@ import (
 	"ZCache/data"
 	"ZCache/types"
 	"ZCache/global"
-	"ZCache/services"
 	"ZCache/tool/logrus"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"ZCache/tool"
 )
 
 func Get(context *gin.Context) {
-	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_GET)
+	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
 	if err != nil  || auth != true{
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
@@ -20,7 +20,7 @@ func Get(context *gin.Context) {
 	global.GlobalVar.GRWLock.RLock()
 	defer global.GlobalVar.GRWLock.RUnlock()
 	key := context.Param("key")
-	logrus.Infof("%s  Get key: %s\n", services.GetFileNameLine(), key)
+	logrus.Infof("%s  Get key: %s\n", tool.GetFileNameLine(), key)
 
 	node, err := zdata.CoreGet(key)
 	if err != nil {

@@ -7,6 +7,8 @@ import (
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"sync"
+	//"os"
+	//"os/signal"
 )
 
 func init() {
@@ -17,6 +19,9 @@ func init() {
 		global.GlobalVar.GRoot[i] = nil
 	}
 	global.GlobalVar.GRWLock = new(sync.RWMutex)
+	//
+	//global.GlobalVar.SigChan = make(chan os.Signal, 1)
+	//signal.Notify(global.GlobalVar.SigChan)
 }
 func main() {
 	router := gin.Default()
@@ -41,5 +46,11 @@ func main() {
 
 	}
 
-	router.Run(":8000")
+	router.Run(":8004")
+
+
+	//// 启动信号监听
+	//go services.SigHandler(global.GlobalVar.SigChan)
+	//
+	//<-global.GlobalVar.SigChan
 }

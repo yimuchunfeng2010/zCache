@@ -3,15 +3,15 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
-	"ZCache/services"
 	"ZCache/tool/logrus"
+	"ZCache/tool"
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func GetAll(context *gin.Context) {
-	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_GET)
+	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
 	if err != nil  || auth != true{
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
@@ -20,7 +20,7 @@ func GetAll(context *gin.Context) {
 	global.GlobalVar.GRWLock.RLock()
 	defer global.GlobalVar.GRWLock.RUnlock()
 
-	logrus.Infof("%s Get All\n", services.GetFileNameLine())
+	logrus.Infof("%s Get All\n", tool.GetFileNameLine())
 	node, err := zdata.CoreGetAll()
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"value": "", "status": "done"})

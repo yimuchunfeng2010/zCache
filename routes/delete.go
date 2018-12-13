@@ -3,8 +3,8 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
-	"ZCache/services"
 	"ZCache/tool/logrus"
+	"ZCache/tool"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"ZCache/types"
@@ -12,9 +12,9 @@ import (
 
 func Delete(context *gin.Context) {
 	key := context.Param("key")
-	logrus.Infof("%s  Delete key: %s\n", services.GetFileNameLine(), key)
+	logrus.Infof("%s  Delete key: %s\n", tool.GetFileNameLine(), key)
 
-	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_DELETE)
+	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_DELETE)
 	if err != nil  || auth != true{
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return

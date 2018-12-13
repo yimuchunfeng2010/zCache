@@ -46,3 +46,7 @@ A light Cache writed by golang
 # [version:0.1.1]
 ### Features
 增加对集群健康度的校验
+
+# [version:0.1.2]
+### Features
+增加系统退出信号处理，保存数据(功能待放开)

@@ -4,14 +4,14 @@ import (
 	"ZCache/data"
 	"ZCache/types"
 	"ZCache/global"
-	"ZCache/services"
 	"ZCache/tool/logrus"
+	"ZCache/tool"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func Update(context *gin.Context) {
-	auth, err := services.ClusterHealthCheck(types.OPERATION_TYPE_POST)
+	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_POST)
 	if err != nil  || auth != true{
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
@@ -21,7 +21,7 @@ func Update(context *gin.Context) {
 	defer global.GlobalVar.GRWLock.Unlock()
 	key := context.Param("key")
 	value := context.Param("value")
-	logrus.Infof("%s Update Key:%s, Value:%s\n", services.GetFileNameLine(), key, value)
+	logrus.Infof("%s Update Key:%s, Value:%s\n", tool.GetFileNameLine(), key, value)
 	node, err := zdata.CoreUpdate(key, value)
 	if err != nil {
 		context.JSON(http.StatusConflict, gin.H{"key": key, "value": value, "status": "done"})

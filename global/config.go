@@ -27,6 +27,7 @@ var GlobalVar = struct {
 	Root    *types.Node
 	GRoot   []*types.Node
 	GRWLock *sync.RWMutex
+	GCoreInfo types.CoreInfo
 	SigChan chan os.Signal
 }{
 	GClusterHealthState:types.CLUSTER_HEALTH_TYPE_HEALTH,
@@ -34,4 +35,7 @@ var GlobalVar = struct {
 	GRoot:   nil,
 	GRWLock: nil,
 	SigChan:nil,
+	GCoreInfo:types.CoreInfo{
+		KeyNum:0,
+	},
 }

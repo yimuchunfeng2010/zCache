@@ -50,3 +50,7 @@ A light Cache writed by golang
 # [version:0.1.2]
 ### Features
 增加系统退出信号处理，保存数据(功能待放开)
+
+# [version:0.1.3]
+### Features
+增加全局key个数计数功能

@@ -27,3 +27,7 @@ type LogMsg struct {
 	Time time.Time
 	Msg string
 }
+
+type CoreInfo struct {
+	KeyNum int
+}

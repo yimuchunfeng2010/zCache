@@ -28,6 +28,8 @@ func CoreAdd(key string, value string) (*types.Node, error) {
 
 	global.GlobalVar.GRoot[hashIndex] = tmpNode
 
+	// 修改全局信息
+	global.GlobalVar.GCoreInfo.KeyNum += 1
 	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
@@ -45,6 +47,9 @@ func CoreDelete(key string) (*types.Node, error) {
 		return nil, err
 	}
 	global.GlobalVar.GRoot[hashIndex] = tmpNode
+
+	// 修改全局信息
+	global.GlobalVar.GCoreInfo.KeyNum -= 1
 	return global.GlobalVar.GRoot[hashIndex], nil
 }
 
@@ -170,4 +175,10 @@ func CoreImport() error {
 
 	}
 	return nil
+}
+
+
+func CoreGetKeyNum() (int, error) {
+
+	return global.GlobalVar.GCoreInfo.KeyNum, nil
 }

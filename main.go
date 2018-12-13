@@ -21,7 +21,7 @@ func init() {
 }
 func main() {
 	router := gin.Default()
-	v1 := router.Group("/ZCache")
+	v1 := router.Group("/v1")
 	{
 		v1.GET("/:key", routes.Get)
 		v1.DELETE("/:key", routes.Delete)
@@ -35,6 +35,11 @@ func main() {
 		v2.GET("/getAll", routes.GetAll)
 		v2.GET("/flush", routes.Flush)
 		v2.PUT("/import", routes.Import)
+	}
+
+	v3 := router.Group("/v3")
+	{
+		v3.GET("/getKeyNum",routes.GetKeyNum)
 	}
 	test := router.Group("/mock")
 	{

@@ -185,6 +185,25 @@ func Delete(node *types.Node, Key string) (*types.Node, error) {
 	return node, nil
 }
 
+func DeleteAll(node *types.Node) (err error) {
+	if node == nil {
+		return nil
+	}
+	if nil != node.Lchild{
+		if err = DeleteAll(node.Lchild);err != nil {
+			return err
+		}
+
+	}
+	if nil != node.Rchild{
+		if err = DeleteAll(node.Rchild);err != nil {
+			return err
+		}
+
+	}
+	node = nil
+	return nil
+}
 //查找并返回节点
 func Update(node *types.Node, Key string, Value string) (*types.Node, error) {
 	for {

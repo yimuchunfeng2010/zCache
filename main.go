@@ -33,8 +33,9 @@ func main() {
 	v2 := router.Group("/v2")
 	{
 		v2.GET("/getAll", routes.GetAll)
-		v2.GET("/flush", routes.Flush)
+		v2.GET("/export", routes.Flush)
 		v2.PUT("/import", routes.Import)
+		v2.PUT("/deleteAll", routes.DeleteAll)
 	}
 
 	v3 := router.Group("/v3")

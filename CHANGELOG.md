@@ -58,3 +58,7 @@ A light Cache writed by golang
 # [version:0.1.4]
 ### Features
 增加值增加/减少功能
+
+# [version:0.1.5]
+### Features
+增加删除全部缓存功能(删除前先存库)

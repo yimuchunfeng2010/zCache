@@ -198,6 +198,29 @@ func CoreImport() error {
 	return nil
 }
 
+func CoreDeleteAll() (error) {
+
+	if nil == global.GlobalVar.GRoot {
+		return errors.New("GRoot nil")
+	}
+
+	var index int64
+	for index = 0; index < global.Config.MaxLen; index++ {
+		err := DeleteAll(global.GlobalVar.GRoot[index])
+		if err != nil {
+			return err
+		}
+	}
+
+	for index = 0; index < global.Config.MaxLen; index++ {
+		global.GlobalVar.GRoot[index] = nil
+	}
+	// 修改全局信息
+	global.GlobalVar.GCoreInfo.KeyNum = 0
+	return nil
+}
+
+
 
 func CoreGetKeyNum() (int, error) {
 	return global.GlobalVar.GCoreInfo.KeyNum, nil

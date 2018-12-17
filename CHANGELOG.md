@@ -62,3 +62,7 @@ A light Cache writed by golang
 # [version:0.1.5]
 ### Features
 增加删除全部缓存功能(删除前先存库)
+
+# [version:0.1.6]
+### Fix
+修复无法获取全部key/value问题

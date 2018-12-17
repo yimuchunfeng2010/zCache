@@ -118,14 +118,15 @@ func CoreGetAll() (*types.DataNode, error) {
 	}
 
 	var index int64
-	var rspRoot *types.DataNode = nil
+	var head *types.DataNode = nil
+	var tail *types.DataNode = nil
 	for index = 0; index < global.Config.MaxLen; index++ {
-		err := GetAll(global.GlobalVar.GRoot[index], index, &rspRoot, &rspRoot)
+		err := GetAll(global.GlobalVar.GRoot[index], index, &head, &tail)
 		if err != nil {
 			return nil, err
 		}
 	}
-	return rspRoot, nil
+	return head, nil
 }
 
 func CoreFlush() error {

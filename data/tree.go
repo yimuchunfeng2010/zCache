@@ -279,6 +279,8 @@ func GetAll(node *types.Node, treeIndex int64, head **types.DataNode, tail **typ
 			(*tail) = (*tail).Next
 		}
 		(*tail).Next = newNode
+		(*tail) = newNode
+
 	}
 	if nil != node.Lchild {
 		GetAll(node.Lchild, treeIndex, head, tail)

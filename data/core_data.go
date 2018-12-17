@@ -221,7 +221,59 @@ func CoreDeleteAll() (error) {
 	return nil
 }
 
+func CoreExpension(size int64)(error){
+	if nil == global.GlobalVar.GRoot {
+		return errors.New("GRoot nil")
+	}
 
+	newSize := global.Config.MaxLen + size
+	if newSize <= 0{
+		return errors.New("Tree size less than 0")
+	}
+	// 获取全部节点
+	var index int64
+	var head *types.DataNode = nil
+	var tail *types.DataNode = nil
+	for index = 0; index < global.Config.MaxLen; index++ {
+		err := GetAll(global.GlobalVar.GRoot[index], index, &head, &tail)
+		if err != nil {
+			return err
+		}
+	}
+
+	// 解析全部节点，并添加到新树上
+	global.GlobalVar.GRootTmp = make([]*types.Node,newSize)
+	curNode := head
+	for curNode != nil {
+		expensionAdd(curNode.Key,curNode.Value, newSize)
+		curNode = curNode.Next
+	}
+
+	// 更新根节点
+	global.GlobalVar.GRoot = global.GlobalVar.GRootTmp
+	global.GlobalVar.GRootTmp = nil
+	global.Config.MaxLen = newSize
+	return nil
+}
+
+func expensionAdd(key string, value string, newSize int64) (*types.Node, error) {
+	hashIndex, err := tool.GetHashIndex(key, newSize)
+	if err != nil {
+		return nil, err
+	}
+	if nil == global.GlobalVar.GRootTmp {
+		return nil, errors.New("GRoot nil")
+	}
+	tmpNode, err := Add(global.GlobalVar.GRootTmp[hashIndex], key, value)
+	if err != nil {
+		return nil, err
+	}
+
+	global.GlobalVar.GRootTmp[hashIndex] = tmpNode
+
+	// 修改全局信息
+	return global.GlobalVar.GRootTmp[hashIndex], nil
+}
 
 func CoreGetKeyNum() (int, error) {
 	return global.GlobalVar.GCoreInfo.KeyNum, nil

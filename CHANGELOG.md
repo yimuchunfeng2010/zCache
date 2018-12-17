@@ -66,3 +66,7 @@ A light Cache writed by golang
 # [version:0.1.6]
 ### Fix
 修复无法获取全部key/value问题
+
+# [version:0.1.7]
+### Features
+增加扩容功能

@@ -30,14 +30,19 @@ func ByteToInt(msg []byte) (int64, error) {
 	return data, nil
 }
 
-func GetHashIndex(msg string) (int64, error) {
+func GetHashIndex(msg string, sizes ...int64) (int64, error) {
 	msgByte := Md5Encode(msg)
 	msgByte = msgByte[0 : len(msgByte)/2-1]
 	data, err := ByteToInt(msgByte)
 	if err != nil {
 		return -1, err
 	}
-	data = data % global.Config.MaxLen
+
+	maxSize := global.Config.MaxLen
+	for _, size := range sizes{
+		maxSize = size
+	}
+	data = data % maxSize
 	return data, nil
 }
 

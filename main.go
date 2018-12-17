@@ -5,6 +5,7 @@ import (
 	"ZCache/routes"
 	"ZCache/routes/mock"
 	"ZCache/types"
+	"ZCache/data"
 	"github.com/gin-gonic/gin"
 	"sync"
 )
@@ -17,6 +18,8 @@ func init() {
 		global.GlobalVar.GRoot[i] = nil
 	}
 	global.GlobalVar.GRWLock = new(sync.RWMutex)
+
+	zdata.CoreImport()
 
 }
 func main() {
@@ -36,6 +39,7 @@ func main() {
 		v2.GET("/export", routes.Flush)
 		v2.PUT("/import", routes.Import)
 		v2.PUT("/deleteAll", routes.DeleteAll)
+		v2.PUT("/expension/:size", routes.Expension)
 	}
 
 	v3 := router.Group("/v3")

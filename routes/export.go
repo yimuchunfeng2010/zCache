@@ -2,10 +2,10 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/types"
 	"ZCache/global"
-	"ZCache/tool/logrus"
 	"ZCache/tool"
+	"ZCache/tool/logrus"
+	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -15,9 +15,8 @@ func Flush(context *gin.Context) {
 	defer global.GlobalVar.GRWLock.Unlock()
 
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
-	if err != nil  || auth != true{
+	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
-		return
 	}
 
 	logrus.Infof("%s  export\n", tool.GetFileNameLine())
@@ -26,7 +25,6 @@ func Flush(context *gin.Context) {
 		context.JSON(http.StatusOK, gin.H{"status": "failure"})
 	} else {
 		context.JSON(http.StatusOK, gin.H{"status": "success"})
-		}
-		return
+	}
 
 }

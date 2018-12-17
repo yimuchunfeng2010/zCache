@@ -3,8 +3,8 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
-	"ZCache/tool/logrus"
 	"ZCache/tool"
+	"ZCache/tool/logrus"
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -12,7 +12,7 @@ import (
 
 func GetAll(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
-	if err != nil  || auth != true{
+	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
 	}
@@ -24,7 +24,6 @@ func GetAll(context *gin.Context) {
 	node, err := zdata.CoreGetAll()
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"value": "", "status": "done"})
-		return
 	} else {
 		// 遍历链表获取全部数据
 		data := make([]types.KeyValue, 0)
@@ -35,7 +34,6 @@ func GetAll(context *gin.Context) {
 			curNode = curNode.Next
 		}
 		context.JSON(http.StatusOK, gin.H{"data": data, "status": "done"})
-		return
 	}
 
 }

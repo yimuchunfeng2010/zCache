@@ -2,17 +2,17 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/types"
 	"ZCache/global"
-	"ZCache/tool/logrus"
 	"ZCache/tool"
+	"ZCache/tool/logrus"
+	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 func Update(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_POST)
-	if err != nil  || auth != true{
+	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
 	}
@@ -25,9 +25,7 @@ func Update(context *gin.Context) {
 	node, err := zdata.CoreUpdate(key, value)
 	if err != nil {
 		context.JSON(http.StatusConflict, gin.H{"key": key, "value": value, "status": "done"})
-		return
 	} else {
 		context.JSON(http.StatusOK, gin.H{"key": node.Key, "value": node.Value, "status": "done"})
-		return
 	}
 }

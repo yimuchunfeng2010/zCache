@@ -3,11 +3,11 @@ package routes
 import (
 	"ZCache/data"
 	"ZCache/global"
-	"ZCache/tool/logrus"
 	"ZCache/tool"
+	"ZCache/tool/logrus"
+	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"ZCache/types"
 )
 
 func Delete(context *gin.Context) {
@@ -15,7 +15,7 @@ func Delete(context *gin.Context) {
 	logrus.Infof("%s  Delete key: %s\n", tool.GetFileNameLine(), key)
 
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_DELETE)
-	if err != nil  || auth != true{
+	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
 	}
@@ -24,10 +24,8 @@ func Delete(context *gin.Context) {
 	defer global.GlobalVar.GRWLock.Unlock()
 	_, err = zdata.CoreDelete(key)
 	if err != nil {
-		context.JSON(http.StatusNotFound, gin.H{ "status": "done"})
-		return
+		context.JSON(http.StatusNotFound, gin.H{"status": "done"})
 	} else {
 		context.JSON(http.StatusOK, gin.H{"key": key, "status": "done"})
-		return
 	}
 }

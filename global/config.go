@@ -15,6 +15,7 @@ var Config = struct {
 	ToMail       string
 
 	SysHealthCheckCronSpec string
+	LogProcessCronSpec string
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -24,6 +25,7 @@ var Config = struct {
 	ToMail:       "987654321@qq.com",
 
 	SysHealthCheckCronSpec:"0 */10 * * * *",
+	LogProcessCronSpec:"0 */10 * * * *",
 }
 
 var GlobalVar = struct {
@@ -34,6 +36,13 @@ var GlobalVar = struct {
 	GRWLock *sync.RWMutex
 	GCoreInfo types.CoreInfo
 	SigChan chan os.Signal
+	// 日志指针
+	GLogInfoHead *types.LogInfoNode
+	GLogInfoTail *types.LogInfoNode
+	GLogWarningHead *types.LogInfoNode
+	GLogWarningTail *types.LogInfoNode
+	GLogErrorHead *types.LogInfoNode
+	GLogErrorTail *types.LogInfoNode
 }{
 	GClusterHealthState:types.CLUSTER_HEALTH_TYPE_HEALTH,
 	Root:    nil,
@@ -44,4 +53,10 @@ var GlobalVar = struct {
 	GCoreInfo:types.CoreInfo{
 		KeyNum:0,
 	},
+	GLogInfoHead:nil,
+	GLogInfoTail:nil,
+	GLogWarningHead:nil,
+	GLogWarningTail:nil,
+	GLogErrorHead:nil,
+	GLogErrorTail:nil,
 }

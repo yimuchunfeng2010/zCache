@@ -23,12 +23,21 @@ func init() {
 
 	zdata.CoreImport()
 
+	// 初始化日志
+	global.GlobalVar.GLogInfoHead = new(types.LogInfoNode)
+	global.GlobalVar.GLogInfoTail = global.GlobalVar.GLogInfoHead
+	global.GlobalVar.GLogWarningHead = new(types.LogInfoNode)
+	global.GlobalVar.GLogWarningTail = global.GlobalVar.GLogWarningHead
+	global.GlobalVar.GLogErrorHead = new(types.LogInfoNode)
+	global.GlobalVar.GLogErrorTail = global.GlobalVar.GLogErrorHead
 }
 func CronInit() {
 	services.InitCrontab()
 	services.RunCrontab()
 
 	task.InitSysHealthCheck()
+
+	task.InitLogProcess()
 }
 func main() {
 

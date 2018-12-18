@@ -31,3 +31,9 @@ type LogMsg struct {
 type CoreInfo struct {
 	KeyNum int
 }
+
+
+type LogInfoNode struct {
+	Msg string
+	Next *LogInfoNode
+}

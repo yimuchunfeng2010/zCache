@@ -82,3 +82,7 @@ A light Cache writed by golang
 # [version:0.2.0]
 ### Features
 增加系统定时任务框架
+
+# [version:0.2.1]
+### Features
+增加日志系统缓存功能

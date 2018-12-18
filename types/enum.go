@@ -22,3 +22,12 @@ const (
 )
 
 
+type LogType int8
+
+const (
+	LogType_UNKNOW LogType = iota
+	LogType_DEBUG
+	LogType_INFO
+	LogType_WARNING
+	LogType_ERROR
+)

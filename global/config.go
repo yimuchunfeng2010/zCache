@@ -13,6 +13,8 @@ var Config = struct {
 	MailAuthCode string
 	MailSmtpHost string
 	ToMail       string
+
+	SysHealthCheckCronSpec string
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -20,6 +22,8 @@ var Config = struct {
 	MailAuthCode: "mnkxcahklkrebfbb",
 	MailSmtpHost: "smtp.qq.com",
 	ToMail:       "987654321@qq.com",
+
+	SysHealthCheckCronSpec:"0 */10 * * * *",
 }
 
 var GlobalVar = struct {

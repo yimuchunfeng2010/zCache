@@ -78,3 +78,7 @@ A light Cache writed by golang
 # [version:0.1.9]
 ### Features
 编写dockerfile文件
+
+# [version:0.2.0]
+### Features
+增加系统定时任务框架

@@ -4,8 +4,10 @@ import (
 	"ZCache/global"
 	"ZCache/routes"
 	"ZCache/routes/mock"
+	"ZCache/services"
 	"ZCache/types"
 	"ZCache/data"
+	"ZCache/task"
 	"github.com/gin-gonic/gin"
 	"sync"
 )
@@ -22,7 +24,17 @@ func init() {
 	zdata.CoreImport()
 
 }
+func CronInit() {
+	services.InitCrontab()
+	services.RunCrontab()
+
+	task.InitSysHealthCheck()
+}
 func main() {
+
+	// 启动任务框架
+	go CronInit()
+
 	router := gin.Default()
 	v1 := router.Group("/v1")
 	{

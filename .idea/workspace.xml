@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8df6dc52-b339-4b49-9729-48eea1eb3b2f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/task/logProcess.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/client/client.go" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/ZCache.exe" afterPath="$PROJECT_DIR$/ZCache.exe" />
-      <change beforePath="$PROJECT_DIR$/global/config.go" afterPath="$PROJECT_DIR$/global/config.go" />
-      <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change beforePath="$PROJECT_DIR$/project.yml" afterPath="$PROJECT_DIR$/project.yml" />
-      <change beforePath="$PROJECT_DIR$/services/cron.go" afterPath="$PROJECT_DIR$/services/cron.go" />
-      <change beforePath="$PROJECT_DIR$/tool/logrus/log.go" afterPath="$PROJECT_DIR$/tool/logrus/log.go" />
-      <change beforePath="$PROJECT_DIR$/types/enum.go" afterPath="$PROJECT_DIR$/types/enum.go" />
-      <change beforePath="$PROJECT_DIR$/types/struct.go" afterPath="$PROJECT_DIR$/types/struct.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,19 +56,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SysHealthCheck.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/SysHealthCheck.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="1" />
-              <folding>
-                <element signature="e#14#97#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
@@ -88,6 +67,26 @@
               <second_editor>
                 <markdownNavigatorState />
               </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="incr.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/incr.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,18 +107,6 @@
             <state relative-caret-position="1232">
               <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cron.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/cron.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#18#104#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -192,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/modules/doc.go" />
         <option value="$PROJECT_DIR$/routes/get_cache_date.go" />
         <option value="$PROJECT_DIR$/routes/set_cache_data.go" />
         <option value="$PROJECT_DIR$/vendor/vendor.json" />
@@ -243,6 +229,7 @@
         <option value="$PROJECT_DIR$/task/logProcess.go" />
         <option value="$PROJECT_DIR$/project.yml" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/client/client.go" />
       </list>
     </option>
   </component>
@@ -252,7 +239,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2869" />
     <option name="y" value="-11" />
     <option name="width" value="2763" />
@@ -286,22 +273,7 @@
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="external_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
@@ -397,10 +369,9 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2869" y="-11" width="2763" height="1642" extended-state="6" />
-    <editor active="true" />
+    <frame x="2869" y="-11" width="2763" height="1642" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1339319" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1339319" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -439,13 +410,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../gopkg.in/gin-gonic/gin.v1/json/json.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/bufio/bufio.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="469">
@@ -638,16 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/incr.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#16#151#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/incrBy.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -775,7 +729,7 @@
         <state relative-caret-position="44">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#18#104#0" expanded="true" />
+            <element signature="e#18#104#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -858,6 +812,22 @@
           <second_editor>
             <markdownNavigatorState />
           </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/incr.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

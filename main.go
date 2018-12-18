@@ -50,6 +50,12 @@ func main() {
 		v3.POST("/decr/:key",routes.Decr)
 		v3.POST("/decrBy/:key/:value",routes.DecrBy)
 	}
+
+	v4 := router.Group("/v4")
+	{
+		v4.PUT("/importFromRedis",routes.ImportFromRedis)
+		v4.GET("/exportToRedis",routes.ExportToRedis)
+	}
 	test := router.Group("/mock")
 	{
 		test.POST("/mockSet", mock.Mock_Set)

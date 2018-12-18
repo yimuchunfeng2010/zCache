@@ -70,3 +70,7 @@ A light Cache writed by golang
 # [version:0.1.7]
 ### Features
 增加扩容功能
+
+# [version:0.1.8]
+### Features
+增加redis导入导出功能

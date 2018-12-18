@@ -74,3 +74,7 @@ A light Cache writed by golang
 # [version:0.1.8]
 ### Features
 增加redis导入导出功能
+
+# [version:0.1.9]
+### Features
+编写dockerfile文件

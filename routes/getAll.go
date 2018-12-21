@@ -2,7 +2,7 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
@@ -17,8 +17,14 @@ func GetAll(context *gin.Context) {
 		return
 	}
 
-	global.GlobalVar.GRWLock.RLock()
-	defer global.GlobalVar.GRWLock.RUnlock()
+	lockName, err := services.Lock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		return
+
+	}
+	defer services.Unlock(lockName)
 
 	logrus.Infof("%s Get All\n", tool.GetFileNameLine())
 	node, err := zdata.CoreGetAll()

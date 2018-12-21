@@ -2,14 +2,19 @@ package mock
 
 import (
 	"ZCache/data"
-	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool/logrus"
 	"ZCache/tool"
 )
 
 func Get(key string) (value string, err error) {
-	global.GlobalVar.GRWLock.RLock()
-	defer global.GlobalVar.GRWLock.RUnlock()
+	lockName, err := services.RLock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		return
+
+	}
+	defer services.RUnlock(lockName)
 	logrus.Infof("%s  Get key: %s\n", tool.GetFileNameLine(), key)
 
 	node, err := zdata.CoreGet(key)

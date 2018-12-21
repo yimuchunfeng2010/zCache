@@ -86,3 +86,7 @@ A light Cache writed by golang
 # [version:0.2.1]
 ### Features
 增加日志系统缓存功能
+
+# [version:0.2.2]
+### Features
+增加基于zookeeper的分布式读写锁功能

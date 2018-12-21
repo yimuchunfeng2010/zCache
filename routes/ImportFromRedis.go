@@ -1,9 +1,9 @@
 package routes
 import (
-	"ZCache/global"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/external_data"
+	"ZCache/services"
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -16,8 +16,14 @@ func ImportFromRedis(context *gin.Context) {
 		return
 	}
 
-	global.GlobalVar.GRWLock.Lock()
-	defer global.GlobalVar.GRWLock.Unlock()
+	lockName, err := services.Lock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		return
+
+	}
+	defer services.Unlock(lockName)
 
 	err = external_data.ImportFromRedis()
 	if err != nil {

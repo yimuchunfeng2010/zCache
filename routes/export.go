@@ -2,7 +2,7 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
@@ -11,8 +11,14 @@ import (
 )
 
 func Flush(context *gin.Context) {
-	global.GlobalVar.GRWLock.Lock()
-	defer global.GlobalVar.GRWLock.Unlock()
+	lockName, err := services.RLock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		return
+
+	}
+	defer services.RUnlock(lockName)
 
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
 	if err != nil || auth != true {

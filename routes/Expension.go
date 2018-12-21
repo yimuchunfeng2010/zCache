@@ -2,7 +2,7 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
@@ -12,8 +12,14 @@ import (
 )
 
 func Expension(context *gin.Context) {
-	global.GlobalVar.GRWLock.Lock()
-	defer global.GlobalVar.GRWLock.Unlock()
+	lockName, err := services.Lock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		return
+
+	}
+	defer services.Unlock(lockName)
 
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_SET)
 	if err != nil || auth != true {

@@ -2,7 +2,6 @@ package global
 
 import (
 	"ZCache/types"
-	"sync"
 	"os"
 )
 
@@ -33,7 +32,6 @@ var GlobalVar = struct {
 	Root    *types.Node
 	GRoot   []*types.Node
 	GRootTmp   []*types.Node
-	GRWLock *sync.RWMutex
 	GCoreInfo types.CoreInfo
 	SigChan chan os.Signal
 	// 日志指针
@@ -48,7 +46,6 @@ var GlobalVar = struct {
 	Root:    nil,
 	GRoot:   nil,
 	GRootTmp:   nil,
-	GRWLock: nil,
 	SigChan:nil,
 	GCoreInfo:types.CoreInfo{
 		KeyNum:0,

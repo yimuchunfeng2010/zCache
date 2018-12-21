@@ -9,7 +9,6 @@ import (
 	"ZCache/data"
 	"ZCache/task"
 	"github.com/gin-gonic/gin"
-	"sync"
 )
 
 func init() {
@@ -19,7 +18,6 @@ func init() {
 	for i = 0; i < global.Config.MaxLen; i++ {
 		global.GlobalVar.GRoot[i] = nil
 	}
-	global.GlobalVar.GRWLock = new(sync.RWMutex)
 
 	zdata.CoreImport()
 
@@ -30,6 +28,9 @@ func init() {
 	global.GlobalVar.GLogWarningTail = global.GlobalVar.GLogWarningHead
 	global.GlobalVar.GLogErrorHead = new(types.LogInfoNode)
 	global.GlobalVar.GLogErrorTail = global.GlobalVar.GLogErrorHead
+
+	// 初始化zk
+	services.ZookeeperInit()
 }
 func CronInit() {
 	services.InitCrontab()

@@ -2,7 +2,7 @@ package routes
 
 import (
 	"ZCache/data"
-	"ZCache/global"
+	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
@@ -16,8 +16,14 @@ func Import(context *gin.Context) {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})
 		return
 	}
-	global.GlobalVar.GRWLock.Lock()
-	defer global.GlobalVar.GRWLock.Unlock()
+	lockName, err := services.Lock()
+	if err != nil{
+		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		return
+
+	}
+	defer services.Unlock(lockName)
 	err = zdata.CoreImport()
 	if err != nil {
 		logrus.Warningf("%s Import Data Failed! [Err:%s]\n", tool.GetFileNameLine(), err.Error())

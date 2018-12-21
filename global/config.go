@@ -13,6 +13,7 @@ var Config = struct {
 	MailSmtpHost string
 	ToMail       string
 	TotalNodes   int
+	ZkIPaddr     string
 
 	SysHealthCheckCronSpec string
 	LogProcessCronSpec string
@@ -28,6 +29,7 @@ var Config = struct {
 	LogProcessCronSpec:"0 */10 * * * *",
 
 	TotalNodes:3,
+	ZkIPaddr:"192.168.228.143:2181",
 }
 
 var GlobalVar = struct {

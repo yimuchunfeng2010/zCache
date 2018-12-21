@@ -3,6 +3,7 @@ package services
 import (
 	"github.com/samuel/go-zookeeper/zk"
 	"ZCache/tool/logrus"
+	"ZCache/global"
 	"time"
 	"fmt"
 	"strings"
@@ -11,7 +12,7 @@ import (
 
 func ZookeeperInit() error {
 
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf(err.Error())
@@ -53,7 +54,7 @@ func ZookeeperInit() error {
 func Lock() (lockName string, err error) {
 
 	// 创建临时写节点
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())
@@ -112,7 +113,7 @@ func Lock() (lockName string, err error) {
 
 func Unlock(lockName string) error {
 
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())
@@ -132,7 +133,7 @@ func Unlock(lockName string) error {
 
 func RLock() (lockName string, err error) {
 	// 创建临时写节点
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())
@@ -189,7 +190,7 @@ func RLock() (lockName string, err error) {
 }
 
 func RUnlock(lockName string) error {
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())
@@ -252,7 +253,7 @@ func GetMaxWritechild(children []string) (child string) {
 }
 
 func RegisterNode()(error){
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())
@@ -276,7 +277,7 @@ func RegisterNode()(error){
 
 
 func GetWorkingNode()(int,error){
-	var hosts = []string{"192.168.228.141:2181"}
+	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
 		logrus.Errorf("%s", err.Error())

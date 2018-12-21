@@ -34,6 +34,20 @@ func ZookeeperInit() error {
 		return err
 	}
 
+	// 创建Lock节点(永久节点)
+	var ClusterPath = "/Cluster"
+	var ClusterData []byte = []byte("Cluster")
+	var ClusterFlags int32 = 0
+	_, err = conn.Create(ClusterPath, ClusterData, ClusterFlags, acls)
+	if err != nil {
+		if 0 == strings.Compare("zk: node already exists", err.Error()) {
+			logrus.Infof("Create Node %s Success", lockPath)
+			return nil
+		}
+		logrus.Errorf("%s", err.Error())
+		return err
+	}
+
 	return nil
 }
 func Lock() (lockName string, err error) {
@@ -235,4 +249,46 @@ func GetMaxWritechild(children []string) (child string) {
 	}
 
 	return maxChild
+}
+
+func RegisterNode()(error){
+	var hosts = []string{"192.168.228.141:2181"}
+	conn, _, err := zk.Connect(hosts, time.Second*5)
+	if err != nil {
+		logrus.Errorf("%s", err.Error())
+		return err
+	}
+	defer conn.Close()
+
+	var nodePath = "/Cluster/"
+	var nodeData []byte = []byte(strconv.FormatInt(time.Now().Unix(), 10))
+	var nodeFlags int32 = 4 // 临时增长序列节点
+	var acl = zk.WorldACL(zk.PermAll)
+
+	_, err = conn.Create(nodePath, nodeData, nodeFlags, acl)
+	if err != nil {
+		logrus.Errorf("%s", err.Error())
+		return  err
+	}
+
+	return nil
+}
+
+
+func GetWorkingNode()(int,error){
+	var hosts = []string{"192.168.228.141:2181"}
+	conn, _, err := zk.Connect(hosts, time.Second*5)
+	if err != nil {
+		logrus.Errorf("%s", err.Error())
+		return -1, err
+	}
+	defer conn.Close()
+
+	children, _, err := conn.Children("/Lock")
+	if err != nil {
+		logrus.Errorf("%s", err.Error())
+		return -1, err
+	}
+
+	return len(children), nil
 }

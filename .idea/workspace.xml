@@ -4,31 +4,13 @@
     <list default="true" id="8df6dc52-b339-4b49-9729-48eea1eb3b2f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/ZCache.exe" afterPath="$PROJECT_DIR$/ZCache.exe" />
       <change beforePath="$PROJECT_DIR$/global/config.go" afterPath="$PROJECT_DIR$/global/config.go" />
       <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
       <change beforePath="$PROJECT_DIR$/project.yml" afterPath="$PROJECT_DIR$/project.yml" />
-      <change beforePath="$PROJECT_DIR$/routes/Expension.go" afterPath="$PROJECT_DIR$/routes/Expension.go" />
-      <change beforePath="$PROJECT_DIR$/routes/ExportToRedis.go" afterPath="$PROJECT_DIR$/routes/ExportToRedis.go" />
-      <change beforePath="$PROJECT_DIR$/routes/ImportFromRedis.go" afterPath="$PROJECT_DIR$/routes/ImportFromRedis.go" />
-      <change beforePath="$PROJECT_DIR$/routes/decr.go" afterPath="$PROJECT_DIR$/routes/decr.go" />
-      <change beforePath="$PROJECT_DIR$/routes/decrBy.go" afterPath="$PROJECT_DIR$/routes/decrBy.go" />
-      <change beforePath="$PROJECT_DIR$/routes/delete.go" afterPath="$PROJECT_DIR$/routes/delete.go" />
-      <change beforePath="$PROJECT_DIR$/routes/deleteAll.go" afterPath="$PROJECT_DIR$/routes/deleteAll.go" />
-      <change beforePath="$PROJECT_DIR$/routes/export.go" afterPath="$PROJECT_DIR$/routes/export.go" />
-      <change beforePath="$PROJECT_DIR$/routes/get.go" afterPath="$PROJECT_DIR$/routes/get.go" />
-      <change beforePath="$PROJECT_DIR$/routes/getAll.go" afterPath="$PROJECT_DIR$/routes/getAll.go" />
-      <change beforePath="$PROJECT_DIR$/routes/getKeyNum.go" afterPath="$PROJECT_DIR$/routes/getKeyNum.go" />
-      <change beforePath="$PROJECT_DIR$/routes/import.go" afterPath="$PROJECT_DIR$/routes/import.go" />
-      <change beforePath="$PROJECT_DIR$/routes/incr.go" afterPath="$PROJECT_DIR$/routes/incr.go" />
-      <change beforePath="$PROJECT_DIR$/routes/incrBy.go" afterPath="$PROJECT_DIR$/routes/incrBy.go" />
-      <change beforePath="$PROJECT_DIR$/routes/mock/mock_delete.go" afterPath="$PROJECT_DIR$/routes/mock/mock_delete.go" />
-      <change beforePath="$PROJECT_DIR$/routes/mock/mock_get.go" afterPath="$PROJECT_DIR$/routes/mock/mock_get.go" />
-      <change beforePath="$PROJECT_DIR$/routes/mock/mock_set.go" afterPath="$PROJECT_DIR$/routes/mock/mock_set.go" />
-      <change beforePath="$PROJECT_DIR$/routes/mock/mock_update.go" afterPath="$PROJECT_DIR$/routes/mock/mock_update.go" />
-      <change beforePath="$PROJECT_DIR$/routes/set.go" afterPath="$PROJECT_DIR$/routes/set.go" />
-      <change beforePath="$PROJECT_DIR$/routes/update.go" afterPath="$PROJECT_DIR$/routes/update.go" />
       <change beforePath="$PROJECT_DIR$/services/zookeeper.go" afterPath="$PROJECT_DIR$/services/zookeeper.go" />
+      <change beforePath="$PROJECT_DIR$/task/SysHealthCheck.go" afterPath="$PROJECT_DIR$/task/SysHealthCheck.go" />
+      <change beforePath="$PROJECT_DIR$/task/logProcess.go" afterPath="$PROJECT_DIR$/task/logProcess.go" />
+      <change beforePath="$PROJECT_DIR$/types/enum.go" afterPath="$PROJECT_DIR$/types/enum.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,18 +24,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/global/config.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="792">
+              <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -69,24 +41,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="export.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/export.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-              <folding>
-                <element signature="e#16#153#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="849">
-                <caret line="91" column="22" lean-forward="false" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
                 <folding />
               </first_editor>
               <second_editor>
@@ -96,36 +56,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mock_delete.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/mock/mock_delete.go">
+      <file leaf-file-name="logProcess.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task/logProcess.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="66" column="23" lean-forward="true" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+              <folding>
+                <element signature="e#14#127#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SysHealthCheck.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task/SysHealthCheck.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="770">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="e#14#113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/global/config.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+              <folding>
+                <element signature="e#16#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="enum.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/types/enum.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mock_get.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/mock/mock_get.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="16" selection-end-column="36" />
-              <folding>
-                <element signature="e#14#95#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="849">
+                <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <markdownNavigatorState />
+              </second_editor>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mock_set.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/mock/mock_set.go">
+      <file leaf-file-name="zookeeper.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/zookeeper.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="16" selection-end-column="36" />
-              <folding>
-                <element signature="e#14#95#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="482">
+              <caret line="277" column="19" lean-forward="false" selection-start-line="277" selection-start-column="5" selection-end-line="277" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -137,18 +134,6 @@
               <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
               <folding>
                 <element signature="e#14#95#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/get.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="26" selection-end-column="36" />
-              <folding>
-                <element signature="e#16#153#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -212,7 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/routes/set_cache_data.go" />
         <option value="$PROJECT_DIR$/vendor/vendor.json" />
         <option value="$PROJECT_DIR$/data/data_util.go" />
         <option value="$PROJECT_DIR$/routes/mock/mock_test.go" />
@@ -231,17 +215,12 @@
         <option value="$PROJECT_DIR$/data/core_data.go" />
         <option value="$PROJECT_DIR$/external_data/redis_op.go" />
         <option value="$PROJECT_DIR$/Dockerfile" />
-        <option value="$PROJECT_DIR$/task/SysHealthCheck.go" />
         <option value="$PROJECT_DIR$/services/cron.go" />
-        <option value="$PROJECT_DIR$/types/enum.go" />
         <option value="$PROJECT_DIR$/types/struct.go" />
         <option value="$PROJECT_DIR$/tool/logrus/log.go" />
-        <option value="$PROJECT_DIR$/task/logProcess.go" />
         <option value="$PROJECT_DIR$/client/client.go" />
-        <option value="$PROJECT_DIR$/services/zookeeper.go" />
         <option value="$PROJECT_DIR$/routes/ImportFromRedis.go" />
         <option value="$PROJECT_DIR$/routes/import.go" />
-        <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/routes/delete.go" />
         <option value="$PROJECT_DIR$/routes/set.go" />
         <option value="$PROJECT_DIR$/routes/get.go" />
@@ -256,11 +235,17 @@
         <option value="$PROJECT_DIR$/routes/getKeyNum.go" />
         <option value="$PROJECT_DIR$/routes/incr.go" />
         <option value="$PROJECT_DIR$/routes/incrBy.go" />
-        <option value="$PROJECT_DIR$/global/config.go" />
         <option value="$PROJECT_DIR$/routes/export.go" />
         <option value="$PROJECT_DIR$/routes/mock/mock_get.go" />
         <option value="$PROJECT_DIR$/routes/mock/mock_set.go" />
         <option value="$PROJECT_DIR$/routes/mock/mock_update.go" />
+        <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/task/clusterHealth.go" />
+        <option value="$PROJECT_DIR$/task/logProcess.go" />
+        <option value="$PROJECT_DIR$/services/zookeeper.go" />
+        <option value="$PROJECT_DIR$/global/config.go" />
+        <option value="$PROJECT_DIR$/types/enum.go" />
+        <option value="$PROJECT_DIR$/task/SysHealthCheck.go" />
         <option value="$PROJECT_DIR$/project.yml" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
       </list>
@@ -305,11 +290,6 @@
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -320,18 +300,12 @@
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="mock" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
               <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
@@ -424,12 +398,11 @@
     <frame x="2869" y="-11" width="2763" height="1642" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1399177" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14141414" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -441,6 +414,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -463,13 +437,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../github.com/sirupsen/logrus/exported.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="161" column="5" lean-forward="false" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/doc.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -503,19 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="355">
           <caret line="3003" column="26" lean-forward="false" selection-start-line="3003" selection-start-column="26" selection-end-line="3003" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
         </state>
       </provider>
     </entry>
@@ -589,20 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task/SysHealthCheck.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/types/enum.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="4" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/types/struct.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -614,15 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task/logProcess.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -639,16 +570,6 @@
         <state relative-caret-position="-191">
           <caret line="192" column="41" lean-forward="false" selection-start-line="192" selection-start-column="41" selection-end-line="192" selection-end-column="41" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/zookeeper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="e#18#124#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,7 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -770,9 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="26" selection-end-column="36" />
-          <folding>
-            <element signature="e#16#153#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -781,7 +698,7 @@
         <state relative-caret-position="418">
           <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="26" selection-end-column="35" />
           <folding>
-            <element signature="e#16#153#0" expanded="true" />
+            <element signature="e#16#153#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -790,14 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/global/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -862,9 +771,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+        <state relative-caret-position="792">
+          <caret line="46" column="20" lean-forward="false" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/clusterHealth.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="33" lean-forward="true" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/logProcess.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="66" column="23" lean-forward="true" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+          <folding>
+            <element signature="e#14#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/zookeeper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="277" column="19" lean-forward="false" selection-start-line="277" selection-start-column="5" selection-end-line="277" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/types/enum.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+          <folding>
+            <element signature="e#16#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/SysHealthCheck.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
         </state>
       </provider>
     </entry>
@@ -880,7 +856,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="849">
-            <caret line="91" column="22" lean-forward="false" selection-start-line="91" selection-start-column="22" selection-end-line="91" selection-end-column="22" />
+            <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
             <folding />
           </first_editor>
           <second_editor>

@@ -8,7 +8,7 @@ import (
 	"ZCache/services"
 )
 
-// 系统健康检查
+// 日志系统
 func InitLogProcess() {
 	spec := global.Config.LogProcessCronSpec
 	err := services.AddCrontab(spec, DoLogProcess)

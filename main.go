@@ -9,6 +9,7 @@ import (
 	"ZCache/data"
 	"ZCache/task"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 func init() {
@@ -31,6 +32,11 @@ func init() {
 
 	// 初始化zk
 	services.ZookeeperInit()
+	// 注册zk集群节点
+	err := services.RegisterNode()
+	if err != nil {
+		logrus.Warnf("RegisterNode Failed [err:%s]",err.Error())
+	}
 }
 func CronInit() {
 	services.InitCrontab()

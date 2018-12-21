@@ -12,6 +12,7 @@ var Config = struct {
 	MailAuthCode string
 	MailSmtpHost string
 	ToMail       string
+	TotalNodes   int
 
 	SysHealthCheckCronSpec string
 	LogProcessCronSpec string
@@ -25,6 +26,8 @@ var Config = struct {
 
 	SysHealthCheckCronSpec:"0 */10 * * * *",
 	LogProcessCronSpec:"0 */10 * * * *",
+
+	TotalNodes:3,
 }
 
 var GlobalVar = struct {

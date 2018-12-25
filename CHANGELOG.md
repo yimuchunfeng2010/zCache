@@ -94,3 +94,7 @@ A light Cache writed by golang
 # [version:0.2.3]
 ### Features
 增加基于zookeeper的集群监控功能
+
+# [version:0.2.4]
+### Features
+增加集群亚健康/不健康时的数据备份功能

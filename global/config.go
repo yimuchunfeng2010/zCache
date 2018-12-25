@@ -39,6 +39,7 @@ var GlobalVar = struct {
 	GRootTmp   []*types.Node
 	GCoreInfo types.CoreInfo
 	SigChan chan os.Signal
+	IsAlreadyBackup bool
 	// 日志指针
 	GLogInfoHead *types.LogInfoNode
 	GLogInfoTail *types.LogInfoNode
@@ -55,6 +56,7 @@ var GlobalVar = struct {
 	GCoreInfo:types.CoreInfo{
 		KeyNum:0,
 	},
+	IsAlreadyBackup:false,
 	GLogInfoHead:nil,
 	GLogInfoTail:nil,
 	GLogWarningHead:nil,

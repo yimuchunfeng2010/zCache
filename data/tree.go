@@ -134,7 +134,8 @@ func Add(node *types.Node, Key string, Value string) (*types.Node, error) {
 		node.Rchild, _ = Add(node.Rchild, Key, Value)
 		node = handleBF(node)
 	} else {
-		return nil, errTreeIndexExist
+		node.Value = Value
+		return node, nil
 	}
 	node.Height = max(getHeight(node.Lchild), getHeight(node.Rchild)) + 1
 	return node, nil

@@ -16,6 +16,7 @@ var Config = struct {
 	ZkIPaddr     string
 
 	SysHealthCheckCronSpec string
+	DataConsitencyCheckCronSpec string
 	LogProcessCronSpec string
 }{
 	MaxLen:       1024,
@@ -27,6 +28,7 @@ var Config = struct {
 
 	SysHealthCheckCronSpec:"0 */10 * * * *",
 	LogProcessCronSpec:"0 */10 * * * *",
+	DataConsitencyCheckCronSpec:"0 */10 * * * *",
 
 	TotalNodes:3,
 	ZkIPaddr:"192.168.228.143:2181",
@@ -40,6 +42,7 @@ var GlobalVar = struct {
 	GCoreInfo types.CoreInfo
 	SigChan chan os.Signal
 	IsAlreadyBackup bool
+	DataHashIndex int64
 	// 日志指针
 	GLogInfoHead *types.LogInfoNode
 	GLogInfoTail *types.LogInfoNode
@@ -56,6 +59,7 @@ var GlobalVar = struct {
 	GCoreInfo:types.CoreInfo{
 		KeyNum:0,
 	},
+	DataHashIndex:0,
 	IsAlreadyBackup:false,
 	GLogInfoHead:nil,
 	GLogInfoTail:nil,

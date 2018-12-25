@@ -98,3 +98,7 @@ A light Cache writed by golang
 # [version:0.2.4]
 ### Features
 增加集群亚健康/不健康时的数据备份功能
+
+# [version:0.2.5]
+### Features
+增加集群数据Hash值的计算

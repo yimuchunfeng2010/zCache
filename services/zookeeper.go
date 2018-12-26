@@ -5,7 +5,7 @@ import (
 	"ZCache/tool/logrus"
 	"ZCache/global"
 	"time"
-	"fmt"
+	//"fmt"
 	"strings"
 	"strconv"
 )
@@ -53,158 +53,162 @@ func ZookeeperInit() error {
 }
 func Lock() (lockName string, err error) {
 
-	// 创建临时写节点
-	var hosts = []string{global.Config.ZkIPaddr}
-	conn, _, err := zk.Connect(hosts, time.Second*5)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-	defer conn.Close()
-
-	// 获取当前子节点
-	children, _, err := conn.Children("/Lock")
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-
-	fmt.Println("children", children)
-	maxChild := GetMaxchild(children)
-
-	// 创建当前节点
-	var wLockPath = "/Lock/w"
-	var wLockData []byte = []byte(strconv.FormatInt(time.Now().Unix(), 10))
-	var wLockFlags int32 = 2 // 永久序列增长节点
-	var acl = zk.WorldACL(zk.PermAll)
-
-	lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-
-	if "" != maxChild {
-		// 对最大子节点设置观察点
-		_, _, ech, err := conn.ExistsW(maxChild)
-		if err != nil {
-			logrus.Errorf("%s", err.Error())
-			return "", err
-		}
-		timeout := 60 // 超时时间10s
-		for timeout > 0 {
-			select {
-			case _, ok := <-ech:
-				if ok {
-					return lockPath, nil
-				}
-			default:
-				time.Sleep(time.Second)
-				timeout--
-			}
-		}
-		return "", nil
-	} else {
-		return lockPath, nil
-	}
-
-	return "", nil
+	//// 创建临时写节点
+	//var hosts = []string{global.Config.ZkIPaddr}
+	//conn, _, err := zk.Connect(hosts, time.Second*5)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//defer conn.Close()
+	//
+	//// 获取当前子节点
+	//children, _, err := conn.Children("/Lock")
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//
+	//fmt.Println("children", children)
+	//maxChild := GetMaxchild(children)
+	//
+	//// 创建当前节点
+	//var wLockPath = "/Lock/w"
+	//var wLockData []byte = []byte(strconv.FormatInt(time.Now().Unix(), 10))
+	//var wLockFlags int32 = 2 // 永久序列增长节点
+	//var acl = zk.WorldACL(zk.PermAll)
+	//
+	//lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//
+	//if "" != maxChild {
+	//	// 对最大子节点设置观察点
+	//	_, _, ech, err := conn.ExistsW(maxChild)
+	//	if err != nil {
+	//		logrus.Errorf("%s", err.Error())
+	//		return "", err
+	//	}
+	//	timeout := 60 // 超时时间10s
+	//	for timeout > 0 {
+	//		select {
+	//		case _, ok := <-ech:
+	//			if ok {
+	//				return lockPath, nil
+	//			}
+	//		default:
+	//			time.Sleep(time.Second)
+	//			timeout--
+	//		}
+	//	}
+	//	return "", nil
+	//} else {
+	//	return lockPath, nil
+	//}
+	//
+	//return "", nil
+	return "lock",nil
 }
 
 func Unlock(lockName string) error {
 
-	var hosts = []string{global.Config.ZkIPaddr}
-	conn, _, err := zk.Connect(hosts, time.Second*5)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return err
-	}
-	defer conn.Close()
-
-	// 删除节点
-	err = conn.Delete(lockName, 0)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return err
-	}
-
+	//var hosts = []string{global.Config.ZkIPaddr}
+	//conn, _, err := zk.Connect(hosts, time.Second*5)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return err
+	//}
+	//defer conn.Close()
+	//
+	//// 删除节点
+	//err = conn.Delete(lockName, 0)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return err
+	//}
+	//
+	//return nil
 	return nil
 }
 
 func RLock() (lockName string, err error) {
-	// 创建临时写节点
-	var hosts = []string{global.Config.ZkIPaddr}
-	conn, _, err := zk.Connect(hosts, time.Second*5)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-	defer conn.Close()
-
-	// 获取当前子节点
-	children, _, err := conn.Children("/Lock")
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-
-	maxChild := GetMaxWritechild(children)
-
-	// 创建子节点
-	var wLockPath = "/Lock/r"
-	var wLockData []byte = []byte(strconv.FormatInt(time.Now().Unix(), 10))
-	var wLockFlags int32 = 2 // 永久序列增长节点
-	var acl = zk.WorldACL(zk.PermAll)
-
-	lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return "", err
-	}
-
-	if "" != maxChild {
-		// 对最大子节点设置观察点
-		_, _, ech, err := conn.ExistsW(maxChild)
-		if err != nil {
-			logrus.Errorf("%s", err.Error())
-			return "", err
-		}
-		timeout := 60 // 超时时间10s
-		for timeout > 0 {
-			select {
-			case _, ok := <-ech:
-				if ok {
-					return lockPath, nil
-				}
-			default:
-				time.Sleep(time.Second)
-				timeout--
-			}
-		}
-		return "", nil
-	} else {
-		return lockPath, nil
-	}
-
-	return "", nil
+	//// 创建临时写节点
+	//var hosts = []string{global.Config.ZkIPaddr}
+	//conn, _, err := zk.Connect(hosts, time.Second*5)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//defer conn.Close()
+	//
+	//// 获取当前子节点
+	//children, _, err := conn.Children("/Lock")
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//
+	//maxChild := GetMaxWritechild(children)
+	//
+	//// 创建子节点
+	//var wLockPath = "/Lock/r"
+	//var wLockData []byte = []byte(strconv.FormatInt(time.Now().Unix(), 10))
+	//var wLockFlags int32 = 2 // 永久序列增长节点
+	//var acl = zk.WorldACL(zk.PermAll)
+	//
+	//lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return "", err
+	//}
+	//
+	//if "" != maxChild {
+	//	// 对最大子节点设置观察点
+	//	_, _, ech, err := conn.ExistsW(maxChild)
+	//	if err != nil {
+	//		logrus.Errorf("%s", err.Error())
+	//		return "", err
+	//	}
+	//	timeout := 60 // 超时时间10s
+	//	for timeout > 0 {
+	//		select {
+	//		case _, ok := <-ech:
+	//			if ok {
+	//				return lockPath, nil
+	//			}
+	//		default:
+	//			time.Sleep(time.Second)
+	//			timeout--
+	//		}
+	//	}
+	//	return "", nil
+	//} else {
+	//	return lockPath, nil
+	//}
+	//
+	//return "", nil
+	return "lock",nil
 }
 
 func RUnlock(lockName string) error {
-	var hosts = []string{global.Config.ZkIPaddr}
-	conn, _, err := zk.Connect(hosts, time.Second*5)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return err
-	}
-	defer conn.Close()
-
-	// 删除节点
-	err = conn.Delete(lockName, 0)
-	if err != nil {
-		logrus.Errorf("%s", err.Error())
-		return err
-	}
-
+	//var hosts = []string{global.Config.ZkIPaddr}
+	//conn, _, err := zk.Connect(hosts, time.Second*5)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return err
+	//}
+	//defer conn.Close()
+	//
+	//// 删除节点
+	//err = conn.Delete(lockName, 0)
+	//if err != nil {
+	//	logrus.Errorf("%s", err.Error())
+	//	return err
+	//}
+	//
+	//return nil
 	return nil
 }
 

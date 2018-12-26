@@ -58,98 +58,181 @@ func main() {
 		fmt.Println(string(body))
 	}
 }
-func Get(ipAddr string, key string)(method string, url string){
-	method = types.HttpGet
-	url = fmt.Sprintf("http://%s:%s/:%s",ipAddr,global.Config.Port,key)
+func Get(ipAddr string, key string)(response * http.Response,err error){
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	url := fmt.Sprintf("http://%s:%s/%s",ipAddr,global.Config.Port,key)
+	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func Delete(ipAddr string, key string)(method string, url string){
-	method = types.HttpDelete
-	url = fmt.Sprintf("http://%s:%s/:%s",ipAddr,global.Config.Port,key)
+func Delete(ipAddr string, key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/%s",ipAddr,global.Config.Port,key)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpDelete, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func Set(ipAddr string, key string, value string)(method string, url string){
-	method = types.HttpPOST
-	url = fmt.Sprintf("http://%s:%s/:%s/:%s",ipAddr,global.Config.Port,key,value)
+func Set(ipAddr string, key string, value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/%s/%s",ipAddr,global.Config.Port,key,value)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPOST, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
-func Update(ipAddr string, key string, value string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/:%s/:%s",ipAddr,global.Config.Port,key,value)
-	return
-}
-func GetAll(ipAddr string)(method string, url string){
-	method = types.HttpGet
-	url = fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
-	return
-}
+func Update(ipAddr string, key string, value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/%s/%s",ipAddr,global.Config.Port,key,value)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 
-func DeleteAll(ipAddr string)(method string, url string){
-	method = types.HttpDelete
-	url = fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
 	return
 }
+func GetAll(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 
-func Export(ipAddr string)(method string, url string){
-	method = types.HttpGet
-	url = fmt.Sprintf("http://%s:%s/export",ipAddr,global.Config.Port)
-	return
-}
-
-func Import(ipAddr string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/import",ipAddr,global.Config.Port)
-	return
-}
-
-func Expension(ipAddr string,size string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/expension/:%s",ipAddr,global.Config.Port,size)
 	return
 }
 
+func DeleteAll(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpDelete, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 
-func GetKeysNum(ipAddr string)(method string, url string){
-	method = types.HttpGet
-	url = fmt.Sprintf("http://%s:%s/keys_num",ipAddr,global.Config.Port)
+	return
+}
+
+func Export(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/export",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
+	return
+}
+
+func Import(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/import",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
+	return
+}
+
+func Expension(ipAddr string,size string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/expension/%s",ipAddr,global.Config.Port,size)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
 
-func Incr(ipAddr string,key string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/incr/:%s",ipAddr,global.Config.Port,key)
+func GetKeysNum(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/keys_num",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func IncrBy(ipAddr string,key string,value string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/incrBy/:%s/:%s",ipAddr,global.Config.Port,key,value)
+
+func Incr(ipAddr string,key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/incr/:%s",ipAddr,global.Config.Port,key)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func Decr(ipAddr string,key string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/decr/:%s",ipAddr,global.Config.Port,key)
+func IncrBy(ipAddr string,key string,value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/incrBy/%s/%s",ipAddr,global.Config.Port,key,value)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func DecrBy(ipAddr string,key string,value string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/decrBy/:%s/:%s",ipAddr,global.Config.Port,key,value)
+func Decr(ipAddr string,key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/decr/%s",ipAddr,global.Config.Port,key)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func ImportRedis(ipAddr string)(method string, url string){
-	method = types.HttpPut
-	url = fmt.Sprintf("http://%s:%s/import_Redis",ipAddr,global.Config.Port)
+func DecrBy(ipAddr string,key string,value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/decrBy/%s/%s",ipAddr,global.Config.Port,key,value)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }
 
-func ExportRedis(ipAddr string)(method string, url string){
-	method = types.HttpGet
-	url = fmt.Sprintf("http://%s:%s/export_Redis",ipAddr,global.Config.Port)
+func ImportRedis(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/import_Redis",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
+	return
+}
+
+func ExportRedis(ipAddr string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s:%s/export_Redis",ipAddr,global.Config.Port)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err = client.Do(request)
 	return
 }

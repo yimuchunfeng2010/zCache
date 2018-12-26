@@ -106,3 +106,7 @@ A light Cache writed by golang
 # [version:0.2.6]
 ### Features
 实现部分客户端接口功能
+
+# [version:0.2.7]
+### Fix
+暂时屏蔽Zookeeper功能及修改客户端接口实现

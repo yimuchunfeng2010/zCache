@@ -14,6 +14,7 @@ var Config = struct {
 	ToMail       string
 	TotalNodes   int
 	ZkIPaddr     string
+	Port         string
 
 	SysHealthCheckCronSpec string
 	DataConsitencyCheckCronSpec string
@@ -32,6 +33,8 @@ var Config = struct {
 
 	TotalNodes:3,
 	ZkIPaddr:"192.168.228.143:2181",
+	Port:"8000",
+
 }
 
 var GlobalVar = struct {

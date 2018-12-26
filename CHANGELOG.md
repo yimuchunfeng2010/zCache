@@ -102,3 +102,7 @@ A light Cache writed by golang
 # [version:0.2.5]
 ### Features
 增加集群数据Hash值的计算
+
+# [version:0.2.6]
+### Features
+实现部分客户端接口功能

@@ -7,6 +7,8 @@ import (
 "net/http"
 "encoding/json"
 "bytes"
+"ZCache/types"
+	"ZCache/global"
 )
 
 type User struct {
@@ -55,4 +57,99 @@ func main() {
 		body, _ := ioutil.ReadAll(response.Body)
 		fmt.Println(string(body))
 	}
+}
+func Get(ipAddr string, key string)(method string, url string){
+	method = types.HttpGet
+	url = fmt.Sprintf("http://%s:%s/:%s",ipAddr,global.Config.Port,key)
+	return
+}
+
+func Delete(ipAddr string, key string)(method string, url string){
+	method = types.HttpDelete
+	url = fmt.Sprintf("http://%s:%s/:%s",ipAddr,global.Config.Port,key)
+	return
+}
+
+func Set(ipAddr string, key string, value string)(method string, url string){
+	method = types.HttpPOST
+	url = fmt.Sprintf("http://%s:%s/:%s/:%s",ipAddr,global.Config.Port,key,value)
+	return
+}
+func Update(ipAddr string, key string, value string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/:%s/:%s",ipAddr,global.Config.Port,key,value)
+	return
+}
+func GetAll(ipAddr string)(method string, url string){
+	method = types.HttpGet
+	url = fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+	return
+}
+
+func DeleteAll(ipAddr string)(method string, url string){
+	method = types.HttpDelete
+	url = fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+	return
+}
+
+func Export(ipAddr string)(method string, url string){
+	method = types.HttpGet
+	url = fmt.Sprintf("http://%s:%s/export",ipAddr,global.Config.Port)
+	return
+}
+
+func Import(ipAddr string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/import",ipAddr,global.Config.Port)
+	return
+}
+
+func Expension(ipAddr string,size string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/expension/:%s",ipAddr,global.Config.Port,size)
+	return
+}
+
+
+func GetKeysNum(ipAddr string)(method string, url string){
+	method = types.HttpGet
+	url = fmt.Sprintf("http://%s:%s/keys_num",ipAddr,global.Config.Port)
+	return
+}
+
+
+func Incr(ipAddr string,key string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/incr/:%s",ipAddr,global.Config.Port,key)
+	return
+}
+
+func IncrBy(ipAddr string,key string,value string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/incrBy/:%s/:%s",ipAddr,global.Config.Port,key,value)
+	return
+}
+
+func Decr(ipAddr string,key string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/decr/:%s",ipAddr,global.Config.Port,key)
+	return
+}
+
+func DecrBy(ipAddr string,key string,value string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/decrBy/:%s/:%s",ipAddr,global.Config.Port,key,value)
+	return
+}
+
+func ImportRedis(ipAddr string)(method string, url string){
+	method = types.HttpPut
+	url = fmt.Sprintf("http://%s:%s/import_Redis",ipAddr,global.Config.Port)
+	return
+}
+
+func ExportRedis(ipAddr string)(method string, url string){
+	method = types.HttpGet
+	url = fmt.Sprintf("http://%s:%s/export_Redis",ipAddr,global.Config.Port)
+	return
 }

@@ -31,3 +31,10 @@ const (
 	LogType_WARNING
 	LogType_ERROR
 )
+
+const (
+	HttpGet = "GET"
+	HttpDelete = "DELETE"
+	HttpPOST = "POST"
+	HttpPut = "PUT"
+)

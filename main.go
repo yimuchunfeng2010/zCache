@@ -11,6 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"sync"
+	"ZCache/routes/cluster_inter"
 )
 
 func init() {
@@ -76,6 +77,7 @@ func main() {
 	v3 := router.Group("/v3")
 	{
 		v3.GET("/keys_num",routes.GetKeyNum)
+		v3.POST("/:key/:value", routes.Set)
 		v3.PUT("/incr/:key",routes.Incr)
 		v3.PUT("/incrBy/:key/:value",routes.IncrBy)
 		v3.PUT("/decr/:key",routes.Decr)
@@ -92,16 +94,16 @@ func main() {
 		test.PUT("/mock_set", mock.Mock_Set)
 
 	}
-	internal := router.Group("/internal")
+	internalPath := router.Group("/internal")
 	{
-		internal.PUT("/:commitID")
+		internalPath.PUT("/commit/:commitID",cluster_inter.Commit)
 
-		internal.PUT("/:key/:value",routes.Set)
-		internal.PUT("/:key/",routes.Delete)
-		internal.PUT("/incr/:key",routes.Incr)
-		internal.PUT("/incrBy/:key/:value",routes.IncrBy)
-		internal.PUT("/decr/:key",routes.Decr)
-		internal.PUT("/decrBy/:key/:value",routes.DecrBy)
+		internalPath.POST("/:key/:value",cluster_inter.Set)
+		internalPath.DELETE("/:key/",cluster_inter.Delete)
+		internalPath.PUT("/incr/:key",cluster_inter.Incr)
+		internalPath.PUT("/incrBy/:key/:value",cluster_inter.IncrBy)
+		internalPath.PUT("/decr/:key",cluster_inter.Decr)
+		internalPath.PUT("/decrBy/:key/:value",cluster_inter.DecrBy)
 	}
 
 	router.Run(":8000")

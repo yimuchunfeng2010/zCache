@@ -1,4 +1,5 @@
-package internal
+package cluster_inter
+
 
 import (
 	"github.com/gin-gonic/gin"
@@ -8,12 +9,12 @@ import (
 	"ZCache/types"
 )
 
-func Update(context *gin.Context) {
+func IncrBy(context *gin.Context) {
 	key := context.Param("key")
 	value := context.Param("value")
 
-	logrus.Infof("%s Update Key:%s\n", tool.GetFileNameLine(), key)
-	commitID ,err := tool.GetHashIndex("Update"+key+value)
+	logrus.Infof("%s IncrBy Key:%s\n", tool.GetFileNameLine(), key)
+	commitID ,err := tool.GetHashIndex("IncrBy"+key+value)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
 		return
@@ -31,4 +32,5 @@ func Update(context *gin.Context) {
 	} else {
 		context.JSON(http.StatusOK, gin.H{"status": "ACK","commitID":commitID})
 	}
+
 }

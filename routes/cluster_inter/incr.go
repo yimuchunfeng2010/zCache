@@ -1,4 +1,4 @@
-package internal
+package cluster_inter
 
 import (
 	"github.com/gin-gonic/gin"
@@ -8,17 +8,18 @@ import (
 	"ZCache/types"
 )
 
-func Delete(context *gin.Context) {
+func Incr(context *gin.Context) {
 	key := context.Param("key")
-	logrus.Infof("%s Decr Key:%s\n", tool.GetFileNameLine(), key)
-	commitID ,err := tool.GetHashIndex("Delete"+key)
+	logrus.Infof("%s Incr:%s,\n", tool.GetFileNameLine(), key)
+
+	commitID ,err := tool.GetHashIndex("Incr"+key)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
 		return
 	}
 	preReq := types.ProcessingRequest{
 		CommitID:commitID,
-		Req :types.ReqType_DECRBY,
+		Req :types.ReqType_INCR,
 		Key:key,
 		Value:"",
 		Next:nil,
@@ -29,4 +30,5 @@ func Delete(context *gin.Context) {
 	} else {
 		context.JSON(http.StatusOK, gin.H{"status": "ACK","commitID":commitID})
 	}
+
 }

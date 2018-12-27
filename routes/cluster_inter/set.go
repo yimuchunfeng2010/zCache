@@ -1,4 +1,4 @@
-package internal
+package cluster_inter
 import (
 	"github.com/gin-gonic/gin"
 	"ZCache/tool"

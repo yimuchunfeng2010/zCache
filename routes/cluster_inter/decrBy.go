@@ -1,27 +1,25 @@
-package internal
+package cluster_inter
 
 import (
-	"ZCache/tool"
-	"ZCache/tool/logrus"
 	"github.com/gin-gonic/gin"
+	"ZCache/tool"
 	"net/http"
 	"ZCache/types"
 )
 
-func Decr(context *gin.Context) {
+func DecrBy(context *gin.Context) {
 	key := context.Param("key")
-	logrus.Infof("%s Decr Key:%s\n", tool.GetFileNameLine(), key)
-
-	commitID ,err := tool.GetHashIndex("Decr"+key)
+	value := context.Param("value")
+	commitID ,err := tool.GetHashIndex("DecrBy"+key+value)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
 		return
 	}
 	preReq := types.ProcessingRequest{
 		CommitID:commitID,
-		Req :types.ReqType_DECR,
+		Req :types.ReqType_DECRBY,
 		Key:key,
-		Value:"",
+		Value:value,
 		Next:nil,
 	}
 	err = tool.AddInternalReq(preReq)

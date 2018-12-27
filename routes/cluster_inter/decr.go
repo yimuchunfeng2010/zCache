@@ -1,25 +1,25 @@
-package internal
+package cluster_inter
 
 import (
-	"github.com/gin-gonic/gin"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"ZCache/types"
 )
 
-func Incr(context *gin.Context) {
+func Decr(context *gin.Context) {
 	key := context.Param("key")
-	logrus.Infof("%s Incr:%s,\n", tool.GetFileNameLine(), key)
+	logrus.Infof("%s Decr Key:%s\n", tool.GetFileNameLine(), key)
 
-	commitID ,err := tool.GetHashIndex("Incr"+key)
+	commitID ,err := tool.GetHashIndex("Decr"+key)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
 		return
 	}
 	preReq := types.ProcessingRequest{
 		CommitID:commitID,
-		Req :types.ReqType_INCR,
+		Req :types.ReqType_DECR,
 		Key:key,
 		Value:"",
 		Next:nil,
@@ -30,5 +30,4 @@ func Incr(context *gin.Context) {
 	} else {
 		context.JSON(http.StatusOK, gin.H{"status": "ACK","commitID":commitID})
 	}
-
 }

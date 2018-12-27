@@ -18,9 +18,9 @@ func GetAll(context *gin.Context) {
 	}
 
 	lockName, err := services.Lock()
-	if err != nil{
+	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
-		context.JSON(http.StatusOK, gin.H{"Status": "done","Reason": err.Error()})
+		context.JSON(http.StatusOK, gin.H{"Status": "done", "Reason": err.Error()})
 		return
 
 	}

@@ -1,13 +1,15 @@
 package routes
 
 import (
-	"ZCache/data"
+	"ZCache/client"
+	"ZCache/global"
 	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"time"
 )
 
 func Set(context *gin.Context) {
@@ -18,9 +20,9 @@ func Set(context *gin.Context) {
 	}
 
 	lockName, err := services.Lock()
-	if err != nil{
+	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
-		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		context.JSON(http.StatusOK, gin.H{"status": "done", "reason": err.Error()})
 		return
 
 	}
@@ -29,11 +31,44 @@ func Set(context *gin.Context) {
 	value := context.Param("value")
 	logrus.Infof("%s Set Key:%s, Value:%s\n", tool.GetFileNameLine(), key, value)
 
-	node, err := zdata.CoreAdd(key, value)
+	// 发起提议
+	commitID, err := tool.GetHashIndex("Set" + key)
 	if err != nil {
-		logrus.Warningf("%s Set Failed! [Key:%s, Err:%s]", tool.GetFileNameLine(), key, err.Error())
-		context.JSON(http.StatusConflict, gin.H{"key": key, "value": value, "status": "done"})
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
+		return
+	}
+	ackChan := make(chan int64)
+	for _, ipAddrPort := range global.Config.ClusterServers {
+		go client.GetSetAck(ipAddrPort, key, value, ackChan)
+	}
+
+	timeout := global.Config.Timeout
+	ackCount := 0
+	for timeout != 0 && ackCount < len(global.Config.ClusterServers) {
+
+		select {
+		case _, ok := <-ackChan:
+			if ok {
+				ackCount++
+			}
+		default:
+
+		}
+
+		time.Sleep(time.Second / 1000)
+		timeout--
+	}
+	close(ackChan)
+
+	// 提交
+	if ackCount == len(global.Config.ClusterServers) {
+		for _, ipAddrPort := range global.Config.ClusterServers {
+			go client.CommitJob(ipAddrPort, commitID)
+		}
+	}
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
 	} else {
-		context.JSON(http.StatusOK, gin.H{"key": node.Key, "value": node.Value, "status": "done"})
+		context.JSON(http.StatusOK, gin.H{"Status": "Success", "Data": ""})
 	}
 }

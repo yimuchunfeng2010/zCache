@@ -47,3 +47,8 @@ type ProcessingRequest struct {
 	Next *ProcessingRequest
 
 }
+
+type ResponseAckData struct {
+	CommitID   int64
+	Status string
+}

@@ -1,9 +1,10 @@
 package routes
+
 import (
-	"ZCache/tool"
-	"ZCache/tool/logrus"
 	"ZCache/external_data"
 	"ZCache/services"
+	"ZCache/tool"
+	"ZCache/tool/logrus"
 	"ZCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -17,9 +18,9 @@ func ImportFromRedis(context *gin.Context) {
 	}
 
 	lockName, err := services.Lock()
-	if err != nil{
+	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
-		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		context.JSON(http.StatusOK, gin.H{"status": "done", "reason": err.Error()})
 		return
 
 	}
@@ -27,8 +28,8 @@ func ImportFromRedis(context *gin.Context) {
 
 	err = external_data.ImportFromRedis()
 	if err != nil {
-		logrus.Warningf("%s ImportFromRedis Failed! [Err:%s]", tool.GetFileNameLine(),err.Error())
-		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		logrus.Warningf("%s ImportFromRedis Failed! [Err:%s]", tool.GetFileNameLine(), err.Error())
+		context.JSON(http.StatusOK, gin.H{"status": "done", "reason": err.Error()})
 	} else {
 		context.JSON(http.StatusOK, gin.H{"status": "done"})
 	}

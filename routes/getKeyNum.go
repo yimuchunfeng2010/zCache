@@ -18,9 +18,9 @@ func GetKeyNum(context *gin.Context) {
 	}
 
 	lockName, err := services.RLock()
-	if err != nil{
+	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())
-		context.JSON(http.StatusOK, gin.H{"status": "done","reason": err.Error()})
+		context.JSON(http.StatusOK, gin.H{"status": "done", "reason": err.Error()})
 		return
 
 	}

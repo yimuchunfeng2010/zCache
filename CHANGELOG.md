@@ -114,3 +114,7 @@ A light Cache writed by golang
 # [version:0.2.8]
 ### Fix
 增加内部增删改接口
+
+# [version:0.2.9]
+### Fix
+修改增删改接口以实现内部集群修改操作

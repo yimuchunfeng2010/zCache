@@ -12,7 +12,7 @@ func DecrBy(context *gin.Context) {
 	value := context.Param("value")
 	commitID ,err := tool.GetHashIndex("DecrBy"+key+value)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
 		return
 	}
 	preReq := types.ProcessingRequest{
@@ -24,8 +24,8 @@ func DecrBy(context *gin.Context) {
 	}
 	err = tool.AddInternalReq(preReq)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"status": "NoACK", "reason": err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
 	} else {
-		context.JSON(http.StatusOK, gin.H{"status": "ACK","commitID":commitID})
+		context.JSON(http.StatusOK, gin.H{"Status": "Success","Data":commitID})
 	}
 }

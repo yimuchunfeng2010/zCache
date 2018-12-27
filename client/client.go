@@ -58,19 +58,19 @@ func main() {
 		fmt.Println(string(body))
 	}
 }
-func Get(ipAddr string, key string)(response * http.Response,err error){
+func Get(ipAddrPort string, key string)(response * http.Response,err error){
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
-	url := fmt.Sprintf("http://%s:%s/%s",ipAddr,global.Config.Port,key)
+	url := fmt.Sprintf("http://%s/%s",ipAddrPort,key)
 	request, _ := http.NewRequest(types.HttpGet, url, req_byte)
 	request.Header.Set("Content-type", "application/json")
 	response, err = client.Do(request)
 	return
 }
 
-func Delete(ipAddr string, key string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/%s",ipAddr,global.Config.Port,key)
+func Delete(ipAddrPort string, key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/%s",ipAddrPort,key)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -80,8 +80,8 @@ func Delete(ipAddr string, key string)(response * http.Response,err error){
 	return
 }
 
-func Set(ipAddr string, key string, value string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/%s/%s",ipAddr,global.Config.Port,key,value)
+func Set(ipAddrPort string, key string, value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/%s/%s",ipAddrPort,key,value)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -90,8 +90,8 @@ func Set(ipAddr string, key string, value string)(response * http.Response,err e
 	response, err = client.Do(request)
 	return
 }
-func Update(ipAddr string, key string, value string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/%s/%s",ipAddr,global.Config.Port,key,value)
+func Update(ipAddrPort string, key string, value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/%s/%s",ipAddrPort,key,value)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -101,8 +101,8 @@ func Update(ipAddr string, key string, value string)(response * http.Response,er
 
 	return
 }
-func GetAll(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+func GetAll(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/keys",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -113,8 +113,8 @@ func GetAll(ipAddr string)(response * http.Response,err error){
 	return
 }
 
-func DeleteAll(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/keys",ipAddr,global.Config.Port)
+func DeleteAll(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/keys",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -125,8 +125,8 @@ func DeleteAll(ipAddr string)(response * http.Response,err error){
 	return
 }
 
-func Export(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/export",ipAddr,global.Config.Port)
+func Export(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/export",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -136,8 +136,8 @@ func Export(ipAddr string)(response * http.Response,err error){
 	return
 }
 
-func Import(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/import",ipAddr,global.Config.Port)
+func Import(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/import",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -147,8 +147,8 @@ func Import(ipAddr string)(response * http.Response,err error){
 	return
 }
 
-func Expension(ipAddr string,size string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/expension/%s",ipAddr,global.Config.Port,size)
+func Expension(ipAddrPort string,size string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/expension/%s",ipAddrPort,size)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -159,8 +159,8 @@ func Expension(ipAddr string,size string)(response * http.Response,err error){
 }
 
 
-func GetKeysNum(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/keys_num",ipAddr,global.Config.Port)
+func GetKeysNum(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/keys_num",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -171,8 +171,8 @@ func GetKeysNum(ipAddr string)(response * http.Response,err error){
 }
 
 
-func Incr(ipAddr string,key string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/incr/:%s",ipAddr,global.Config.Port,key)
+func Incr(ipAddrPort string,key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/incr/:%s",ipAddrPort,key)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -182,8 +182,8 @@ func Incr(ipAddr string,key string)(response * http.Response,err error){
 	return
 }
 
-func IncrBy(ipAddr string,key string,value string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/incrBy/%s/%s",ipAddr,global.Config.Port,key,value)
+func IncrBy(ipAddrPort string,key string,value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/incrBy/%s/%s",ipAddrPort,key,value)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -193,8 +193,8 @@ func IncrBy(ipAddr string,key string,value string)(response * http.Response,err 
 	return
 }
 
-func Decr(ipAddr string,key string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/decr/%s",ipAddr,global.Config.Port,key)
+func Decr(ipAddrPort string,key string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/decr/%s",ipAddrPort,key)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -204,8 +204,8 @@ func Decr(ipAddr string,key string)(response * http.Response,err error){
 	return
 }
 
-func DecrBy(ipAddr string,key string,value string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/decrBy/%s/%s",ipAddr,global.Config.Port,key,value)
+func DecrBy(ipAddrPort string,key string,value string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/decrBy/%s/%s",ipAddrPort,key,value)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -215,8 +215,8 @@ func DecrBy(ipAddr string,key string,value string)(response * http.Response,err 
 	return
 }
 
-func ImportRedis(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/import_Redis",ipAddr,global.Config.Port)
+func ImportRedis(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/import_Redis",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}
@@ -226,8 +226,8 @@ func ImportRedis(ipAddr string)(response * http.Response,err error){
 	return
 }
 
-func ExportRedis(ipAddr string)(response * http.Response,err error){
-	url := fmt.Sprintf("http://%s:%s/export_Redis",ipAddr,global.Config.Port)
+func ExportRedis(ipAddrPort string)(response * http.Response,err error){
+	url := fmt.Sprintf("http://%s/export_Redis",ipAddrPort)
 	req := `{}`
 	req_byte := bytes.NewBuffer([]byte(req))
 	client := &http.Client{}

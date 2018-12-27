@@ -3,6 +3,7 @@ package global
 import (
 	"ZCache/types"
 	"os"
+	"sync"
 )
 
 var Config = struct {
@@ -48,6 +49,8 @@ var GlobalVar = struct {
 	SigChan chan os.Signal
 	IsAlreadyBackup bool
 	DataHashIndex int64
+	GInternalLock *sync.RWMutex
+	GPreDoReqList *types.ProcessingRequest
 	// 日志指针
 	GLogInfoHead *types.LogInfoNode
 	GLogInfoTail *types.LogInfoNode
@@ -72,4 +75,6 @@ var GlobalVar = struct {
 	GLogWarningTail:nil,
 	GLogErrorHead:nil,
 	GLogErrorTail:nil,
+	GInternalLock:nil,
+	GPreDoReqList:nil,
 }

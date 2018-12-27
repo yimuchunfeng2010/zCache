@@ -10,6 +10,7 @@ import (
 	"ZCache/task"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	"sync"
 )
 
 func init() {
@@ -37,6 +38,8 @@ func init() {
 	if err != nil {
 		logrus.Warnf("RegisterNode Failed [err:%s]",err.Error())
 	}
+
+	global.GlobalVar.GInternalLock = new(sync.RWMutex)
 }
 func CronInit() {
 	services.InitCrontab()

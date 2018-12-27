@@ -110,3 +110,7 @@ A light Cache writed by golang
 # [version:0.2.7]
 ### Fix
 暂时屏蔽Zookeeper功能及修改客户端接口实现
+
+# [version:0.2.8]
+### Fix
+增加内部增删改接口

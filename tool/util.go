@@ -163,3 +163,20 @@ func GetContraryNumber(num string)(string, error){
 	contraryNum := strconv.FormatInt(tmp, 10)
 	return  contraryNum, nil
 }
+
+func AddInternalReq(req types.ProcessingRequest)(err error){
+	global.GlobalVar.GInternalLock.Lock()
+	defer global.GlobalVar.GInternalLock.Unlock()
+
+	if global.GlobalVar.GPreDoReqList == nil {
+		global.GlobalVar.GPreDoReqList = &req
+	} else{
+		curNode := global.GlobalVar.GPreDoReqList
+		for curNode.Next != nil {
+			curNode= curNode.Next
+		}
+		curNode.Next = &req
+	}
+
+	return nil
+}

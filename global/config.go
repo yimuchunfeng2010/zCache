@@ -19,6 +19,7 @@ var Config = struct {
 	SysHealthCheckCronSpec string
 	DataConsitencyCheckCronSpec string
 	LogProcessCronSpec string
+	ClusterServers []string
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -34,6 +35,7 @@ var Config = struct {
 	TotalNodes:3,
 	ZkIPaddr:"192.168.228.143:2181",
 	Port:"8000",
+	ClusterServers:[]string{"192.168.228.143:8000","192.168.228.142:8000","192.168.228.141:8000"},
 
 }
 

@@ -38,3 +38,15 @@ const (
 	HttpPOST = "POST"
 	HttpPut = "PUT"
 )
+
+type ReqType int8
+const (
+	ReqType_GET  ReqType = iota
+	ReqType_DELETE
+	ReqType_PUT
+	ReqType_POST
+	ReqType_INCR
+	ReqType_INCRBY
+	ReqType_DECR
+	ReqType_DECRBY
+)

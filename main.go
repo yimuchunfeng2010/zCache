@@ -89,6 +89,17 @@ func main() {
 		test.PUT("/mock_set", mock.Mock_Set)
 
 	}
+	internal := router.Group("/internal")
+	{
+		internal.PUT("/:commitID")
+
+		internal.PUT("/:key/:value",routes.Set)
+		internal.PUT("/:key/",routes.Delete)
+		internal.PUT("/incr/:key",routes.Incr)
+		internal.PUT("/incrBy/:key/:value",routes.IncrBy)
+		internal.PUT("/decr/:key",routes.Decr)
+		internal.PUT("/decrBy/:key/:value",routes.DecrBy)
+	}
 
 	router.Run(":8000")
 

@@ -19,9 +19,10 @@ var Config = struct {
 
 	SysHealthCheckCronSpec      string
 	DataConsitencyCheckCronSpec string
+	CleanOverdueCommitCronSpec string
 	LogProcessCronSpec          string
 	ClusterServers              []string
-	Timeout                     int64
+	Timeout                     int
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -33,6 +34,7 @@ var Config = struct {
 	SysHealthCheckCronSpec:      "0 */10 * * * *",
 	LogProcessCronSpec:          "0 */10 * * * *",
 	DataConsitencyCheckCronSpec: "0 */10 * * * *",
+	CleanOverdueCommitCronSpec: "0 */10 * * * *",
 
 	TotalNodes:     3,
 	ZkIPaddr:       "192.168.228.143:2181",

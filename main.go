@@ -49,6 +49,7 @@ func CronInit() {
 	task.InitSysHealthCheck()
 
 	task.InitLogProcess()
+	task.CleanOverdueCommit()
 }
 func main() {
 

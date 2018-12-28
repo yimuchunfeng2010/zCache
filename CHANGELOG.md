@@ -122,3 +122,7 @@ A light Cache writed by golang
 # [version:0.3.0]
 ### Features
 增加提交和撤销任务接口
+
+# [version:0.3.1]
+### Features
+增加定时清理超时Job

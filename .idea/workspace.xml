@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8df6dc52-b339-4b49-9729-48eea1eb3b2f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/task/cleanOverdueCommit.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/rpc/client.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/rpc/proto/zcache.proto" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/rpc/server.go" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change beforePath="$PROJECT_DIR$/global/config.go" afterPath="$PROJECT_DIR$/global/config.go" />
-      <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change beforePath="$PROJECT_DIR$/project.yml" afterPath="$PROJECT_DIR$/project.yml" />
-      <change beforePath="$PROJECT_DIR$/types/struct.go" afterPath="$PROJECT_DIR$/types/struct.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,21 +36,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataConsistencyCheck.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/dataConsistencyCheck.go">
+      <file leaf-file-name="cleanOverdueCommit.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task/cleanOverdueCommit.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="506">
+              <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+              <folding>
+                <element signature="e#14#121#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rpc/server.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="30" column="3" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="30" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cleanOverdueCommit.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/task/cleanOverdueCommit.go">
+      <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rpc/client.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="726">
+              <caret line="33" column="3" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="33" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zcache.proto" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rpc/proto/zcache.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -79,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="struct.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/types/struct.go">
+      <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/util.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="902">
-              <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+            <state relative-caret-position="66">
+              <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -93,35 +112,13 @@
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="527">
+              <first_editor relative-caret-position="2794">
                 <caret line="127" column="11" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
                 <folding />
               </first_editor>
               <second_editor>
                 <markdownNavigatorState />
               </second_editor>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/update.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1540">
-              <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-              <folding>
-                <element signature="e#16#180#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logProcess.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task/logProcess.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -185,10 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/routes/mock/mock_set.go" />
-        <option value="$PROJECT_DIR$/routes/mock/mock_update.go" />
-        <option value="$PROJECT_DIR$/task/clusterHealth.go" />
-        <option value="$PROJECT_DIR$/task/logProcess.go" />
         <option value="$PROJECT_DIR$/task/SysHealthCheck.go" />
         <option value="$PROJECT_DIR$/task/sysHealthCheck.go" />
         <option value="$PROJECT_DIR$/data/tree.go" />
@@ -236,6 +229,10 @@
         <option value="$PROJECT_DIR$/project.yml" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/task/cleanOverdueCommit.go" />
+        <option value="$PROJECT_DIR$/rpc/proto/zcache.proto.go" />
+        <option value="$PROJECT_DIR$/rpc/proto/zcache.go" />
+        <option value="$PROJECT_DIR$/rpc/client.go" />
+        <option value="$PROJECT_DIR$/rpc/server.go" />
       </list>
     </option>
   </component>
@@ -245,13 +242,15 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2869" />
     <option name="y" value="-11" />
     <option name="width" value="2763" />
     <option name="height" value="1642" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -277,11 +276,6 @@
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -297,44 +291,18 @@
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
+              <item name="rpc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="cluster_inter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="mock" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="task" type="462c0819:PsiDirectoryNode" />
+              <item name="rpc" type="462c0819:PsiDirectoryNode" />
+              <item name="proto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
               <item name="ZCache" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ZCache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ZCache" type="462c0819:PsiDirectoryNode" />
-              <item name="types" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -429,12 +397,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2869" y="-11" width="2763" height="1642" extended-state="7" />
+    <frame x="2869" y="-11" width="2763" height="1642" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16199027" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16386083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5536332" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55355906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -465,11 +433,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/internal/incr.go" />
-    <entry file="file://$PROJECT_DIR$/routes/internal/delete.go" />
-    <entry file="file://$PROJECT_DIR$/routes/internal/decrBy.go" />
-    <entry file="file://$PROJECT_DIR$/routes/internal/set.go" />
-    <entry file="file://$PROJECT_DIR$/routes/internal/update.go" />
     <entry file="file://$PROJECT_DIR$/routes/internal/incrBy.go" />
     <entry file="file://$PROJECT_DIR$/routes/internal/decr.go" />
     <entry file="file://$PROJECT_DIR$/routes/internal/commit.go" />
@@ -697,7 +660,7 @@
         <state relative-caret-position="1540">
           <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
           <folding>
-            <element signature="e#16#180#0" expanded="true" />
+            <element signature="e#16#180#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -761,7 +724,7 @@
     <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="527">
+          <first_editor relative-caret-position="2794">
             <caret line="127" column="11" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
             <folding />
           </first_editor>
@@ -773,8 +736,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task/cleanOverdueCommit.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="506">
+          <caret line="23" column="41" lean-forward="true" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+          <folding>
+            <element signature="e#14#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/proto/zcache.proto.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/proto/zcache.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="33" column="3" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="33" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="3" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="30" selection-end-column="3" />
           <folding />
         </state>
       </provider>

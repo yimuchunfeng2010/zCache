@@ -112,9 +112,13 @@ A light Cache writed by golang
 暂时屏蔽Zookeeper功能及修改客户端接口实现
 
 # [version:0.2.8]
-### Fix
+### Features
 增加内部增删改接口
 
 # [version:0.2.9]
 ### Fix
 修改增删改接口以实现内部集群修改操作
+
+# [version:0.3.0]
+### Features
+增加提交和撤销任务接口

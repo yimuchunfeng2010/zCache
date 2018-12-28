@@ -423,3 +423,25 @@ func CommitJob(ipAddrPort string, commitID int64) (result string, err error) {
 	}
 	return "Fail", nil
 }
+
+func DropJob(ipAddrPort string, commitID int64) (result string, err error) {
+	url := fmt.Sprintf("http://%s/internal/drop/%s", ipAddrPort, commitID)
+	req := `{}`
+	req_byte := bytes.NewBuffer([]byte(req))
+	client := &http.Client{}
+	request, _ := http.NewRequest(types.HttpPut, url, req_byte)
+	request.Header.Set("Content-type", "application/json")
+	response, err := client.Do(request)
+	var resp types.ResponseAckData
+	if response.StatusCode == 200 {
+		body, _ := ioutil.ReadAll(response.Body)
+		newErr := json.Unmarshal(body, &resp)
+		if newErr != nil {
+			fmt.Println(newErr)
+		}
+		if "Success" == resp.Status {
+			return "Success", nil
+		}
+	}
+	return "Fail", nil
+}

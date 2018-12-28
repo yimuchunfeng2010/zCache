@@ -66,6 +66,10 @@ func Delete(context *gin.Context) {
 		for _, ipAddrPort := range global.Config.ClusterServers {
 			go client.CommitJob(ipAddrPort, commitID)
 		}
+	} else { //撤销任务
+		for _, ipAddrPort := range global.Config.ClusterServers {
+			go client.DropJob(ipAddrPort, commitID)
+		}
 	}
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})

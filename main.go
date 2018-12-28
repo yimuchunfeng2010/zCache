@@ -97,6 +97,7 @@ func main() {
 	internalPath := router.Group("/internal")
 	{
 		internalPath.PUT("/commit/:commitID",cluster_inter.Commit)
+		internalPath.PUT("/drop/:commitID",cluster_inter.Commit)
 
 		internalPath.POST("/:key/:value",cluster_inter.Set)
 		internalPath.DELETE("/:key/",cluster_inter.Delete)

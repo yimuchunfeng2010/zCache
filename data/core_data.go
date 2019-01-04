@@ -5,12 +5,10 @@ import (
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
-	"bufio"
 	"errors"
 	"fmt"
-	"io"
 	"os"
-	"strings"
+	"encoding/json"
 )
 
 func CoreAdd(key string, value string) (*types.Node, error) {
@@ -142,6 +140,8 @@ func CoreFlush() error {
 			return err
 		}
 	}
+
+	dataList := make([]types.KeyValue,0)
 	// 写文件
 	file, err := os.OpenFile(tool.GetDataLogFileName(), os.O_RDWR|os.O_CREATE|os.O_EXCL, 0666)
 	if err != nil {
@@ -149,15 +149,21 @@ func CoreFlush() error {
 	}
 	defer file.Close()
 
-	fileWrite := bufio.NewWriter(file)
 	curNode := rspRoot
 	for nil != curNode {
-		msg := fmt.Sprintf("%s  %s\n", curNode.Key, curNode.Value)
-		fileWrite.WriteString(msg)
-		curNode = curNode.Next
+		dataList = append(dataList,types.KeyValue{curNode.Key,curNode.Value})
 
 	}
-	fileWrite.Flush()
+
+	jsonData, err := json.MarshalIndent(dataList,"","   ")
+	if err != nil {
+	 fmt.Println("Encoder failed", err.Error())
+
+	} else {
+	 fmt.Println("Encoder success")
+	}
+
+	file.Write(jsonData)
 
 	return nil
 }
@@ -174,27 +180,19 @@ func CoreImport() error {
 		return err
 	}
 	defer fi.Close()
-	br := bufio.NewReader(fi)
 
-	for {
-		data, _, c := br.ReadLine()
-		if c == io.EOF {
-			break
-		}
+	// 采用json格式数据
+	var dataList []types.KeyValue
 
-		array := strings.Split(string(data), "  ")
-		if len(array) != 2 {
-			logrus.Warningf("%s  Invaild Data! [Data: %s]\n", tool.GetFileNameLine(), string(data))
-			continue
-		}
-		key := array[0]
-		value := array[1]
-		_, err := CoreAdd(key, value)
-		if err != nil {
-			logrus.Warningf("%s  CoreAdd Data[Key: %s, Value: %s]\n", tool.GetFileNameLine(), key, value)
-			continue
-		}
+	decoder := json.NewDecoder(fi)
+	decoder.Decode(&dataList)
 
+	for _, data := range dataList{
+		_, err := CoreAdd(data.Key, data.Value)
+			if err != nil {
+				logrus.Warningf("%s  CoreAdd Data[Key: %s, Value: %s]\n", tool.GetFileNameLine(), data.Key, data.Value)
+				continue
+			}
 	}
 	return nil
 }

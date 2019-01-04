@@ -51,9 +51,9 @@ func GetDataLogFileName() string {
 	x := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second(), now.Nanosecond(), time.Local)
 	var fileName string
 	if "windows" == runtime.GOOS {
-		fileName = "data_log/" + x.Format("2006-01-02_15-04-05_112") + ".txt"
+		fileName = "data_log/" + x.Format("2006-01-02_15-04-05_112") + ".json"
 	} else {
-		fileName = "data_log\\" + x.Format("2006-01-02_15-04-05_112") + ".txt"
+		fileName = "data_log\\" + x.Format("2006-01-02_15-04-05_112") + ".json"
 	}
 
 	return fileName

@@ -137,6 +137,7 @@ func GetFileNameLine() string {
 }
 
 func ClusterHealthCheck(operation types.OperationType)(bool , error){
+	// todo
 	//switch operation {
 	//case types.OPERATION_TYPE_SET,types.OPERATION_TYPE_DELETE,types.OPERATION_TYPE_POST:
 	//	if global.GlobalVar.GClusterHealthState != types.CLUSTER_HEALTH_TYPE_HEALTH{

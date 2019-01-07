@@ -1,21 +1,24 @@
 syntax = "proto3";
 
-option java_package = "io.grpc.examples";
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.zache";
+option java_outer_classname = "ZcacheProto";
 
 package proto;
 
 // The greeter service definition.
-service Greeter {
-// Sends a greeting
-rpc SayHello (HelloRequest) returns (HelloReply) {}
+service ZacheProto {
+// 获取单个value
+rpc GetKey(DataRequest)returns (DataReply){}
+// 获取全部key/value
+r
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-string name = 1;
+message DataRequest {
+string key = 1;
 }
-
 // The response message containing the greetings
-message HelloReply {
-string message = 1;
+message DataReply {
+string key = 2;
+string value = 3;
 }

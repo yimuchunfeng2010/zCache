@@ -39,7 +39,7 @@ var Config = struct {
 	TotalNodes:     3,
 	ZkIPaddr:       "192.168.228.143:2181",
 	Port:           "8000",
-	ClusterServers: []string{"192.168.228.143:8000", "192.168.228.142:8000", "192.168.228.141:8000"},
+	ClusterServers: []string{"127.0.0.1:8000"},
 	Timeout:        5000, //ms
 
 }

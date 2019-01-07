@@ -20,7 +20,7 @@ func IncrBy(context *gin.Context) {
 	}
 	preReq := types.ProcessingRequest{
 		CommitID: commitID,
-		Req:      types.ReqType_DECRBY,
+		Req:      types.ReqType_INCRBY,
 		Key:      key,
 		Value:    value,
 		Next:     nil,

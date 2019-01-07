@@ -1,7 +1,6 @@
 package task
 
 import (
-	"ZCache/data"
 	"ZCache/global"
 	"ZCache/services"
 	"ZCache/types"
@@ -44,7 +43,8 @@ func DoSysHealthCheck() {
 
 			}
 			defer services.Unlock(lockName)
-			zdata.CoreFlush()
+			// todo 暂时关闭数据保存功能
+			//zdata.CoreFlush()
 			global.GlobalVar.IsAlreadyBackup = true
 		}
 	} else if types.CLUSTER_HEALTH_TYPE_HEALTH == global.GlobalVar.GClusterHealthState {

@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
+	"fmt"
 )
 
 func Delete(context *gin.Context) {
@@ -61,6 +62,7 @@ func Delete(context *gin.Context) {
 	}
 	close(ackChan)
 
+	fmt.Println("CCCC",commitID)
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
 		for _, ipAddrPort := range global.Config.ClusterServers {

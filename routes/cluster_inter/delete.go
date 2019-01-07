@@ -18,7 +18,7 @@ func Delete(context *gin.Context) {
 	}
 	preReq := types.ProcessingRequest{
 		CommitID: commitID,
-		Req:      types.ReqType_DECRBY,
+		Req:      types.ReqType_DELETE,
 		Key:      key,
 		Value:    "",
 		Next:     nil,

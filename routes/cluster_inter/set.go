@@ -20,7 +20,7 @@ func Set(context *gin.Context) {
 	}
 	preReq := types.ProcessingRequest{
 		CommitID: commitID,
-		Req:      types.ReqType_DECRBY,
+		Req:      types.ReqType_POST,
 		Key:      key,
 		Value:    value,
 		Next:     nil,

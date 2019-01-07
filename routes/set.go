@@ -60,6 +60,7 @@ func Set(context *gin.Context) {
 	}
 	close(ackChan)
 
+	logrus.Infof("commitID %+v",commitID)
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
 		for _, ipAddrPort := range global.Config.ClusterServers {
@@ -71,8 +72,8 @@ func Set(context *gin.Context) {
 		}
 	}
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "fail", "Data": err.Error()})
 	} else {
-		context.JSON(http.StatusOK, gin.H{"Status": "Success", "Data": ""})
+		context.JSON(http.StatusOK, gin.H{"Status": "success"})
 	}
 }

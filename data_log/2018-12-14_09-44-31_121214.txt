@@ -1,5 +1,0 @@
-aaa  bbb
-ccc  ddd
-eee  fff
-ggg  kkk
-lll  aaa

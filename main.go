@@ -78,7 +78,6 @@ func main() {
 	v3 := router.Group("/v3")
 	{
 		v3.GET("/keys_num",routes.GetKeyNum)
-		v3.POST("/:key/:value", routes.Set)
 		v3.PUT("/incr/:key",routes.Incr)
 		v3.PUT("/incrBy/:key/:value",routes.IncrBy)
 		v3.PUT("/decr/:key",routes.Decr)
@@ -98,7 +97,7 @@ func main() {
 	internalPath := router.Group("/internal")
 	{
 		internalPath.PUT("/commit/:commitID",cluster_inter.Commit)
-		internalPath.PUT("/drop/:commitID",cluster_inter.Commit)
+		internalPath.PUT("/drop/:commitID",cluster_inter.Drop)
 
 		internalPath.POST("/:key/:value",cluster_inter.Set)
 		internalPath.DELETE("/:key/",cluster_inter.Delete)

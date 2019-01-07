@@ -30,7 +30,7 @@ func Get(context *gin.Context) {
 
 	node, err := zdata.CoreGet(key)
 	if err != nil {
-		context.JSON(http.StatusNotFound, gin.H{"value": "", "status": "done"})
+		context.JSON(http.StatusNotFound, gin.H{"status": "fail"})
 	} else {
 		context.JSON(http.StatusOK, gin.H{"key": node.Key, "value": node.Value, "status": "done"})
 	}

@@ -23,6 +23,7 @@ var Config = struct {
 	LogProcessCronSpec          string
 	ClusterServers              []string
 	Timeout                     int
+	GrpcPort                    string
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -34,14 +35,14 @@ var Config = struct {
 	SysHealthCheckCronSpec:      "0 */10 * * * *",
 	LogProcessCronSpec:          "0 */10 * * * *",
 	DataConsitencyCheckCronSpec: "0 */10 * * * *",
-	CleanOverdueCommitCronSpec: "0 */10 * * * *",
+	CleanOverdueCommitCronSpec:  "0 */10 * * * *",
 
 	TotalNodes:     3,
 	ZkIPaddr:       "192.168.228.143:2181",
 	Port:           "8000",
 	ClusterServers: []string{"127.0.0.1:8000"},
-	Timeout:        5000, //ms
-
+	Timeout:        5000,    //ms
+	GrpcPort:       "50051", // grpc端口号
 }
 
 var GlobalVar = struct {

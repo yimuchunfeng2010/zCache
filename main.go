@@ -12,6 +12,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"sync"
 	"ZCache/routes/cluster_inter"
+	"ZCache/zcache_rpc/server"
 )
 
 func init() {
@@ -56,6 +57,8 @@ func main() {
 	// 启动任务框架
 	go CronInit()
 
+	// 启动GRPC
+	go server.GrpcInit()
 	router := gin.Default()
 	v1 := router.Group("/v1")
 	{

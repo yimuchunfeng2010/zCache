@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.zache";
+option java_outer_classname = "ZcacheRpcProto";
+
+package zcacherpc;
+
+// The greeter service definition.
+service ZacheProto {
+    // 获取单个value
+    rpc GetValue(Data)returns (Data){}
+    // 获取全部key/value
+    rpc GetValues(Data)returns (stream Data){}
+    // 设置key/value
+    rpc SetValue(Data)returns (Data){}
+    // 删除key/value
+    rpc DeleteValue(Data)returns (Data){}
+}
+
+// The response message containing the greetings
+message Data {
+    string key = 1;
+    string value = 2;
+}

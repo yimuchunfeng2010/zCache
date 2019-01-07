@@ -168,7 +168,6 @@ func GetContraryNumber(num string)(string, error){
 func AddInternalReq(req types.ProcessingRequest)(err error){
 	global.GlobalVar.GInternalLock.Lock()
 	defer global.GlobalVar.GInternalLock.Unlock()
-
 	if global.GlobalVar.GPreDoReqList == nil {
 		global.GlobalVar.GPreDoReqList = &req
 	} else{

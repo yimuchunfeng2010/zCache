@@ -126,3 +126,7 @@ A light Cache writed by golang
 # [version:0.3.1]
 ### Features
 增加定时清理超时Job
+
+# [version:0.3.2]
+### Features
+添加.gitignore文件

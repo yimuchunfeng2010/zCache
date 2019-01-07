@@ -7,6 +7,7 @@ import (
 "github.com/gin-gonic/gin"
 "strconv"
 	"net/http"
+	"ZCache/types"
 )
 
 func Drop(context *gin.Context) {
@@ -15,25 +16,23 @@ func Drop(context *gin.Context) {
 
 	global.GlobalVar.GInternalLock.Lock()
 	defer global.GlobalVar.GInternalLock.Unlock()
-	curNode := global.GlobalVar.GPreDoReqList
-	preNode := global.GlobalVar.GPreDoReqList
-	if curNode != nil {
-		if curNode.CommitID == commitID {
-			global.GlobalVar.GPreDoReqList.Next = curNode.Next
-		} else {
-			curNode = curNode.Next
-		}
-	}
+	var toDORequest  *types.ProcessingRequest = nil
 
-	for curNode != nil {
-		if curNode.CommitID == commitID {
-			preNode.Next = curNode.Next
-			break
+	if(global.GlobalVar.GPreDoReqList.CommitID == commitID){
+		toDORequest = global.GlobalVar.GPreDoReqList
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else{
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+			tmpPre = tmpPre.Next
 		}
-		preNode = curNode
-		curNode = curNode.Next
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+			toDORequest = tmpPre.Next
+			tmpPre.Next = tmpPre.Next.Next
+		}
+
 	}
-	if curNode == nil {
+	if toDORequest == nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": "Job Not Founc"})
 	} else {
 		context.JSON(http.StatusOK, gin.H{"Status": "Success","Data":commitID})

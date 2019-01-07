@@ -32,7 +32,7 @@ func Set(context *gin.Context) {
 	logrus.Infof("%s Set Key:%s, Value:%s\n", tool.GetFileNameLine(), key, value)
 
 	// 发起提议
-	commitID, err := tool.GetHashIndex("Set" + key)
+	commitID, err := tool.GetHashIndex("Set" + key + value)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
 		return
@@ -64,6 +64,7 @@ func Set(context *gin.Context) {
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
 		for _, ipAddrPort := range global.Config.ClusterServers {
+			// todo 获取执行结果
 			go client.CommitJob(ipAddrPort, commitID)
 		}
 	} else { //撤销任务

@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"ZCache/types"
 	"ZCache/data"
+	"errors"
 )
 
 func Commit(context *gin.Context) {
@@ -17,33 +18,31 @@ func Commit(context *gin.Context) {
 
 	global.GlobalVar.GInternalLock.Lock()
 	defer global.GlobalVar.GInternalLock.Unlock()
-	curNode := global.GlobalVar.GPreDoReqList
-	preNode := global.GlobalVar.GPreDoReqList
-	if curNode != nil{
-		if curNode.CommitID == commitID {
-			global.GlobalVar.GPreDoReqList.Next = curNode
-			goto ProcessCommit
-		}else{
-			curNode = curNode.Next
+
+	var toDORequest  *types.ProcessingRequest = nil
+	if(global.GlobalVar.GPreDoReqList.CommitID == commitID){
+		toDORequest = global.GlobalVar.GPreDoReqList
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else{
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+			tmpPre = tmpPre.Next
 		}
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+			toDORequest = tmpPre.Next
+			tmpPre.Next = tmpPre.Next.Next
+		}
+
 	}
 
-	for curNode != nil {
-		if curNode.CommitID == commitID{
-			preNode.Next = curNode.Next
-			goto ProcessCommit
-		}
-		preNode = curNode
-		curNode = curNode.Next
-	}
 
-	ProcessCommit:
-	if curNode == nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": "curNode nil"})
+	if toDORequest == nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"Status": "fail", "Data": "commit not found"})
+		return
 	} else {
-		err := DoCommit(curNode)
+		err := DoCommit(toDORequest)
 		if err != nil {
-			context.JSON(http.StatusInternalServerError, gin.H{"Status": "Fail", "Data": err.Error()})
+			context.JSON(http.StatusInternalServerError, gin.H{"Status": "fail", "Data": err.Error()})
 		}else{
 			context.JSON(http.StatusOK, gin.H{"Status": "Success","Data":commitID})
 		}
@@ -63,6 +62,9 @@ func DoCommit(data *types.ProcessingRequest)(err error){
 		_, err = zdata.CoreUpdate(data.Key,data.Value)
 	case types.ReqType_INCR,types.ReqType_INCRBY,types.ReqType_DECR,types.ReqType_DECRBY:
 		_, err = zdata.CoreInDecr(data.Key,data.Value)
+	default:
+		err = errors.New("Wrong Request Type")
 	}
+
 	return
 }

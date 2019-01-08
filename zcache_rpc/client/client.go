@@ -21,30 +21,29 @@ func main(){
 	client := pb.NewZacheProtoClient(conn)
 	SetValue(client, pb.Data{Key:"YYY",Value:"ZZZ"})
 	SetValue(client, pb.Data{Key:"UUU",Value:"OOO"})
-	GetValue(client, pb.Data{Key:"UUU",Value:""})
-	GetValues(client, pb.Data{Key:"",Value:""})
-	DeleteValue(client, pb.Data{Key:"UUU",Value:""})
-	GetValues(client, pb.Data{Key:"",Value:""})
+	GetKey(client, pb.Data{Key:"UUU",Value:""})
+	GetKeys(client, pb.Data{Key:"",Value:""})
+	DeleteKey(client, pb.Data{Key:"UUU",Value:""})
+	GetKeys(client, pb.Data{Key:"",Value:""})
 }
 
 
-func GetValue(client pb.ZacheProtoClient, data pb.Data)(resp *pb.Data, err error){
+func GetKey(client pb.ZacheProtoClient, data pb.Data)(resp *pb.Data, err error){
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
 	defer cancel()
-	if resp, err = client.GetValue(ctx,&data); err != nil{
+	if resp, err = client.InGetKey(ctx,&data); err != nil{
 		logrus.Warningf("GetValue Failed[data:%+v, err:%+s]",data, err.Error())
 		return
 	}
 
-	fmt.Println("AAA",resp)
 	return
 
 }
 
-func GetValues(client pb.ZacheProtoClient, data pb.Data)(resp []pb.Data, err error){
+func GetKeys(client pb.ZacheProtoClient, data pb.Data)(resp []pb.Data, err error){
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
 	defer cancel()
-	stream, err := client.GetValues(ctx,&data)
+	stream, err := client.InGetKeys(ctx,&data)
 	if err != nil{
 		logrus.Warningf("GetValue Failed[data:%+v, err:%+s]",data, err.Error())
 		return
@@ -60,25 +59,23 @@ func GetValues(client pb.ZacheProtoClient, data pb.Data)(resp []pb.Data, err err
 		resp = append(resp, *serverData)
 	}
 
-	fmt.Println("BBB",resp)
 	return
 }
 
 func SetValue(client pb.ZacheProtoClient, data pb.Data)(resp *pb.Data, err error){
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
 	defer cancel()
-	if resp, err = client.SetValue(ctx, &data); err != nil{
-		fmt.Println("TTTTT",err)
+	if resp, err = client.InSetValue(ctx, &data); err != nil{
 		logrus.Warningf("SetValue Failed[data:%+v, err:%+v]",data, err)
 		return
 	}
 	return
 }
 
-func DeleteValue(client pb.ZacheProtoClient, data pb.Data)(resp *pb.Data, err error){
+func DeleteKey(client pb.ZacheProtoClient, data pb.Data)(resp *pb.Data, err error){
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
 	defer cancel()
-	if resp, err = client.DeleteValue(ctx, &data); err != nil{
+	if resp, err = client.InDeleteKey(ctx, &data); err != nil{
 		logrus.Warningf("SetValue Failed[data:%+v, err:%+s]",data, err.Error())
 		return
 	}

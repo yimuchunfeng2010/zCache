@@ -22,7 +22,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// The response message containing the greetings
 type Data struct {
 	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
@@ -77,19 +76,25 @@ func init() {
 func init() { proto.RegisterFile("zcache_rpc.proto", fileDescriptor_94d17b23d99d3443) }
 
 var fileDescriptor_94d17b23d99d3443 = []byte{
-	// 187 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xa8, 0x4a, 0x4e, 0x4c,
-	0xce, 0x48, 0x8d, 0x2f, 0x2a, 0x48, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x84, 0x88,
-	0x14, 0x15, 0x24, 0x2b, 0xe9, 0x71, 0xb1, 0xb8, 0x24, 0x96, 0x24, 0x0a, 0x09, 0x70, 0x31, 0x67,
-	0xa7, 0x56, 0x4a, 0x30, 0x2a, 0x30, 0x6a, 0x70, 0x06, 0x81, 0x98, 0x42, 0x22, 0x5c, 0xac, 0x65,
-	0x89, 0x39, 0xa5, 0xa9, 0x12, 0x4c, 0x60, 0x31, 0x08, 0xc7, 0xe8, 0x12, 0x23, 0x17, 0x57, 0x14,
-	0x48, 0x73, 0x00, 0xd8, 0x24, 0x3d, 0x2e, 0x0e, 0xf7, 0xd4, 0x92, 0x30, 0x90, 0x94, 0x10, 0xbf,
-	0x1e, 0xdc, 0x58, 0x3d, 0x90, 0x99, 0x52, 0xe8, 0x02, 0x4a, 0x0c, 0x42, 0x86, 0x5c, 0x9c, 0x30,
-	0xf5, 0xc5, 0xc4, 0x68, 0x30, 0x60, 0x04, 0x59, 0x11, 0x4c, 0x9a, 0x15, 0xdc, 0x2e, 0xa9, 0x39,
-	0xa9, 0x25, 0xa9, 0x44, 0x6b, 0x71, 0xd2, 0xe2, 0x12, 0xcb, 0xcc, 0xd7, 0x4b, 0x07, 0x89, 0xa4,
-	0x56, 0x24, 0xe6, 0x16, 0xe4, 0xa4, 0x16, 0xeb, 0x55, 0x81, 0xd4, 0x38, 0xf1, 0x45, 0x81, 0xd5,
-	0x06, 0x15, 0x24, 0x83, 0xfd, 0x1b, 0xc0, 0x98, 0xc4, 0x06, 0x0e, 0x42, 0x63, 0x40, 0x00, 0x00,
-	0x00, 0xff, 0xff, 0xe7, 0xa1, 0x42, 0xa5, 0x56, 0x01, 0x00, 0x00,
+	// 287 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0x4f, 0x4b, 0xf3, 0x40,
+	0x10, 0xc6, 0xdf, 0xbc, 0xda, 0x62, 0x46, 0xd1, 0xb2, 0x88, 0x14, 0x4f, 0xd2, 0x93, 0x88, 0xac,
+	0xb5, 0x7e, 0x83, 0x98, 0x22, 0x4b, 0x41, 0x4a, 0x05, 0x0f, 0xbd, 0x48, 0x5c, 0x06, 0x0d, 0x66,
+	0xff, 0xb0, 0xd9, 0x4a, 0xd2, 0xcf, 0xed, 0x07, 0x90, 0xdd, 0xa8, 0x88, 0xa7, 0xc9, 0x2d, 0x79,
+	0x78, 0x7e, 0xf3, 0xcc, 0xec, 0x30, 0x30, 0xda, 0xca, 0x42, 0xbe, 0xe2, 0x93, 0xb3, 0x92, 0x5b,
+	0x67, 0xbc, 0x61, 0x69, 0xa7, 0x38, 0x2b, 0x27, 0x1c, 0x76, 0xf3, 0xc2, 0x17, 0x6c, 0x04, 0x3b,
+	0x6f, 0xd8, 0x8e, 0x93, 0xb3, 0xe4, 0x3c, 0x5d, 0x85, 0x4f, 0x76, 0x0c, 0x83, 0xf7, 0xa2, 0xda,
+	0xe0, 0xf8, 0x7f, 0xd4, 0xba, 0x9f, 0xd9, 0xc7, 0x00, 0x60, 0x1d, 0xe0, 0x65, 0xac, 0xc4, 0x61,
+	0x4f, 0xe8, 0x3b, 0xf4, 0x0b, 0x6c, 0xd9, 0x11, 0xff, 0x29, 0xcb, 0x43, 0xcd, 0xd3, 0xbf, 0xc2,
+	0xe4, 0x1f, 0xbb, 0x86, 0xf4, 0xdb, 0x5f, 0x53, 0x80, 0x69, 0xc2, 0xa6, 0x00, 0x42, 0x3f, 0xa0,
+	0x7f, 0x0c, 0xf9, 0xc4, 0x90, 0x7d, 0xa1, 0x73, 0xac, 0xd0, 0x23, 0xb5, 0xaf, 0x38, 0xc7, 0xbc,
+	0xb1, 0xc6, 0x79, 0xba, 0x5f, 0x28, 0xb2, 0x7f, 0x06, 0x07, 0xbf, 0x5a, 0xaa, 0xe9, 0x63, 0xcc,
+	0x1b, 0x8b, 0xba, 0x2e, 0x8d, 0xa6, 0x23, 0xdd, 0xf3, 0xde, 0x6f, 0x14, 0x09, 0xb9, 0x0a, 0x1b,
+	0x59, 0x60, 0x2b, 0xb4, 0x74, 0xf4, 0x8c, 0x2f, 0x20, 0x6b, 0x7b, 0x65, 0xe4, 0xd8, 0x33, 0x23,
+	0x00, 0x59, 0x8f, 0x0d, 0xde, 0x1a, 0xa5, 0x4a, 0xda, 0x46, 0x2e, 0x61, 0x28, 0x74, 0xee, 0x8c,
+	0xa5, 0xb8, 0xb3, 0x0b, 0x38, 0x29, 0x0d, 0x7f, 0x09, 0x0a, 0x36, 0x85, 0xb2, 0x15, 0xd6, 0x7c,
+	0x1b, 0x3c, 0xd9, 0xe1, 0x3a, 0x7a, 0x57, 0x56, 0xc6, 0x8b, 0x58, 0x26, 0xcf, 0xc3, 0x78, 0x64,
+	0x37, 0x9f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x97, 0xe8, 0xb2, 0x61, 0x78, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -105,13 +110,35 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ZacheProtoClient interface {
 	// 获取单个value
-	GetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	InGetKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 	// 获取全部key/value
-	GetValues(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_GetValuesClient, error)
+	InGetKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_InGetKeysClient, error)
 	// 设置key/value
-	SetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
-	// 删除key/value
-	DeleteValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	InSetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 删除key
+	InDeleteKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 导出数据
+	InExport(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 导入数据
+	InImport(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 删除所有数据
+	InDeleteKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 扩容
+	InExpension(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 扩容
+	InGetKeyNum(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key加一
+	InKeyIncr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key加n
+	InKeyIncrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key减一
+	InKeyDecr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key减n
+	InKeyDecrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 提交事务
+	InCommit(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 丢弃事务
+	InDrop(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 }
 
 type zacheProtoClient struct {
@@ -122,21 +149,21 @@ func NewZacheProtoClient(cc *grpc.ClientConn) ZacheProtoClient {
 	return &zacheProtoClient{cc}
 }
 
-func (c *zacheProtoClient) GetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+func (c *zacheProtoClient) InGetKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
 	out := new(Data)
-	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/GetValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InGetKey", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *zacheProtoClient) GetValues(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_GetValuesClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_ZacheProto_serviceDesc.Streams[0], "/zcacherpc.ZacheProto/GetValues", opts...)
+func (c *zacheProtoClient) InGetKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_InGetKeysClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ZacheProto_serviceDesc.Streams[0], "/zcacherpc.ZacheProto/InGetKeys", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &zacheProtoGetValuesClient{stream}
+	x := &zacheProtoInGetKeysClient{stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -146,16 +173,16 @@ func (c *zacheProtoClient) GetValues(ctx context.Context, in *Data, opts ...grpc
 	return x, nil
 }
 
-type ZacheProto_GetValuesClient interface {
+type ZacheProto_InGetKeysClient interface {
 	Recv() (*Data, error)
 	grpc.ClientStream
 }
 
-type zacheProtoGetValuesClient struct {
+type zacheProtoInGetKeysClient struct {
 	grpc.ClientStream
 }
 
-func (x *zacheProtoGetValuesClient) Recv() (*Data, error) {
+func (x *zacheProtoInGetKeysClient) Recv() (*Data, error) {
 	m := new(Data)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -163,18 +190,117 @@ func (x *zacheProtoGetValuesClient) Recv() (*Data, error) {
 	return m, nil
 }
 
-func (c *zacheProtoClient) SetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+func (c *zacheProtoClient) InSetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
 	out := new(Data)
-	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/SetValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InSetValue", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *zacheProtoClient) DeleteValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+func (c *zacheProtoClient) InDeleteKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
 	out := new(Data)
-	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/DeleteValue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InDeleteKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InExport(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InExport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InImport(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InImport", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InDeleteKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InDeleteKeys", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InExpension(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InExpension", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InGetKeyNum(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InGetKeyNum", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InKeyIncr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InKeyIncr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InKeyIncrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InKeyIncrBy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InKeyDecr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InKeyDecr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InKeyDecrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InKeyDecrBy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InCommit(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InCommit", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) InDrop(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/InDrop", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -184,90 +310,310 @@ func (c *zacheProtoClient) DeleteValue(ctx context.Context, in *Data, opts ...gr
 // ZacheProtoServer is the server API for ZacheProto service.
 type ZacheProtoServer interface {
 	// 获取单个value
-	GetValue(context.Context, *Data) (*Data, error)
+	InGetKey(context.Context, *Data) (*Data, error)
 	// 获取全部key/value
-	GetValues(*Data, ZacheProto_GetValuesServer) error
+	InGetKeys(*Data, ZacheProto_InGetKeysServer) error
 	// 设置key/value
-	SetValue(context.Context, *Data) (*Data, error)
-	// 删除key/value
-	DeleteValue(context.Context, *Data) (*Data, error)
+	InSetValue(context.Context, *Data) (*Data, error)
+	// 删除key
+	InDeleteKey(context.Context, *Data) (*Data, error)
+	// 导出数据
+	InExport(context.Context, *Data) (*Data, error)
+	// 导入数据
+	InImport(context.Context, *Data) (*Data, error)
+	// 删除所有数据
+	InDeleteKeys(context.Context, *Data) (*Data, error)
+	// 扩容
+	InExpension(context.Context, *Data) (*Data, error)
+	// 扩容
+	InGetKeyNum(context.Context, *Data) (*Data, error)
+	// key加一
+	InKeyIncr(context.Context, *Data) (*Data, error)
+	// key加n
+	InKeyIncrBy(context.Context, *Data) (*Data, error)
+	// key减一
+	InKeyDecr(context.Context, *Data) (*Data, error)
+	// key减n
+	InKeyDecrBy(context.Context, *Data) (*Data, error)
+	// 提交事务
+	InCommit(context.Context, *Data) (*Data, error)
+	// 丢弃事务
+	InDrop(context.Context, *Data) (*Data, error)
 }
 
 func RegisterZacheProtoServer(s *grpc.Server, srv ZacheProtoServer) {
 	s.RegisterService(&_ZacheProto_serviceDesc, srv)
 }
 
-func _ZacheProto_GetValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ZacheProto_InGetKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Data)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ZacheProtoServer).GetValue(ctx, in)
+		return srv.(ZacheProtoServer).InGetKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zcacherpc.ZacheProto/GetValue",
+		FullMethod: "/zcacherpc.ZacheProto/InGetKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ZacheProtoServer).GetValue(ctx, req.(*Data))
+		return srv.(ZacheProtoServer).InGetKey(ctx, req.(*Data))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ZacheProto_GetValues_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _ZacheProto_InGetKeys_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(Data)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(ZacheProtoServer).GetValues(m, &zacheProtoGetValuesServer{stream})
+	return srv.(ZacheProtoServer).InGetKeys(m, &zacheProtoInGetKeysServer{stream})
 }
 
-type ZacheProto_GetValuesServer interface {
+type ZacheProto_InGetKeysServer interface {
 	Send(*Data) error
 	grpc.ServerStream
 }
 
-type zacheProtoGetValuesServer struct {
+type zacheProtoInGetKeysServer struct {
 	grpc.ServerStream
 }
 
-func (x *zacheProtoGetValuesServer) Send(m *Data) error {
+func (x *zacheProtoInGetKeysServer) Send(m *Data) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _ZacheProto_SetValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ZacheProto_InSetValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Data)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ZacheProtoServer).SetValue(ctx, in)
+		return srv.(ZacheProtoServer).InSetValue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zcacherpc.ZacheProto/SetValue",
+		FullMethod: "/zcacherpc.ZacheProto/InSetValue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ZacheProtoServer).SetValue(ctx, req.(*Data))
+		return srv.(ZacheProtoServer).InSetValue(ctx, req.(*Data))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ZacheProto_DeleteValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ZacheProto_InDeleteKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Data)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ZacheProtoServer).DeleteValue(ctx, in)
+		return srv.(ZacheProtoServer).InDeleteKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/zcacherpc.ZacheProto/DeleteValue",
+		FullMethod: "/zcacherpc.ZacheProto/InDeleteKey",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ZacheProtoServer).DeleteValue(ctx, req.(*Data))
+		return srv.(ZacheProtoServer).InDeleteKey(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InExport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InExport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InExport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InExport(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InImport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InImport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InImport",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InImport(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InDeleteKeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InDeleteKeys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InDeleteKeys",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InDeleteKeys(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InExpension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InExpension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InExpension",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InExpension(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InGetKeyNum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InGetKeyNum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InGetKeyNum",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InGetKeyNum(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InKeyIncr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InKeyIncr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InKeyIncr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InKeyIncr(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InKeyIncrBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InKeyIncrBy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InKeyIncrBy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InKeyIncrBy(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InKeyDecr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InKeyDecr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InKeyDecr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InKeyDecr(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InKeyDecrBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InKeyDecrBy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InKeyDecrBy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InKeyDecrBy(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InCommit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InCommit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InCommit",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InCommit(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_InDrop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).InDrop(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/InDrop",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).InDrop(ctx, req.(*Data))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -277,22 +623,66 @@ var _ZacheProto_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ZacheProtoServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetValue",
-			Handler:    _ZacheProto_GetValue_Handler,
+			MethodName: "InGetKey",
+			Handler:    _ZacheProto_InGetKey_Handler,
 		},
 		{
-			MethodName: "SetValue",
-			Handler:    _ZacheProto_SetValue_Handler,
+			MethodName: "InSetValue",
+			Handler:    _ZacheProto_InSetValue_Handler,
 		},
 		{
-			MethodName: "DeleteValue",
-			Handler:    _ZacheProto_DeleteValue_Handler,
+			MethodName: "InDeleteKey",
+			Handler:    _ZacheProto_InDeleteKey_Handler,
+		},
+		{
+			MethodName: "InExport",
+			Handler:    _ZacheProto_InExport_Handler,
+		},
+		{
+			MethodName: "InImport",
+			Handler:    _ZacheProto_InImport_Handler,
+		},
+		{
+			MethodName: "InDeleteKeys",
+			Handler:    _ZacheProto_InDeleteKeys_Handler,
+		},
+		{
+			MethodName: "InExpension",
+			Handler:    _ZacheProto_InExpension_Handler,
+		},
+		{
+			MethodName: "InGetKeyNum",
+			Handler:    _ZacheProto_InGetKeyNum_Handler,
+		},
+		{
+			MethodName: "InKeyIncr",
+			Handler:    _ZacheProto_InKeyIncr_Handler,
+		},
+		{
+			MethodName: "InKeyIncrBy",
+			Handler:    _ZacheProto_InKeyIncrBy_Handler,
+		},
+		{
+			MethodName: "InKeyDecr",
+			Handler:    _ZacheProto_InKeyDecr_Handler,
+		},
+		{
+			MethodName: "InKeyDecrBy",
+			Handler:    _ZacheProto_InKeyDecrBy_Handler,
+		},
+		{
+			MethodName: "InCommit",
+			Handler:    _ZacheProto_InCommit_Handler,
+		},
+		{
+			MethodName: "InDrop",
+			Handler:    _ZacheProto_InDrop_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GetValues",
-			Handler:       _ZacheProto_GetValues_Handler,
+			StreamName:    "InGetKeys",
+			Handler:       _ZacheProto_InGetKeys_Handler,
 			ServerStreams: true,
 		},
 	},

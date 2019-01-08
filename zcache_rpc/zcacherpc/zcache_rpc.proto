@@ -9,16 +9,37 @@ package zcacherpc;
 // The greeter service definition.
 service ZacheProto {
     // 获取单个value
-    rpc GetValue(Data)returns (Data){}
+    rpc InGetKey(Data) returns(Data){}
     // 获取全部key/value
-    rpc GetValues(Data)returns (stream Data){}
+    rpc InGetKeys(Data) returns(stream Data){}
     // 设置key/value
-    rpc SetValue(Data)returns (Data){}
-    // 删除key/value
-    rpc DeleteValue(Data)returns (Data){}
+    rpc InSetValue(Data) returns(Data){}
+    // 删除key
+    rpc InDeleteKey(Data) returns(Data){}
+    // 导出数据
+    rpc InExport(Data) returns(Data){}
+    // 导入数据
+    rpc InImport(Data) returns(Data){}
+    // 删除所有数据
+    rpc InDeleteKeys(Data) returns(Data){}
+    // 扩容
+    rpc InExpension(Data) returns(Data){}
+    // 扩容
+    rpc InGetKeyNum(Data) returns(Data){}
+    // key加一
+    rpc InKeyIncr(Data) returns(Data){}
+    // key加n
+    rpc InKeyIncrBy(Data) returns(Data){}
+    // key减一
+    rpc InKeyDecr(Data) returns(Data){}
+    // key减n
+    rpc InKeyDecrBy(Data) returns(Data){}
+    // 提交事务
+    rpc InCommit(Data) returns(Data){}
+    // 丢弃事务
+    rpc InDrop(Data) returns(Data){}
 }
 
-// The response message containing the greetings
 message Data {
     string key = 1;
     string value = 2;

@@ -20,7 +20,7 @@ type ZcacheServer struct {
 	mu sync.Mutex
 }
 
-func (s *ZcacheServer) GetValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+func (s *ZcacheServer) InGetKey(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
 	fmt.Println("GetValue",data)
 	node ,err := zdata.CoreGet(data.Key)
 	if err != nil {
@@ -31,8 +31,7 @@ func (s *ZcacheServer) GetValue(ctx context.Context, data *pb.Data)(resp *pb.Dat
 	return
 }
 
-func (s *ZcacheServer) GetValues(data *pb.Data, stream pb.ZacheProto_GetValuesServer)(err error){
-	fmt.Println("GetValues",data)
+func (s *ZcacheServer) InGetKeys(data *pb.Data, stream pb.ZacheProto_InGetKeysServer)(err error){
 	head ,err := zdata.CoreGetAll()
 	if err != nil {
 		logrus.Warningf("CoreGet Failed[Err:%s]",err.Error())
@@ -48,8 +47,7 @@ func (s *ZcacheServer) GetValues(data *pb.Data, stream pb.ZacheProto_GetValuesSe
 	return  nil
 }
 
-func (s *ZcacheServer) SetValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-	fmt.Println("SetValue",data)
+func (s *ZcacheServer) InSetValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
 	_ ,err = zdata.CoreAdd(data.Key,data.Value)
 	if err != nil{
 		return nil ,err
@@ -60,8 +58,7 @@ func (s *ZcacheServer) SetValue(ctx context.Context, data *pb.Data)(resp *pb.Dat
 }
 
 
-func (s *ZcacheServer) DeleteValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-	fmt.Println("DeleteValue",data)
+func (s *ZcacheServer) InDeleteKey(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
 	_ ,err = zdata.CoreDelete(data.Key)
 	if err != nil{
 		return nil ,err
@@ -69,6 +66,62 @@ func (s *ZcacheServer) DeleteValue(ctx context.Context, data *pb.Data)(resp *pb.
 		resp = &pb.Data{Key:data.Key,Value:data.Value}
 	}
 	return
+}
+
+func (s *ZcacheServer) InExport(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InImport(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InDeleteKeys(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InExpension(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InGetKeyNum(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InKeyIncr(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InKeyIncrBy(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+
+func (s *ZcacheServer) InKeyDecr(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InKeyDecrBy(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InCommit(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
+}
+
+func (s *ZcacheServer) InDrop(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+
+	return nil , nil
 }
 
 func GrpcInit(){

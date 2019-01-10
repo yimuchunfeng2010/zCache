@@ -169,12 +169,31 @@ func (s *ZcacheServer) InKeyDecrBy(ctx context.Context, data *pb.Data)(resp *pb.
 }
 
 func (s *ZcacheServer) InCommit(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	commitID, err := strconv.ParseInt(data.Value,10,64)
+	if err != nil {
+		return nil ,err
+	}
+	err = zdata.CoreCommit(commitID)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 
 	return nil , nil
 }
 
 func (s *ZcacheServer) InDrop(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	commitID, err := strconv.ParseInt(data.Value,10,64)
+	if err != nil {
+		return nil ,err
+	}
+	err = zdata.CoreDrop(commitID)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 	return nil , nil
 }
 

@@ -276,3 +276,76 @@ func expensionAdd(key string, value string, newSize int64) (*types.Node, error) 
 func CoreGetKeyNum() (int, error) {
 	return global.GlobalVar.GCoreInfo.KeyNum, nil
 }
+
+
+func CoreCommit(commitID int64) (err error) {
+	global.GlobalVar.GInternalLock.Lock()
+	defer global.GlobalVar.GInternalLock.Unlock()
+
+	var toDORequest  *types.ProcessingRequest = nil
+	if(global.GlobalVar.GPreDoReqList.CommitID == commitID){
+		toDORequest = global.GlobalVar.GPreDoReqList
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else{
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+			tmpPre = tmpPre.Next
+		}
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+			toDORequest = tmpPre.Next
+			tmpPre.Next = tmpPre.Next.Next
+		}
+
+	}
+
+
+	if toDORequest == nil {
+		return errors.New("Commit Job Not Found")
+	} else {
+		err = DoCommit(toDORequest)
+		return
+	}
+	return
+}
+
+func CoreDrop(commitID int64) (err error){
+	global.GlobalVar.GInternalLock.Lock()
+	defer global.GlobalVar.GInternalLock.Unlock()
+	var toDORequest  *types.ProcessingRequest = nil
+
+	if(global.GlobalVar.GPreDoReqList.CommitID == commitID){
+		toDORequest = global.GlobalVar.GPreDoReqList
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else{
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+			tmpPre = tmpPre.Next
+		}
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+			toDORequest = tmpPre.Next
+			tmpPre.Next = tmpPre.Next.Next
+		}
+	}
+
+	if toDORequest == nil {
+		err = errors.New("Drop Job Not Found")
+	}
+	return
+}
+func DoCommit(data *types.ProcessingRequest)(err error){
+
+	switch data.Req {
+	case types.ReqType_POST:
+		_, err = CoreAdd(data.Key,data.Value)
+	case types.ReqType_DELETE:
+		_, err = CoreDelete(data.Key)
+	case types.ReqType_PUT:
+		_, err = CoreUpdate(data.Key,data.Value)
+	case types.ReqType_INCR,types.ReqType_INCRBY,types.ReqType_DECR,types.ReqType_DECRBY:
+		_, err = CoreInDecr(data.Key,data.Value)
+	default:
+		err = errors.New("Wrong Request Type")
+	}
+
+	return
+}

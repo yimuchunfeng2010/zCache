@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"ZCache/types"
 	"ZCache/data"
-	"errors"
 )
 
 func Commit(context *gin.Context) {
@@ -40,7 +39,7 @@ func Commit(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"Status": "fail", "Data": "commit not found"})
 		return
 	} else {
-		err := DoCommit(toDORequest)
+		err := zdata.DoCommit(toDORequest)
 		if err != nil {
 			context.JSON(http.StatusInternalServerError, gin.H{"Status": "fail", "Data": err.Error()})
 		}else{
@@ -51,20 +50,3 @@ func Commit(context *gin.Context) {
 	return
 }
 
-func DoCommit(data *types.ProcessingRequest)(err error){
-
-	switch data.Req {
-	case types.ReqType_POST:
-		_, err = zdata.CoreAdd(data.Key,data.Value)
-	case types.ReqType_DELETE:
-		_, err = zdata.CoreDelete(data.Key)
-	case types.ReqType_PUT:
-		_, err = zdata.CoreUpdate(data.Key,data.Value)
-	case types.ReqType_INCR,types.ReqType_INCRBY,types.ReqType_DECR,types.ReqType_DECRBY:
-		_, err = zdata.CoreInDecr(data.Key,data.Value)
-	default:
-		err = errors.New("Wrong Request Type")
-	}
-
-	return
-}

@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func Flush(context *gin.Context) {
+func RestFlush(context *gin.Context) {
 	lockName, err := services.RLock()
 	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())

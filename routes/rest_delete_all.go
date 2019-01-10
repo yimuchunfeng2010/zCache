@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func DeleteAll(context *gin.Context) {
+func RestDeleteAll(context *gin.Context) {
 	lockName, err := services.Lock()
 	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())

@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-func Expension(context *gin.Context) {
+func RestExpension(context *gin.Context) {
 	lockName, err := services.Lock()
 	if err != nil {
 		logrus.Warningf("services.Lock Failed! [Err:%s]", err.Error())

@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func Delete(context *gin.Context) {
+func RestDelete(context *gin.Context) {
 	key := context.Param("key")
 	logrus.Infof("%s  Delete key: %s\n", tool.GetFileNameLine(), key)
 

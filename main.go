@@ -63,35 +63,35 @@ func main() {
 	router := gin.Default()
 	v1 := router.Group("/v1")
 	{
-		v1.GET("/:key", routes.Get)
-		v1.DELETE("/:key", routes.Delete)
-		v1.POST("/:key/:value", routes.Set)
-		v1.PUT("/:key/:value", routes.Update)
+		v1.GET("/:key", routes.RestGet)
+		v1.DELETE("/:key", routes.RestDelete)
+		v1.POST("/:key/:value", routes.RestSet)
+		v1.PUT("/:key/:value", routes.RestUpdate)
 
 	}
 
 	v2 := router.Group("/v2")
 	{
-		v2.GET("/keys", routes.GetAll)
-		v2.GET("/export", routes.Flush)
-		v2.PUT("/import", routes.Import)
-		v2.PUT("/keys", routes.DeleteAll)
-		v2.PUT("/expension/:size", routes.Expension)
+		v2.GET("/keys", routes.RestGetAll)
+		v2.GET("/export", routes.RestFlush)
+		v2.PUT("/import", routes.RestImport)
+		v2.PUT("/keys", routes.RestDeleteAll)
+		v2.PUT("/expension/:size", routes.RestExpension)
 	}
 
 	v3 := router.Group("/v3")
 	{
-		v3.GET("/keys_num",routes.GetKeyNum)
-		v3.PUT("/incr/:key",routes.Incr)
-		v3.PUT("/incrBy/:key/:value",routes.IncrBy)
-		v3.PUT("/decr/:key",routes.Decr)
-		v3.PUT("/decrBy/:key/:value",routes.DecrBy)
+		v3.GET("/keys_num",routes.RestGetKeyNum)
+		v3.PUT("/incr/:key",routes.RestIncr)
+		v3.PUT("/incrBy/:key/:value",routes.RestIncrBy)
+		v3.PUT("/decr/:key",routes.RestDecr)
+		v3.PUT("/decrBy/:key/:value",routes.RestDecrBy)
 	}
 
 	v4 := router.Group("/v4")
 	{
-		v4.PUT("/import_Redis",routes.ImportFromRedis)
-		v4.GET("/export_Redis",routes.ExportToRedis)
+		v4.PUT("/import_Redis",routes.RestImportFromRedis)
+		v4.GET("/export_Redis",routes.RestExportToRedis)
 	}
 	test := router.Group("/mock")
 	{

@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func Import(context *gin.Context) {
+func RestImport(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_SET)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})

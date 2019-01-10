@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func GetKeyNum(context *gin.Context) {
+func RestGetKeyNum(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_GET)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})

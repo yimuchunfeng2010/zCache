@@ -12,7 +12,7 @@ import (
 	"ZCache/client"
 )
 
-func Decr(context *gin.Context) {
+func RestDecr(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_POST)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"Status": "Fail", "Data": ""})

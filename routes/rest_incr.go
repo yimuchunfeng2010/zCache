@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func Incr(context *gin.Context) {
+func RestIncr(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_POST)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})

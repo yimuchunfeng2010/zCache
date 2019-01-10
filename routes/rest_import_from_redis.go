@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func ImportFromRedis(context *gin.Context) {
+func RestImportFromRedis(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_SET)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})

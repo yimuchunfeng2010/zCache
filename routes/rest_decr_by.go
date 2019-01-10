@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func DecrBy(context *gin.Context) {
+func RestDecrBy(context *gin.Context) {
 	auth, err := tool.ClusterHealthCheck(types.OPERATION_TYPE_POST)
 	if err != nil || auth != true {
 		context.JSON(http.StatusForbidden, gin.H{"status": "fail"})

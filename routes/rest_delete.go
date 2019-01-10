@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
-	"fmt"
 )
 
 func Delete(context *gin.Context) {

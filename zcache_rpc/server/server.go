@@ -12,6 +12,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"ZCache/data"
 	"fmt"
+	"strconv"
 )
 
 
@@ -69,48 +70,101 @@ func (s *ZcacheServer) InDeleteKey(ctx context.Context, data *pb.Data)(resp *pb.
 }
 
 func (s *ZcacheServer) InExport(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	err = zdata.CoreFlush()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 
 	return nil , nil
 }
 
 func (s *ZcacheServer) InImport(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	err = zdata.CoreImport()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 
 	return nil , nil
 }
 
 func (s *ZcacheServer) InDeleteKeys(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	err = zdata.CoreDeleteAll()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 	return nil , nil
 }
 
 func (s *ZcacheServer) InExpension(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	size, err := strconv.ParseInt(data.Value,10,64)
+	if err != nil {
+		return nil ,err
+	}
+	err = zdata.CoreExpension(size)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 
 	return nil , nil
 }
 
 func (s *ZcacheServer) InGetKeyNum(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	num, err := zdata.CoreGetKeyNum()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{Value:string(num)}
+	}
 	return nil , nil
 }
 
 func (s *ZcacheServer) InKeyIncr(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	_, err = zdata.CoreInDecr(data.Key,data.Value)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 
 	return nil , nil
 }
 
 func (s *ZcacheServer) InKeyIncrBy(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	_, err = zdata.CoreInDecr(data.Key,data.Value)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 	return nil , nil
 }
 
 
 func (s *ZcacheServer) InKeyDecr(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	_, err = zdata.CoreInDecr(data.Key,data.Value)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 	return nil , nil
 }
 
 func (s *ZcacheServer) InKeyDecrBy(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
-
+	_, err = zdata.CoreInDecr(data.Key,data.Value)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.Data{}
+	}
 	return nil , nil
 }
 

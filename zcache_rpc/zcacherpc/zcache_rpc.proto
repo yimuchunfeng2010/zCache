@@ -24,7 +24,7 @@ service ZacheProto {
     rpc InDeleteKeys(Data) returns(Data){}
     // 扩容
     rpc InExpension(Data) returns(Data){}
-    // 扩容
+    // 获取key个数
     rpc InGetKeyNum(Data) returns(Data){}
     // key加一
     rpc InKeyIncr(Data) returns(Data){}
@@ -38,6 +38,42 @@ service ZacheProto {
     rpc InCommit(Data) returns(Data){}
     // 丢弃事务
     rpc InDrop(Data) returns(Data){}
+
+    //外部接口
+    // 获取单个value
+    rpc Get(Data) returns(Data){}
+    // 删除key
+    rpc DeleteKey(Data) returns(Data){}
+    // 设置key/value
+    rpc SetValue(Data) returns(Data){}
+    // 更新key/value
+    rpc UpdateValue(Data) returns(Data){}
+    // 获取全部key/value
+    rpc GetKeys(Data) returns(stream Data){}
+    // 导出数据
+    rpc Export(Data) returns(Data){}
+    // 导入数据
+    rpc Import(Data) returns(Data){}
+    // 删除所有数据
+    rpc DeleteKeys(Data) returns(Data){}
+    // 扩容
+    rpc Expension(Data) returns(Data){}
+    // 获取key个数
+    rpc GetKeyNum(Data) returns(Data){}
+    // key加一
+    rpc Incr(Data) returns(Data){}
+    // key加n
+    rpc IncrBy(Data) returns(Data){}
+    // key减一
+    rpc Decr(Data) returns(Data){}
+    // key减n
+    rpc DecrBy(Data) returns(Data){}
+    // 从redis导入数据
+    rpc ImportFromRedis(Data) returns(Data){}
+    // 导出数据至redis
+    rpc ExportToRedis(Data) returns(Data){}
+
+
 }
 
 message Data {

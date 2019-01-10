@@ -76,25 +76,31 @@ func init() {
 func init() { proto.RegisterFile("zcache_rpc.proto", fileDescriptor_94d17b23d99d3443) }
 
 var fileDescriptor_94d17b23d99d3443 = []byte{
-	// 287 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0x4f, 0x4b, 0xf3, 0x40,
-	0x10, 0xc6, 0xdf, 0xbc, 0xda, 0x62, 0x46, 0xd1, 0xb2, 0x88, 0x14, 0x4f, 0xd2, 0x93, 0x88, 0xac,
-	0xb5, 0x7e, 0x83, 0x98, 0x22, 0x4b, 0x41, 0x4a, 0x05, 0x0f, 0xbd, 0x48, 0x5c, 0x06, 0x0d, 0x66,
-	0xff, 0xb0, 0xd9, 0x4a, 0xd2, 0xcf, 0xed, 0x07, 0x90, 0xdd, 0xa8, 0x88, 0xa7, 0xc9, 0x2d, 0x79,
-	0x78, 0x7e, 0xf3, 0xcc, 0xec, 0x30, 0x30, 0xda, 0xca, 0x42, 0xbe, 0xe2, 0x93, 0xb3, 0x92, 0x5b,
-	0x67, 0xbc, 0x61, 0x69, 0xa7, 0x38, 0x2b, 0x27, 0x1c, 0x76, 0xf3, 0xc2, 0x17, 0x6c, 0x04, 0x3b,
-	0x6f, 0xd8, 0x8e, 0x93, 0xb3, 0xe4, 0x3c, 0x5d, 0x85, 0x4f, 0x76, 0x0c, 0x83, 0xf7, 0xa2, 0xda,
-	0xe0, 0xf8, 0x7f, 0xd4, 0xba, 0x9f, 0xd9, 0xc7, 0x00, 0x60, 0x1d, 0xe0, 0x65, 0xac, 0xc4, 0x61,
-	0x4f, 0xe8, 0x3b, 0xf4, 0x0b, 0x6c, 0xd9, 0x11, 0xff, 0x29, 0xcb, 0x43, 0xcd, 0xd3, 0xbf, 0xc2,
-	0xe4, 0x1f, 0xbb, 0x86, 0xf4, 0xdb, 0x5f, 0x53, 0x80, 0x69, 0xc2, 0xa6, 0x00, 0x42, 0x3f, 0xa0,
-	0x7f, 0x0c, 0xf9, 0xc4, 0x90, 0x7d, 0xa1, 0x73, 0xac, 0xd0, 0x23, 0xb5, 0xaf, 0x38, 0xc7, 0xbc,
-	0xb1, 0xc6, 0x79, 0xba, 0x5f, 0x28, 0xb2, 0x7f, 0x06, 0x07, 0xbf, 0x5a, 0xaa, 0xe9, 0x63, 0xcc,
-	0x1b, 0x8b, 0xba, 0x2e, 0x8d, 0xa6, 0x23, 0xdd, 0xf3, 0xde, 0x6f, 0x14, 0x09, 0xb9, 0x0a, 0x1b,
-	0x59, 0x60, 0x2b, 0xb4, 0x74, 0xf4, 0x8c, 0x2f, 0x20, 0x6b, 0x7b, 0x65, 0xe4, 0xd8, 0x33, 0x23,
-	0x00, 0x59, 0x8f, 0x0d, 0xde, 0x1a, 0xa5, 0x4a, 0xda, 0x46, 0x2e, 0x61, 0x28, 0x74, 0xee, 0x8c,
-	0xa5, 0xb8, 0xb3, 0x0b, 0x38, 0x29, 0x0d, 0x7f, 0x09, 0x0a, 0x36, 0x85, 0xb2, 0x15, 0xd6, 0x7c,
-	0x1b, 0x3c, 0xd9, 0xe1, 0x3a, 0x7a, 0x57, 0x56, 0xc6, 0x8b, 0x58, 0x26, 0xcf, 0xc3, 0x78, 0x64,
-	0x37, 0x9f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x97, 0xe8, 0xb2, 0x61, 0x78, 0x03, 0x00, 0x00,
+	// 377 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0x5d, 0x4b, 0xeb, 0x40,
+	0x10, 0xbd, 0xb9, 0xed, 0xcd, 0x35, 0x53, 0xb5, 0x25, 0x88, 0x14, 0x9f, 0xa4, 0x4f, 0x5a, 0x4a,
+	0x52, 0x5b, 0xfc, 0x03, 0x31, 0xb5, 0x84, 0x82, 0x94, 0xfa, 0xf1, 0xd0, 0x17, 0x89, 0xe9, 0xa0,
+	0xc1, 0x66, 0x77, 0xd9, 0x6c, 0xa5, 0xe9, 0xef, 0xf6, 0x07, 0xc8, 0x6e, 0x54, 0xc4, 0xa7, 0xd9,
+	0xb7, 0x64, 0x38, 0x67, 0xcf, 0xce, 0xcc, 0x39, 0x2c, 0x74, 0x76, 0x59, 0x9a, 0xbd, 0xe0, 0xa3,
+	0x14, 0x59, 0x20, 0x24, 0x57, 0xdc, 0xf7, 0xea, 0x8a, 0x14, 0x59, 0x2f, 0x80, 0x66, 0x9c, 0xaa,
+	0xd4, 0xef, 0x40, 0xe3, 0x15, 0xab, 0xae, 0x73, 0xea, 0x9c, 0x79, 0x0b, 0xfd, 0xe9, 0x1f, 0xc1,
+	0xbf, 0xb7, 0x74, 0xbd, 0xc1, 0xee, 0x5f, 0x53, 0xab, 0x7f, 0x46, 0xef, 0x2d, 0x80, 0xa5, 0x26,
+	0xcf, 0xcd, 0x49, 0x01, 0xec, 0x25, 0x6c, 0x8a, 0x6a, 0x86, 0x95, 0xdf, 0x0e, 0xbe, 0x8f, 0x0d,
+	0xf4, 0x99, 0x27, 0xbf, 0x0b, 0xbd, 0x3f, 0xfe, 0x05, 0x78, 0x5f, 0xf8, 0x92, 0x42, 0x18, 0x3a,
+	0xfe, 0x10, 0x20, 0x61, 0xb7, 0xa8, 0x1e, 0xb4, 0x3e, 0x51, 0xa4, 0x95, 0xb0, 0x18, 0xd7, 0xa8,
+	0x90, 0x7a, 0x2f, 0xd3, 0xc7, 0x64, 0x2b, 0xb8, 0x54, 0x74, 0x7c, 0x52, 0x90, 0xf1, 0x23, 0xd8,
+	0xff, 0x71, 0xa5, 0x92, 0xde, 0xc6, 0x64, 0x2b, 0x90, 0x95, 0x39, 0x67, 0x74, 0x4a, 0x3d, 0xde,
+	0x9b, 0x4d, 0x41, 0xa2, 0x84, 0x7a, 0x23, 0x33, 0xac, 0x12, 0x96, 0x49, 0xba, 0xc6, 0x27, 0x21,
+	0xaa, 0xac, 0x34, 0x62, 0xb4, 0xd4, 0xd0, 0x84, 0xc8, 0x62, 0x83, 0x57, 0xbc, 0x28, 0x72, 0xda,
+	0x46, 0x06, 0xe0, 0x26, 0x2c, 0x96, 0x5c, 0x90, 0xd0, 0xe7, 0xd0, 0x98, 0xa2, 0xa2, 0x36, 0x6b,
+	0xed, 0x3d, 0x5b, 0x7b, 0xdf, 0x8b, 0x55, 0xaa, 0x90, 0x4e, 0x09, 0xe1, 0xbf, 0x5d, 0xe8, 0x06,
+	0xe0, 0x5a, 0xa4, 0x41, 0xcf, 0x92, 0x9e, 0x85, 0x21, 0x80, 0x65, 0x12, 0x42, 0xf0, 0xec, 0x72,
+	0x10, 0x82, 0x67, 0x97, 0x82, 0x3e, 0x34, 0xc9, 0x01, 0x30, 0xce, 0x21, 0xfb, 0xb2, 0x0f, 0x4d,
+	0xb2, 0xed, 0x07, 0xe0, 0x5a, 0x38, 0xfe, 0x12, 0xda, 0xf5, 0xd4, 0xaf, 0x25, 0x2f, 0x16, 0xb8,
+	0xca, 0x69, 0xc3, 0x1c, 0xc3, 0x41, 0xbd, 0xda, 0x3b, 0x4e, 0x26, 0x45, 0x7d, 0x38, 0xce, 0x79,
+	0xf0, 0xac, 0x2b, 0xb8, 0x4d, 0x0b, 0xb1, 0xc6, 0x32, 0xd8, 0x69, 0x4c, 0x74, 0xb8, 0x34, 0xd8,
+	0x85, 0xc8, 0xcc, 0x8b, 0x30, 0x77, 0x9e, 0x5c, 0xf3, 0xc8, 0x8c, 0x3f, 0x02, 0x00, 0x00, 0xff,
+	0xff, 0x75, 0x9f, 0x7a, 0xc1, 0x78, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -125,7 +131,7 @@ type ZacheProtoClient interface {
 	InDeleteKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 	// 扩容
 	InExpension(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
-	// 扩容
+	// 获取key个数
 	InGetKeyNum(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 	// key加一
 	InKeyIncr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
@@ -139,6 +145,39 @@ type ZacheProtoClient interface {
 	InCommit(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 	// 丢弃事务
 	InDrop(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	//外部接口
+	// 获取单个value
+	Get(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 删除key
+	DeleteKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 设置key/value
+	SetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 更新key/value
+	UpdateValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 获取全部key/value
+	GetKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_GetKeysClient, error)
+	// 导出数据
+	Export(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 导入数据
+	Import(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 删除所有数据
+	DeleteKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 扩容
+	Expension(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 获取key个数
+	GetKeyNum(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key加一
+	Incr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key加n
+	IncrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key减一
+	Decr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// key减n
+	DecrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 从redis导入数据
+	ImportFromRedis(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
+	// 导出数据至redis
+	ExportToRedis(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error)
 }
 
 type zacheProtoClient struct {
@@ -307,6 +346,173 @@ func (c *zacheProtoClient) InDrop(ctx context.Context, in *Data, opts ...grpc.Ca
 	return out, nil
 }
 
+func (c *zacheProtoClient) Get(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Get", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) DeleteKey(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/DeleteKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) SetValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/SetValue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) UpdateValue(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/UpdateValue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) GetKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (ZacheProto_GetKeysClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_ZacheProto_serviceDesc.Streams[1], "/zcacherpc.ZacheProto/GetKeys", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &zacheProtoGetKeysClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ZacheProto_GetKeysClient interface {
+	Recv() (*Data, error)
+	grpc.ClientStream
+}
+
+type zacheProtoGetKeysClient struct {
+	grpc.ClientStream
+}
+
+func (x *zacheProtoGetKeysClient) Recv() (*Data, error) {
+	m := new(Data)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *zacheProtoClient) Export(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Export", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) Import(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Import", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) DeleteKeys(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/DeleteKeys", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) Expension(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Expension", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) GetKeyNum(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/GetKeyNum", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) Incr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Incr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) IncrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/IncrBy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) Decr(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/Decr", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) DecrBy(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/DecrBy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) ImportFromRedis(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/ImportFromRedis", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *zacheProtoClient) ExportToRedis(ctx context.Context, in *Data, opts ...grpc.CallOption) (*Data, error) {
+	out := new(Data)
+	err := c.cc.Invoke(ctx, "/zcacherpc.ZacheProto/ExportToRedis", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ZacheProtoServer is the server API for ZacheProto service.
 type ZacheProtoServer interface {
 	// 获取单个value
@@ -325,7 +531,7 @@ type ZacheProtoServer interface {
 	InDeleteKeys(context.Context, *Data) (*Data, error)
 	// 扩容
 	InExpension(context.Context, *Data) (*Data, error)
-	// 扩容
+	// 获取key个数
 	InGetKeyNum(context.Context, *Data) (*Data, error)
 	// key加一
 	InKeyIncr(context.Context, *Data) (*Data, error)
@@ -339,6 +545,39 @@ type ZacheProtoServer interface {
 	InCommit(context.Context, *Data) (*Data, error)
 	// 丢弃事务
 	InDrop(context.Context, *Data) (*Data, error)
+	//外部接口
+	// 获取单个value
+	Get(context.Context, *Data) (*Data, error)
+	// 删除key
+	DeleteKey(context.Context, *Data) (*Data, error)
+	// 设置key/value
+	SetValue(context.Context, *Data) (*Data, error)
+	// 更新key/value
+	UpdateValue(context.Context, *Data) (*Data, error)
+	// 获取全部key/value
+	GetKeys(*Data, ZacheProto_GetKeysServer) error
+	// 导出数据
+	Export(context.Context, *Data) (*Data, error)
+	// 导入数据
+	Import(context.Context, *Data) (*Data, error)
+	// 删除所有数据
+	DeleteKeys(context.Context, *Data) (*Data, error)
+	// 扩容
+	Expension(context.Context, *Data) (*Data, error)
+	// 获取key个数
+	GetKeyNum(context.Context, *Data) (*Data, error)
+	// key加一
+	Incr(context.Context, *Data) (*Data, error)
+	// key加n
+	IncrBy(context.Context, *Data) (*Data, error)
+	// key减一
+	Decr(context.Context, *Data) (*Data, error)
+	// key减n
+	DecrBy(context.Context, *Data) (*Data, error)
+	// 从redis导入数据
+	ImportFromRedis(context.Context, *Data) (*Data, error)
+	// 导出数据至redis
+	ExportToRedis(context.Context, *Data) (*Data, error)
 }
 
 func RegisterZacheProtoServer(s *grpc.Server, srv ZacheProtoServer) {
@@ -618,6 +857,297 @@ func _ZacheProto_InDrop_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ZacheProto_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Get(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Get(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_DeleteKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).DeleteKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/DeleteKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).DeleteKey(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_SetValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).SetValue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/SetValue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).SetValue(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_UpdateValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).UpdateValue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/UpdateValue",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).UpdateValue(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_GetKeys_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Data)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ZacheProtoServer).GetKeys(m, &zacheProtoGetKeysServer{stream})
+}
+
+type ZacheProto_GetKeysServer interface {
+	Send(*Data) error
+	grpc.ServerStream
+}
+
+type zacheProtoGetKeysServer struct {
+	grpc.ServerStream
+}
+
+func (x *zacheProtoGetKeysServer) Send(m *Data) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _ZacheProto_Export_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Export(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Export",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Export(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_Import_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Import(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Import",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Import(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_DeleteKeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).DeleteKeys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/DeleteKeys",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).DeleteKeys(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_Expension_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Expension(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Expension",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Expension(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_GetKeyNum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).GetKeyNum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/GetKeyNum",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).GetKeyNum(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_Incr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Incr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Incr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Incr(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_IncrBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).IncrBy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/IncrBy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).IncrBy(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_Decr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).Decr(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/Decr",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).Decr(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_DecrBy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).DecrBy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/DecrBy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).DecrBy(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_ImportFromRedis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).ImportFromRedis(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/ImportFromRedis",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).ImportFromRedis(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ZacheProto_ExportToRedis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Data)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ZacheProtoServer).ExportToRedis(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/zcacherpc.ZacheProto/ExportToRedis",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ZacheProtoServer).ExportToRedis(ctx, req.(*Data))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ZacheProto_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "zcacherpc.ZacheProto",
 	HandlerType: (*ZacheProtoServer)(nil),
@@ -678,11 +1208,76 @@ var _ZacheProto_serviceDesc = grpc.ServiceDesc{
 			MethodName: "InDrop",
 			Handler:    _ZacheProto_InDrop_Handler,
 		},
+		{
+			MethodName: "Get",
+			Handler:    _ZacheProto_Get_Handler,
+		},
+		{
+			MethodName: "DeleteKey",
+			Handler:    _ZacheProto_DeleteKey_Handler,
+		},
+		{
+			MethodName: "SetValue",
+			Handler:    _ZacheProto_SetValue_Handler,
+		},
+		{
+			MethodName: "UpdateValue",
+			Handler:    _ZacheProto_UpdateValue_Handler,
+		},
+		{
+			MethodName: "Export",
+			Handler:    _ZacheProto_Export_Handler,
+		},
+		{
+			MethodName: "Import",
+			Handler:    _ZacheProto_Import_Handler,
+		},
+		{
+			MethodName: "DeleteKeys",
+			Handler:    _ZacheProto_DeleteKeys_Handler,
+		},
+		{
+			MethodName: "Expension",
+			Handler:    _ZacheProto_Expension_Handler,
+		},
+		{
+			MethodName: "GetKeyNum",
+			Handler:    _ZacheProto_GetKeyNum_Handler,
+		},
+		{
+			MethodName: "Incr",
+			Handler:    _ZacheProto_Incr_Handler,
+		},
+		{
+			MethodName: "IncrBy",
+			Handler:    _ZacheProto_IncrBy_Handler,
+		},
+		{
+			MethodName: "Decr",
+			Handler:    _ZacheProto_Decr_Handler,
+		},
+		{
+			MethodName: "DecrBy",
+			Handler:    _ZacheProto_DecrBy_Handler,
+		},
+		{
+			MethodName: "ImportFromRedis",
+			Handler:    _ZacheProto_ImportFromRedis_Handler,
+		},
+		{
+			MethodName: "ExportToRedis",
+			Handler:    _ZacheProto_ExportToRedis_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "InGetKeys",
 			Handler:       _ZacheProto_InGetKeys_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "GetKeys",
+			Handler:       _ZacheProto_GetKeys_Handler,
 			ServerStreams: true,
 		},
 	},

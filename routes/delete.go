@@ -62,7 +62,6 @@ func Delete(context *gin.Context) {
 	}
 	close(ackChan)
 
-	fmt.Println("CCCC",commitID)
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
 		for _, ipAddrPort := range global.Config.ClusterServers {

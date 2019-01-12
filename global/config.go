@@ -4,6 +4,7 @@ import (
 	"ZCache/types"
 	"os"
 	"sync"
+	pb "ZCache/zcache_rpc/zcacherpc"
 )
 
 var Config = struct {
@@ -19,11 +20,12 @@ var Config = struct {
 
 	SysHealthCheckCronSpec      string
 	DataConsitencyCheckCronSpec string
-	CleanOverdueCommitCronSpec string
+	CleanOverdueCommitCronSpec  string
 	LogProcessCronSpec          string
 	ClusterServers              []string
 	Timeout                     int
 	GrpcPort                    string
+	Clients                     []pb.ZacheProtoClient
 }{
 	MaxLen:       1024,
 	UserEmail:    "123456789@qq.com",
@@ -43,6 +45,7 @@ var Config = struct {
 	ClusterServers: []string{"127.0.0.1:8000"},
 	Timeout:        5000,    //ms
 	GrpcPort:       "50051", // grpc端口号
+	Clients:        nil,
 }
 
 var GlobalVar = struct {

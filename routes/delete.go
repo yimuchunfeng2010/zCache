@@ -1,13 +1,14 @@
 package routes
 
 import (
-	"ZCache/client"
 	"ZCache/global"
 	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
 	"time"
+	Client "ZCache/zcache_rpc/client"
+	pb "ZCache/zcache_rpc/zcacherpc"
 )
 
 func Delete(key string) (err error) {
@@ -32,9 +33,11 @@ func Delete(key string) (err error) {
 	if err != nil {
 		return
 	}
-	ackChan := make(chan int64)
-	for _, ipAddrPort := range global.Config.ClusterServers {
-		go client.GetDeleteAck(ipAddrPort, key, ackChan)
+	ackChan := make(chan string)
+	for _, client := range  global.Config.Clients{
+		go func(){
+			Client.PreDelete(client,pb.Data{Key:key},ackChan)
+		}()
 	}
 
 	timeout := global.Config.Timeout
@@ -57,12 +60,12 @@ func Delete(key string) (err error) {
 
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.CommitJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	} else { //撤销任务
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.DropJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	}
 	return

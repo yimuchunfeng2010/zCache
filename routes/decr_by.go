@@ -1,7 +1,8 @@
 package routes
 
 import (
-	"ZCache/client"
+	Client "ZCache/zcache_rpc/client"
+	pb "ZCache/zcache_rpc/zcacherpc"
 	"ZCache/global"
 	"ZCache/services"
 	"ZCache/tool"
@@ -30,13 +31,15 @@ func DecrBy(key string, value string) (err error) {
 
 	logrus.Infof("%s DecrBy Key:%s, step\n", tool.GetFileNameLine(), key, step)
 	// 发起提议
-	commitID, err := tool.GetHashIndex("DecrBy" + key)
+	commitID, err := tool.GetHashIndex("DecrBy" + key +value)
 	if err != nil {
 		return
 	}
-	ackChan := make(chan int64)
-	for _, ipAddrPort := range global.Config.ClusterServers {
-		go client.GetDecrByAck(ipAddrPort, key, value, ackChan)
+	ackChan := make(chan string)
+	for _, client := range  global.Config.Clients{
+		go func(){
+			Client.PreDecrBy(client,pb.Data{Key:key,Value:step},ackChan)
+		}()
 	}
 
 	timeout := global.Config.Timeout
@@ -59,12 +62,12 @@ func DecrBy(key string, value string) (err error) {
 
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.CommitJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	} else { //撤销任务
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.DropJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	}
 	return

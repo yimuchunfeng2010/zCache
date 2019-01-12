@@ -1,13 +1,15 @@
 package routes
 
 import (
-	"ZCache/client"
+	Client "ZCache/zcache_rpc/client"
+	pb "ZCache/zcache_rpc/zcacherpc"
 	"ZCache/global"
 	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
 	"ZCache/types"
 	"time"
+
 )
 
 func Set(key string, value string) (err error) {
@@ -30,9 +32,11 @@ func Set(key string, value string) (err error) {
 	if err != nil {
 		return
 	}
-	ackChan := make(chan int64)
-	for _, ipAddrPort := range global.Config.ClusterServers {
-		go client.GetSetAck(ipAddrPort, key, value, ackChan)
+	ackChan := make(chan string)
+	for _, client := range  global.Config.Clients{
+		go func(){
+			Client.PreSet(client,pb.Data{Key:key,Value:value},ackChan)
+		}()
 	}
 
 	timeout := global.Config.Timeout
@@ -53,16 +57,14 @@ func Set(key string, value string) (err error) {
 	}
 	close(ackChan)
 
-	logrus.Infof("commitID %+v", commitID)
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			// todo 获取执行结果
-			go client.CommitJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	} else { //撤销任务
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.DropJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	}
 	return

@@ -13,7 +13,8 @@ import (
 	"sync"
 	"ZCache/routes/cluster_inter"
 	"ZCache/zcache_rpc/server"
-
+	pb "ZCache/zcache_rpc/zcacherpc"
+	"google.golang.org/grpc"
 )
 
 func init() {
@@ -43,6 +44,16 @@ func init() {
 	}
 
 	global.GlobalVar.GInternalLock = new(sync.RWMutex)
+
+	for _, ipaddr := range global.Config.ClusterServers{
+		conn, err := grpc.Dial(ipaddr, grpc.WithInsecure())
+		if err != nil {
+			logrus.Warningf("fail to dial: %s", err.Error())
+		}
+		defer conn.Close()
+		global.Config.Clients = append(global.Config.Clients,pb.NewZacheProtoClient(conn))
+	}
+
 }
 func CronInit() {
 	services.InitCrontab()

@@ -138,3 +138,7 @@ A light Cache writed by golang
 # [version:0.3.4]
 ### Features
 实现grpc服务端接口
+
+# [version:0.3.5]
+### Features
+业务接入grpc

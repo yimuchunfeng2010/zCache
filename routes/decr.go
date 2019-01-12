@@ -5,9 +5,10 @@ import (
 	"ZCache/services"
 	"ZCache/tool"
 	"ZCache/tool/logrus"
+	Client "ZCache/zcache_rpc/client"
+	pb "ZCache/zcache_rpc/zcacherpc"
 	"ZCache/types"
 	"time"
-	"ZCache/client"
 )
 
 func Decr(key string) (err error) {
@@ -29,9 +30,12 @@ func Decr(key string) (err error) {
 	if err != nil {
 		return
 	}
-	ackChan := make(chan int64)
-	for _, ipAddrPort := range global.Config.ClusterServers {
-		go client.GetDecrAck(ipAddrPort, key, ackChan)
+
+	ackChan := make(chan string)
+	for _, client := range  global.Config.Clients{
+		go func(){
+			Client.PreDecr(client,pb.Data{Key:key},ackChan)
+		}()
 	}
 
 	timeout := global.Config.Timeout
@@ -54,12 +58,12 @@ func Decr(key string) (err error) {
 
 	// 提交
 	if ackCount == len(global.Config.ClusterServers) {
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.CommitJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	} else { //撤销任务
-		for _, ipAddrPort := range global.Config.ClusterServers {
-			go client.DropJob(ipAddrPort, commitID)
+		for _, client := range global.Config.Clients {
+			go Client.CommitJob(client, pb.CommitIDMsg{CommitID:string(commitID)})
 		}
 	}
 	return

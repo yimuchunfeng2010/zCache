@@ -73,10 +73,40 @@ service ZacheProto {
     // 导出数据至redis
     rpc ExportToRedis(Data) returns(Data){}
 
+    // 两阶段提交-预提交接口
+     // 删除key
+    rpc PreDeleteKey(Data) returns(CommitIDMsg){}
+    // 设置key/value
+    rpc PreSetValue(Data) returns(CommitIDMsg){}
+    // 更新key/value
+    rpc PreUpdateValue(Data) returns(CommitIDMsg){}
+    // 删除所有数据
+    rpc PreDeleteKeys(Data) returns(CommitIDMsg){}
+    // 扩容
+    rpc PreExpension(Data) returns(CommitIDMsg){}
+    // key加一
+    rpc PreIncr(Data) returns(CommitIDMsg){}
+    // key加n
+    rpc PreIncrBy(Data) returns(CommitIDMsg){}
+    // key减一
+    rpc PreDecr(Data) returns(CommitIDMsg){}
+    // key减n
+    rpc PreDecrBy(Data) returns(CommitIDMsg){}
+    // 从redis导入数据
+    rpc PreImportFromRedis(Data) returns(CommitIDMsg){}
+
+    // 提交事务
+    rpc Commit(CommitIDMsg) returns(CommitIDMsg){}
+    // 丢弃事务
+    rpc Drop(CommitIDMsg) returns(CommitIDMsg){}
 
 }
 
 message Data {
     string key = 1;
     string value = 2;
+}
+
+message CommitIDMsg{
+    string CommitID = 3;
 }

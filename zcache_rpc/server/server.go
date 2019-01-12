@@ -14,6 +14,10 @@ import (
 	"fmt"
 	"strconv"
 	"ZCache/routes"
+	"ZCache/tool"
+	"ZCache/types"
+	"errors"
+	"ZCache/global"
 )
 
 
@@ -345,6 +349,211 @@ func (s *ZcacheServer) ExportToRedis(ctx context.Context, data *pb.Data)(resp *p
 		return nil ,err
 	} else {
 		resp = &pb.Data{}
+	}
+	return
+}
+
+func (s *ZcacheServer) PreDeleteKey(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("Delete" + data.Key)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_DELETE,
+		Key:      data.Key,
+		Value:    "",
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+
+func (s *ZcacheServer) PreSetValue(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("Set" + data.Key + data.Value)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_PUT,
+		Key:      data.Key,
+		Value:    data.Value,
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreUpdateValue(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("Update" + data.Key + data.Value)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_POST,
+		Key:      data.Key,
+		Value:    data.Value,
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreDeleteKeys(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	//err = routes.ExportToRedis()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{}
+	}
+	return
+}
+func (s *ZcacheServer) PreExpension(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	//err = routes.ExportToRedis()
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{}
+	}
+	return
+}
+func (s *ZcacheServer) PreIncr(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("Incr" + data.Key)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_INCR,
+		Key:      data.Key,
+		Value:    "",
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreIncrBy(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+
+	commitID, err := tool.GetHashIndex("IncrBy" + data.Key)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_INCRBY,
+		Key:      data.Key,
+		Value:    data.Value,
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreDecr(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("Decr" + data.Key)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_DECR,
+		Key:      data.Key,
+		Value:    "",
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreDecrBy(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	commitID, err := tool.GetHashIndex("DecrBy" + data.Key)
+	preReq := types.ProcessingRequest{
+		CommitID: commitID,
+		Req:      types.ReqType_DECRBY,
+		Key:      data.Key,
+		Value:    "",
+		Next:     nil,
+	}
+	err = tool.AddInternalReq(preReq)
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{CommitID:string(commitID)}
+	}
+	return
+}
+func (s *ZcacheServer) PreImportFromRedis(ctx context.Context, data *pb.Data)(resp *pb.CommitIDMsg, err error){
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{}
+	}
+	return
+}
+func (s *ZcacheServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+	commitID := data.CommitID
+	global.GlobalVar.GInternalLock.Lock()
+	defer global.GlobalVar.GInternalLock.Unlock()
+
+	var toDORequest  *types.ProcessingRequest = nil
+	if(string(global.GlobalVar.GPreDoReqList.CommitID) == commitID){
+		toDORequest = global.GlobalVar.GPreDoReqList
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else{
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && string(tmpPre.Next.CommitID) != commitID{
+			tmpPre = tmpPre.Next
+		}
+		if tmpPre.Next != nil && string(tmpPre.Next.CommitID) == commitID{
+			toDORequest = tmpPre.Next
+			tmpPre.Next = tmpPre.Next.Next
+		}
+
+	}
+
+
+	if toDORequest == nil {
+		err = errors.New("no such job")
+	} else {
+		err = zdata.DoCommit(toDORequest)
+	}
+	if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{}
+	}
+	return
+}
+func (s *ZcacheServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+	commitID := data.CommitID
+	global.GlobalVar.GInternalLock.Lock()
+	defer global.GlobalVar.GInternalLock.Unlock()
+
+	if(string(global.GlobalVar.GPreDoReqList.CommitID) == commitID){
+		global.GlobalVar.GPreDoReqList = global.GlobalVar.GPreDoReqList.Next
+	} else {
+		var tmpPre *types.ProcessingRequest = global.GlobalVar.GPreDoReqList
+		for tmpPre.Next != nil && string(tmpPre.Next.CommitID) != commitID {
+			tmpPre = tmpPre.Next
+		}
+		if tmpPre.Next != nil && string(tmpPre.Next.CommitID) == commitID {
+			tmpPre.Next = tmpPre.Next.Next
+		}
+	}
+		if err != nil{
+		return nil ,err
+	} else {
+		resp = &pb.CommitIDMsg{}
 	}
 	return
 }

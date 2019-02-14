@@ -3,9 +3,9 @@ package services
 import (
 	"os"
 	"syscall"
-	"ZCache/data"
-	"ZCache/tool/logrus"
-	"ZCache/tool"
+	"zCache/data"
+	"zCache/tool/logrus"
+	"zCache/tool"
 )
 
 func SigHandler(sigChan chan os.Signal)  {

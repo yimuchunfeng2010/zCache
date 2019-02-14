@@ -1,13 +1,13 @@
 package routes
 
 import (
-	Client "ZCache/zcache_rpc/client"
-	pb "ZCache/zcache_rpc/zcacherpc"
-	"ZCache/global"
-	"ZCache/services"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	Client "zCache/zcache_rpc/client"
+	pb "zCache/zcache_rpc/zcacherpc"
+	"zCache/global"
+	"zCache/services"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 	"time"
 
 )

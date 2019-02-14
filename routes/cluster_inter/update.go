@@ -1,9 +1,9 @@
 package cluster_inter
 
 import (
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

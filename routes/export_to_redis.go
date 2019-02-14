@@ -1,11 +1,11 @@
 package routes
 
 import (
-	"ZCache/external_data"
-	"ZCache/services"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	"zCache/external_data"
+	"zCache/services"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 )
 
 func ExportToRedis() (err error) {

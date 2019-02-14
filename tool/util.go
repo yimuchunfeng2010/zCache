@@ -1,7 +1,7 @@
 package tool
 
 import (
-	"ZCache/global"
+	"zCache/global"
 	"crypto/md5"
 	"encoding/hex"
 	"errors"
@@ -11,7 +11,7 @@ import (
 	"runtime"
 	"strconv"
 	"time"
-	"ZCache/types"
+	"zCache/types"
 )
 
 func Md5Encode(msg string) []byte {

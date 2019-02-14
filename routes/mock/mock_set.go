@@ -1,10 +1,10 @@
 package mock
 
 import (
-	"ZCache/data"
-	"ZCache/services"
-	"ZCache/tool/logrus"
-	"ZCache/tool"
+	"zCache/data"
+	"zCache/services"
+	"zCache/tool/logrus"
+	"zCache/tool"
 )
 
 func Set(key string, value string) error {

@@ -1,10 +1,10 @@
 package mock
 
 import (
-	"ZCache/data"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/services"
+	"zCache/data"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/services"
 )
 
 func Delete(key string) error {

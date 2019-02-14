@@ -1,19 +1,19 @@
 package main
 
 import (
-	"ZCache/global"
-	"ZCache/routes"
-	"ZCache/routes/mock"
-	"ZCache/services"
-	"ZCache/types"
-	"ZCache/data"
-	"ZCache/task"
+	"zCache/global"
+	"zCache/routes"
+	"zCache/routes/mock"
+	"zCache/services"
+	"zCache/types"
+	"zCache/data"
+	"zCache/task"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"sync"
-	"ZCache/routes/cluster_inter"
-	"ZCache/zcache_rpc/server"
-	pb "ZCache/zcache_rpc/zcacherpc"
+	"zCache/routes/cluster_inter"
+	"zCache/zcache_rpc/server"
+	pb "zCache/zcache_rpc/zcacherpc"
 	"google.golang.org/grpc"
 )
 

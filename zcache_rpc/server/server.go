@@ -7,17 +7,17 @@ import (
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-	pb "ZCache/zcache_rpc/zcacherpc"
+	pb "zCache/zcache_rpc/zcacherpc"
 	"sync"
 	"github.com/sirupsen/logrus"
-	"ZCache/data"
+	"zCache/data"
 	"fmt"
 	"strconv"
-	"ZCache/routes"
-	"ZCache/tool"
-	"ZCache/types"
+	"zCache/routes"
+	"zCache/tool"
+	"zCache/types"
 	"errors"
-	"ZCache/global"
+	"zCache/global"
 )
 
 

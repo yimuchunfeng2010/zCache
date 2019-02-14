@@ -1,11 +1,11 @@
 package task
 
 import (
-	"ZCache/global"
-	"ZCache/services"
+	"zCache/global"
+	"zCache/services"
 	"fmt"
 	"github.com/sirupsen/logrus"
-	"ZCache/types"
+	"zCache/types"
 	"time"
 )
 

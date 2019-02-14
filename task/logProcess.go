@@ -2,10 +2,10 @@ package task
 
 import (
 	"fmt"
-	zLogrus "ZCache/tool/logrus"
+	zLogrus "zCache/tool/logrus"
 	"github.com/sirupsen/logrus"
-	"ZCache/global"
-	"ZCache/services"
+	"zCache/global"
+	"zCache/services"
 )
 
 // 日志系统

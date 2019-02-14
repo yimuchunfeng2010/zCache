@@ -1,7 +1,7 @@
 package tool
 
 import (
-	"ZCache/global"
+	"zCache/global"
 	"bytes"
 	"encoding/base64"
 	"fmt"

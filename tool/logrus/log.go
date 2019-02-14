@@ -2,8 +2,8 @@ package logrus
 
 import (
 	"fmt"
-	"ZCache/types"
-	"ZCache/global"
+	"zCache/types"
+	"zCache/global"
 )
 
 func Warningf(format string, args ...interface{}) {

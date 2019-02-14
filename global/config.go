@@ -1,10 +1,10 @@
 package global
 
 import (
-	"ZCache/types"
+	"zCache/types"
 	"os"
 	"sync"
-	pb "ZCache/zcache_rpc/zcacherpc"
+	pb "zCache/zcache_rpc/zcacherpc"
 )
 
 var Config = struct {

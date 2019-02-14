@@ -1,8 +1,8 @@
 package mock
 
 import (
-	"ZCache/tool/logrus"
-	"ZCache/tool"
+	"zCache/tool/logrus"
+	"zCache/tool"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"

@@ -2,8 +2,8 @@ package services
 
 import (
 	"github.com/samuel/go-zookeeper/zk"
-	"ZCache/tool/logrus"
-	"ZCache/global"
+	"zCache/tool/logrus"
+	"zCache/global"
 	"time"
 	//"fmt"
 	"strings"

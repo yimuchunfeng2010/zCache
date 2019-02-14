@@ -1,10 +1,10 @@
 package zdata
 
 import (
-	"ZCache/global"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	"zCache/global"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 	"errors"
 	"fmt"
 	"os"

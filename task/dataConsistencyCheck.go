@@ -1,10 +1,10 @@
 package task
 
 import (
-	"ZCache/data"
-	"ZCache/global"
-	"ZCache/services"
-	"ZCache/tool"
+	"zCache/data"
+	"zCache/global"
+	"zCache/services"
+	"zCache/tool"
 	"fmt"
 	"github.com/sirupsen/logrus"
 )

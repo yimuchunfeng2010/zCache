@@ -2,8 +2,8 @@ package external_data
 
 import (
 	"github.com/garyburd/redigo/redis"
-	"ZCache/tool/logrus"
-	"ZCache/data"
+	"zCache/tool/logrus"
+	"zCache/data"
 )
 
 func ImportFromRedis() (error){

@@ -1,8 +1,8 @@
 package client
 
 //import (
-//	"ZCache/types"
-//	"ZCache/zcache_rpc/server"
+//	"zCache/types"
+//	"zCache/zcache_rpc/server"
 //	"bytes"
 //	"encoding/json"
 //	"fmt"

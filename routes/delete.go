@@ -1,14 +1,14 @@
 package routes
 
 import (
-	"ZCache/global"
-	"ZCache/services"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	"zCache/global"
+	"zCache/services"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 	"time"
-	Client "ZCache/zcache_rpc/client"
-	pb "ZCache/zcache_rpc/zcacherpc"
+	Client "zCache/zcache_rpc/client"
+	pb "zCache/zcache_rpc/zcacherpc"
 )
 
 func Delete(key string) (err error) {

@@ -1,6 +1,6 @@
 FROM  ubuntu:latest
 MAINTAINER  yuanjun.zeng
 RUN mkdir /data
-ADD ./ZCache /data/
+ADD ./zCache /data/
 EXPOSE "8005"
-CMD  /data/ZCache
+CMD  /data/zCache

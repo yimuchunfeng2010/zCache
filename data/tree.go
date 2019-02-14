@@ -1,7 +1,7 @@
 package zdata
 
 import (
-	"ZCache/types"
+	"zCache/types"
 	"errors"
 	"strconv"
 )

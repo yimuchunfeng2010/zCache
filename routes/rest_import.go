@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"ZCache/tool"
-	"ZCache/tool/logrus"
+	"zCache/tool"
+	"zCache/tool/logrus"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

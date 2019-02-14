@@ -1,11 +1,11 @@
 package routes
 
 import (
-	"ZCache/data"
-	"ZCache/services"
-	"ZCache/tool"
-	"ZCache/tool/logrus"
-	"ZCache/types"
+	"zCache/data"
+	"zCache/services"
+	"zCache/tool"
+	"zCache/tool/logrus"
+	"zCache/types"
 )
 
 func Import() (err error) {

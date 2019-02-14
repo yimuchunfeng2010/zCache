@@ -2,8 +2,8 @@ package client
 
 import (
 	"google.golang.org/grpc"
-	"ZCache/tool/logrus"
-	pb "ZCache/zcache_rpc/zcacherpc"
+	"zCache/tool/logrus"
+	pb "zCache/zcache_rpc/zcacherpc"
 	"context"
 	"time"
 	"io"

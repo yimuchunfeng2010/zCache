@@ -1,14 +1,14 @@
 package cluster_inter
 
 import (
-	"ZCache/tool"
-	"ZCache/global"
-	"ZCache/tool/logrus"
+	"zCache/tool"
+	"zCache/global"
+	"zCache/tool/logrus"
 	"github.com/gin-gonic/gin"
 	"strconv"
 	"net/http"
-	"ZCache/types"
-	"ZCache/data"
+	"zCache/types"
+	"zCache/data"
 )
 
 func Commit(context *gin.Context) {
